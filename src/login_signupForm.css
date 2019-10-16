@@ -1,0 +1,47 @@
+#login_signupForm{
+    float: right;
+    margin-right: 3%;
+    margin-top: 10px;
+
+}
+
+#loginForm{
+  position: relative;
+    text-align: right;
+    clear: both;
+    width: 65%;
+    left: 36%;
+    padding-left: 30%;
+    padding-top: 1%;
+}
+
+#loginform_submit{
+  position: relative;
+    width: 30%;
+    margin-top: 8%;
+    right: 3%;
+}
+#tab_content_info{
+    float: right;
+    border-radius: 15%;
+    width: 97%;
+    
+  }
+
+body{
+    background-color: rgb(189, 201, 195);
+    text-align: right;
+    font-size: 14px;
+    font-family: 'Courier New', Courier, monospace;
+  }
+  #auth_tab_content{
+    clear: both;
+    margin-right: 3%;
+  }
+#login_input{
+  text-align: right;
+}
+
+#login_label{
+  padding-top: 5%;
+}
