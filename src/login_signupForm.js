@@ -3,6 +3,7 @@ import { TabContent, TabPane, Nav, NavItem, NavLink } from 'reactstrap';
 import classnames from 'classnames';
 import 'bootstrap/dist/css/bootstrap.css';
 import './login_signupForm.css';
+import SignupForm from './signupForm'
 
 const Example = (props) => {
   const [activeTab, setActiveTab] = useState('1');
@@ -31,6 +32,7 @@ const Example = (props) => {
         <TabPane tabId="1">
         </TabPane>
         <TabPane tabId="2">
+          <SignupForm/>
         </TabPane>
     </TabContent>
     </div>
