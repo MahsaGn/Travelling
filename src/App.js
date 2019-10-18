@@ -1,6 +1,6 @@
 import React from 'react';
 import {BrowserRouter as BrowserRouter, Route, Link} from "react-router-dom";
-import Home from './home'
+import Home from './becomeLeaderForm'
 import Auth from './login_signupForm'
 class App extends React.Component
 {
