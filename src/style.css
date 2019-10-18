@@ -1,0 +1,58 @@
+body{
+  background-color: rgb(189, 201, 195);
+  text-align: right;
+  font-size: 14px;
+  font-family: 'Courier New', Courier, monospace;
+}
+
+#tabs{
+  float: right;
+  margin-right: 3%;
+}
+.custom-tag {
+  margin-top: 1%;
+  border-radius: 5px;;
+  width: 94%;
+  height: 500px;
+  background: gray;
+  left: 3%;
+  margin-bottom: 30px;
+  color: rgb(27, 236, 44);
+}
+
+.green{
+  color: greenyellow;
+}
+
+#tab_content{
+  clear: both;
+  margin-right: 3%;
+}
+
+#tab_content_info{
+  float: right;
+  border-radius: 15%;
+  width: 97%;
+  
+}
+
+#tab_content_info_item{
+  padding: 10px;
+  margin-top: 5px;
+  border-radius: 5px;
+  border: solid 0.25mm;
+  border-color: rgb(157, 180, 180);
+  transition: transform 500ms;
+}
+#tab_content_info_item:hover{
+  transform: scale(1.005);
+  background-color: rgb(249, 255, 255);
+}
+
+#leader_card{
+  float: left;
+  margin: 1%;
+  width: 30%;
+  left:5%;  
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
