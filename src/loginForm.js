@@ -7,7 +7,6 @@ class loginForm extends React.Component{
     constructor(){
       super();
       this.state={
-        hasToken:"true",
         username:"",
         password:""
     };
@@ -19,25 +18,22 @@ class loginForm extends React.Component{
     handleSubmit(e) {
       console.log("in handel submit")
       e.preventDefault();
-      axios.post('http://localhost:8000/api/token/',{
-        username:this.state.username,
-        password:this.state.password
-      }).then(json => {
-          return this.submitResult()
-      })
+          axios.post('http://localhost:8000/api/token/',{
+          username:this.state.username,
+          password:this.state.password
+          }).then(json => {
+        console.log("response")
+         console.log(json)
+         console.log("has token")
+         localStorage.setItem("token", json.data);
+         console.log(localStorage)
+         return window.location.replace('/dashboard')
+      }).catch(error =>{
+        alert("نام کاربری یا گذرواژه نادرست میباشد")
+    });
   }
 
 
-  submitResult(json) {
-      if (jason.) {
-          console.log("has token")
-          localStorage.setItem("token", json.data);
-          return window.location.replace('/dashboard')
-      }
-      else {
-          return (<alert variant="danger">ایمیل یا رمزعبور اشتباه است</alert>);
-      }
-  }
   updatePassword(e){
       this.setState({
           password: e.target.value
