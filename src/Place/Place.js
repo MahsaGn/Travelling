@@ -5,19 +5,13 @@ import '../style.css';
 import 'bootstrap/dist/css/bootstrap.css';
 const items = [
   {
-    id: 1,
-    altText: 'Slide 1',
-    caption: 'Slide 1'
+    src: 'https://illia.tech/wp-content/uploads/2019/04/Persepolis-1030x474.jpg',
   },
   {
-    id: 2,
-    altText: 'Slide 2',
-    caption: 'Slide 2'
+    src: 'https://illia.tech/wp-content/uploads/2019/04/Persepolis-1030x474.jpg',
   },
   {
-    id: 3,
-    altText: 'Slide 3',
-    caption: 'Slide 3'
+    src: 'https://illia.tech/wp-content/uploads/2019/04/Persepolis-1030x474.jpg',
   }
 ];
 
@@ -49,8 +43,8 @@ export default class Place extends React.Component {
         <header >
         </header>
         <body>
-          <Slides/>
-          <Place_nav info={this.state.info} />
+          <Slides photos={items}/>
+          <Place_nav info={this.state.info}  />
         </body>
           
       </div>
