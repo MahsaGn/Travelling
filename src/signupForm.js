@@ -33,6 +33,10 @@ class signupForm extends React.Component{
           localStorage.setItem("token", json.data);
           return window.location.replace('/dashboard')
         }).catch(error=>{
+          this.setState({
+            password:"",
+            repassword:""
+          })
           alert("نام کاربری تکراری میباشد")
         });
       }
