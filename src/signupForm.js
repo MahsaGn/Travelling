@@ -23,14 +23,18 @@ class signupForm extends React.Component{
       {
         console.log("in handel submit")
         e.preventDefault();
-        axios.post('http://localhost:8000/api/token/',{
+        axios.post('http://localhost:8000/api/sign-up/',{
           username:this.state.username,
           password:this.state.password,
           certificatePass:false
         }).then(json => {
             console.log(json)
-            return this.submitResult()
-        })
+            console.log("has token")
+          localStorage.setItem("token", json.data);
+          return window.location.replace('/dashboard')
+        }).catch(error=>{
+          alert("نام کاربری تکراری میباشد")
+        });
       }
       else{
         e.preventDefault();
@@ -40,17 +44,7 @@ class signupForm extends React.Component{
       }
   }
 
-
-  submitResult(json) {
-      if ('token' in json) {
-          console.log("has token")
-          localStorage.setItem("token", json.data);
-          return window.location.replace('/dashboard')
-      }
-      else {
-          return (<alert variant="danger">نام کاربری یا رمزعبور اشتباه است</alert>);
-      }
-  }
+پ
   updatePassword(e){
       this.setState({
           password: e.target.value
