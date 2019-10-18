@@ -6,7 +6,6 @@ class signupForm extends React.Component{
     constructor(){
       super();
       this.state={
-        hasToken:"true",
         username:"",
         password:"",
         repassword:""
@@ -26,7 +25,11 @@ class signupForm extends React.Component{
         axios.post('http://localhost:8000/api/sign-up/',{
           username:this.state.username,
           password:this.state.password,
-          certificatePass:false
+          email:"",
+          first_name:"",
+          last_name:"",
+          itinerary:"",
+          phone_number:""
         }).then(json => {
             console.log(json)
             console.log("has token")
@@ -43,8 +46,9 @@ class signupForm extends React.Component{
       else{
         e.preventDefault();
         alert("گذرنامه شما به درستی تکرار نشده ست")
-        this.setState({password:"",
-      repassword:""})
+        this.setState({
+          password:"",
+          repassword:""})
       }
   }
 
