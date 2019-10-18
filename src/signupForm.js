@@ -28,6 +28,7 @@ class signupForm extends React.Component{
           password:this.state.password,
           certificatePass:false
         }).then(json => {
+            console.log(json)
             return this.submitResult()
         })
       }
