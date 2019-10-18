@@ -27,7 +27,7 @@ class loginForm extends React.Component{
          console.log("has token")
          localStorage.setItem("token", json.data);
          console.log(localStorage)
-         return window.location.replace('/dashboard')
+         return window.location.replace('/')
       }).catch(error =>{
         alert("نام کاربری یا گذرواژه نادرست میباشد")
     });

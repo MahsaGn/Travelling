@@ -34,7 +34,7 @@ class signupForm extends React.Component{
             console.log(json)
             console.log("has token")
           localStorage.setItem("token", json.data);
-          return window.location.replace('/dashboard')
+          return window.location.replace('/')
         }).catch(error=>{
           this.setState({
             password:"",
