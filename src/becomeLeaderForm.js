@@ -27,6 +27,12 @@ class becomeLeaderForm extends React.Component{
             has_car:this.state.has_car,
             car_capacity:this.state.car_capacity,
             car_model:this.state.car_model
+          },{
+            headers:{
+              'authorization': token,
+              'Accept' : 'application/json',
+              'Content-Type': 'application/json'
+            }
           }).then(json => {
         console.log("response")
          console.log(json)
