@@ -9,6 +9,7 @@ import axios from 'axios'
         super(props);
         this.state = {
           palceData:[],
+          placeid: "10"
         };
         this.fetchPlace=this.fetchPlace.bind(this)
       }
@@ -16,13 +17,14 @@ import axios from 'axios'
       fetchPlace(e) {
         console.log("in handel submit")
         e.preventDefault();
-        axios.get('http://localhost:8000/api/token/')
+        axios.get('http://localhost:8000/api/Places/ViewPlace/')
         .then(json => {
           console.log("response")
-          console.log(json)
-          this.setState({palceData: json})
-        }).catch(error =>{
-        alert("اشتباه رخ داده ست")
+          console.log(json.data[0].id)
+          this.setState({palceData: json.data,placeid:json.data[0].id})
+          console.log(this.state.placeid)
+        }).catch(e =>{
+        console.log(e.message)
       });
     }
     handleClick(){
@@ -34,9 +36,7 @@ import axios from 'axios'
         return (
           <div >
             <p onClick={this.handleClick}>hiiii clock on me</p>
-              <Link onClick={this.fetchPlace} to={{pathname: `/place/${this.state.palceData.id}`,
-            data : {info: this.state.palceData}
-        }}>click to see first plasey</Link>
+              <Link to={{pathname: `/place/1`}}>click to see first plasey</Link>
           </div>
         );
       }

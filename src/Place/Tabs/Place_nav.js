@@ -6,6 +6,7 @@ import NavItems from './NavItems'
 import { TabContent, TabPane, Nav, NavItem, NavLink, Card, Button, CardTitle, CardText, Row, Col } from 'reactstrap';
 import NavItem_leader from './NavItem_leader'
 import { runInThisContext } from 'vm';
+import NavItem_history from './NavItem_history'
 
 
  export default class Place_nav extends React.Component{
@@ -36,6 +37,9 @@ import { runInThisContext } from 'vm';
               </TabPane>
               <TabPane tabId="2">
                 <NavItem_leader/>
+              </TabPane>
+              <TabPane tabId="3">
+                <NavItem_history info={this.props.info.Description}/>
               </TabPane>
             </TabContent>
           </div>

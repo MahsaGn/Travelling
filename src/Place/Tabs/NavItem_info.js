@@ -1,17 +1,23 @@
 import React from 'react'
 import { ListGroup, ListGroupItem } from 'reactstrap';
 import { tsPropertySignature } from '@babel/types';
-function NavItem_info(props){
+import ItemPlace from './Item_Place'
+class NavItem_info extends React.Component{
+  constructor(props){
+    super(props)
+  }
+  render(){
     return(
         <ListGroup id="tab_content_info">
-        <ListGroupItem id="tab_content_info_item">نام : {props.info.Title}</ListGroupItem>
-        <ListGroupItem id="tab_content_info_item">متوسط زمان بازدید : {props.info.MinimumTimeofVisting}</ListGroupItem>
-        <ListGroupItem id="tab_content_info_item">زمان شروع : {props.info.startTime}</ListGroupItem>
-        <ListGroupItem id="tab_content_info_item">زمان پایان : {props.info.endTime}</ListGroupItem>
-        <ListGroupItem id="tab_content_info_item">محبوبیت : {props.info.rate}</ListGroupItem>
-        <ListGroupItem id="tab_content_info_item">آدرس : {props.info.Address},{props.info.City}</ListGroupItem>
-        <ListGroupItem id="tab_content_info_item">درجه سختی : {props.info.hardness}</ListGroupItem>
+          <ItemPlace val={this.props.info.title} name="نام"/>
+          <ItemPlace val={this.props.info.categories} name="نوع مکان"/>
+          <ItemPlace val={this.props.info.Likes} name="میزان علاقه مندی"/>
+          <ItemPlace val={this.props.info.Hardness} name="میزان سختی"/>
+          <ItemPlace val={this.props.info.Average} name="متوسط زمان بازدید"/>
+          <ItemPlace val={this.props.info.Time} name="زمان"/>
+          <ItemPlace val={this.props.info.City} name="شهر"/>
+          <ItemPlace val={this.props.info.Address} name="نشانی"/>
       </ListGroup>  
-    );
+    );}
 }
 export default NavItem_info;
