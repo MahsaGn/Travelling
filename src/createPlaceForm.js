@@ -1,6 +1,7 @@
   
 import React from 'react'
 import axios from 'axios' 
+import './place.css'
 import {Button,CustomInput, Form, FormGroup,FormText, Label, Input } from 'reactstrap';
 import 'bootstrap/dist/css/bootstrap.css';
 
@@ -9,18 +10,18 @@ export default class createPlace extends React.Component{
         super();
         this.state={
           category:"",
-          title:false,
-          discriptions:"",
+          title:"",
+          descriptions:"",
           hardness:"",
-          addrress:"",
+          address:"",
           time:"",
           city:"",
+          likes:"",
+          image_1:"",
+          image_2:""
       };
         this.handleSubmit=this.handleSubmit.bind(this);
-        this.updateTitle=this.updateTitle.bind(this);
-        this.updateDiscription=this.updateDiscription.bind(this);
-        this.updateCar_capacity=this.updateCar_capacity.bind(this);
-        this.updateCar_model=this.updateCar_model.bind(this);
+        this.updateState=this.updateState.bind(this);
       }
 
 
@@ -28,69 +29,89 @@ export default class createPlace extends React.Component{
         console.log("in handel submit")
         e.preventDefault();
         axios.post('http://localhost:8000/api/token/',{
-          categories:this.state.category,
-          title :this.state.title,
+          Categories:this.state.category,
+          Title :this.state.title,
           Description:this.state.discriptions,
           Hardness:this.state.hardness,
           Address:this.state.addrress,
           Time:this.state.time,
           City:this.state.city,
+          Likes:this.state.likes,
+          image_1:this.state.image_1,
+          image_2:this.state.image_2
         }).then(json => {
           console.log("response")
           console.log(json)
         return window.location.replace('/')
         }).catch(error =>{
-          alert("نام کاربری یا گذرواژه نادرست میباشد")
+          alert(error.message)
       });
     }
-  
-    updateTitle(e){
-            this.setState({title: e.target.value});
-      }
-  
-      updateDiscription(e){
-          console.log(this.state.discriptions)
+    
+      updateState(e){
+        e.preventDefault()
+        if(e.target.validity.valid && e.target.value>0 && e.target.value<11) {
           this.setState({
-              discriptions: e.target.value
+              [e.target.name]: e.target.value
           });
+        }
       }
-      updateCar_capacity(e){
-          console.log(e.target.validity.valid);
-          if(e.target.validity.valid && e.target.value>0) {
-              this.setState({car_capacity: e.target.value});
-          }
-      }
-      updateCar_model(e){
-          if(this.state.has_car){
-              this.setState({
-                  car_model:e.target.value
-              })
-          }
+
+      updateHardness(e){
+        this.setState({
+          Hardness: this.state.hardness
+        })
       }
       
     render(){
-        const model = this.state.has_car ?<Input value={this.state.car_model} onChange={this.updateCar_model} type="text"/>:
-        <Input disabled value={this.state.car_model} onChange={this.updateCar_model} type="text"/>
-        const capacity = this.state.has_car ? <Input value={this.state.car_capacity} onChange={this.updateCar_capacity} type="number"/>:
-        <Input disabled value={this.state.car_capacity} onChange={this.updateCar_capacity} type="number"/>
     return(
-      <Form id="loginForm" onSubmit={this.handleSubmit}>
-        <FormGroup className="mb-2 mr-sm-2 mb-sm-0">
-          <Label for="exampleEmail" id="login_label" className="mr-sm-2">نام</Label>
-          <Input value={this.state.title} onChange={this.updateTitle} type="text" id="login_input"/>
+      <Form onSubmit={this.handleSubmit} id="placeForm">
+        <FormGroup className="mb-2 mr-sm-2 mb-sm-0 place_input">
+          <Label className="mr-sm-2" id="place_label">نام</Label>
+          <Input name="title" value={this.state.Title} onChange={this.updateState} type="text" id="place_input"/>
         </FormGroup>
-        <FormGroup className="mb-2 mr-sm-2 mb-sm-0">
-          <Label for="exampleEmail" id="login_label" className="mr-sm-2">نام</Label>
-          <Input value={this.state.discriptions} onChange={this.updateTitle} type="text" id="login_input"/>
+        <FormGroup className="mb-2 mr-sm-2 mb-sm-0 place_input">
+          <Label className="mr-sm-2" id="place_label">تاریخچه</Label>
+          <Input name="description" value={this.state.description} onChange={this.updateState} type="text" id="place_input"/>
         </FormGroup>
-        <FormGroup className="mb-2 mr-sm-2 mb-sm-0">
-          <CustomInput onChange={this.updateHas_car} type="switch" id="exampleCustomSwitch" name="customSwitch" label="آیا برای گردشگری درصورت درخواست مالک خودرو میباشید؟" />
-          <Label>مدل ماشین</Label>
-          {model}
-          <Label>ظرفیت ماشین</Label>
-          {capacity}
+        <FormGroup className="mb-2 mr-sm-2 mb-sm-0 place_input">
+          <Label className="mr-sm-2" id="place_label">نشانی</Label>
+          <Input name="address" value={this.state.addrress} onChange={this.updateState} type="text" id="place_input"/>
         </FormGroup>
-        <Button id="loginform_submit">ثبت</Button>
+        <FormGroup className="mb-2 mr-sm-2 mb-sm-0 place_input">
+          <Label className="mr-sm-2" id="place_label">شهر</Label>
+          <Input name="city" value={this.state.city} onChange={this.updateState} type="text" id="place_input"/>
+        </FormGroup>
+        <FormGroup className="mb-2 mr-sm-2 mb-sm-0 place_input">
+        <Label for="exampleSelect" id="place_label">نوع مکان</Label>
+          <Input type="select" name="select" id="place_input">
+            <option>تاریخی</option>
+            <option>موزه</option>
+            <option>جنگل</option>
+            <option>کوه</option>
+            <option>طبیعت</option>
+            <option>پارک ملی</option>
+            <option>هنر عمومی</option>
+            <option>مذهبی</option>
+          </Input>
+        </FormGroup>
+        <FormGroup className="mb-2 mr-sm-2 mb-sm-0 place_input">
+          <Label className="mr-sm-2" id="place_label">میزان سختی از 10</Label>
+          <Input name="hardness" value={this.state.hardness} pattern="[1-5]" onChange={this.updateState} type="number" id="place_input"/>
+        </FormGroup>
+        <FormGroup className="mb-2 mr-sm-2 mb-sm-0 place_input">
+          <Label className="mr-sm-2" id="place_label"> محبوبیت از 5</Label>
+          <Input name="likes" value={this.state.likes} pattern="[0-9]" onChange={this.updateState} type="number" id="place_input"/>
+        </FormGroup>
+        <FormGroup className="place_input">
+          <Label id="place_label">1بارگذاری عکس</Label>
+          <CustomInput value={this.state.image_1} onChange={this.updateState} type="file" accept=".JPG, .png, .JPEG" name="image_1" id="place_input"/>
+        </FormGroup>
+        <FormGroup className="place_input">
+          <Label id="place_label">2بارگذاری عکس</Label>
+          <CustomInput value={this.state.image_2} onChange={this.updateState} type="file" accept=".JPG, .png, .JPEG" name="image_2" id="place_input" />
+        </FormGroup>
+          <Button id="placeform_submit">ثبت</Button>
       </Form>
         );
     }

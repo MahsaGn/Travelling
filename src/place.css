@@ -1,0 +1,44 @@
+#placeForm{
+    float: right;
+    margin-right: 5%;
+    margin-top: 5%;
+    border:solid 2px rgb(224, 224, 224);
+  position: relative;
+    text-align: right;
+    clear: both;
+    top: 50px;
+    width: 50%;
+    right: 20%;
+}
+
+#placeform_submit{
+  position: relative;
+    width: 30%;
+    margin-top: 10%;
+    right: 3%;
+    background-color: rgb(192, 238, 238);
+    border-color:rgb(180, 221, 221);
+    color: black;
+}
+
+#place_input{
+    position: relative;
+    width: 100%;
+  text-align: right;
+  height: 40px;
+  padding-top:10px ;
+  padding-right: 15px;
+}
+
+.place_input{
+    text-align: right;
+    position: relative;
+    width: 80%;
+    left: 10%;
+}
+
+#place_label{
+    text-align: right;
+    font-size: 18px ;
+    padding-top: 6%;
+}
