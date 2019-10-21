@@ -5,7 +5,7 @@ import 'bootstrap/dist/css/bootstrap.css';
 import './login_signupForm.css';
 import LoginForm from './loginForm';
 
-const Example = (props) => {
+const login_signup = (props) => {
   const [activeTab, setActiveTab] = useState('1');
 
   const toggle = tab => {
@@ -39,4 +39,4 @@ const Example = (props) => {
   );
 }
 
-export default Example;
+export default login_signup;
