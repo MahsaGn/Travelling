@@ -22,13 +22,14 @@ export default class createPlace extends React.Component{
       };
         this.handleSubmit=this.handleSubmit.bind(this);
         this.updateState=this.updateState.bind(this);
+        this.updateStateNum=this.updateStateNum.bind(this)
       }
 
 
       handleSubmit(e) {
         console.log("in handel submit")
         e.preventDefault();
-        axios.post('http://localhost:8000/api/token/',{
+        axios.post('http://localhost:8000/api/Places/CreatePlace/',{
           Categories:this.state.category,
           Title :this.state.title,
           Description:this.state.discriptions,
@@ -49,6 +50,13 @@ export default class createPlace extends React.Component{
     }
     
       updateState(e){
+        e.preventDefault()
+          this.setState({
+              [e.target.name]: e.target.value
+          });
+      }
+
+      updateStateNum(e){
         e.preventDefault()
         if(e.target.validity.valid && e.target.value>0 && e.target.value<11) {
           this.setState({
@@ -97,11 +105,11 @@ export default class createPlace extends React.Component{
         </FormGroup>
         <FormGroup className="mb-2 mr-sm-2 mb-sm-0 place_input">
           <Label className="mr-sm-2" id="place_label">میزان سختی از 10</Label>
-          <Input name="hardness" value={this.state.hardness} pattern="[1-5]" onChange={this.updateState} type="number" id="place_input"/>
+          <Input name="hardness" value={this.state.hardness} pattern="[1-5]" onChange={this.updateStateNum} type="number" id="place_input"/>
         </FormGroup>
         <FormGroup className="mb-2 mr-sm-2 mb-sm-0 place_input">
           <Label className="mr-sm-2" id="place_label"> محبوبیت از 5</Label>
-          <Input name="likes" value={this.state.likes} pattern="[0-9]" onChange={this.updateState} type="number" id="place_input"/>
+          <Input name="likes" value={this.state.likes} pattern="[0-9]" onChange={this.updateStateNum} type="number" id="place_input"/>
         </FormGroup>
         <FormGroup className="place_input">
           <Label id="place_label">1بارگذاری عکس</Label>
