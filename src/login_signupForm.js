@@ -3,10 +3,9 @@ import { TabContent, TabPane, Nav, NavItem, NavLink } from 'reactstrap';
 import classnames from 'classnames';
 import 'bootstrap/dist/css/bootstrap.css';
 import './login_signupForm.css';
-import SignupForm from './signupForm'
 import LoginForm from './loginForm';
 
-const login_signup = (props) => {
+const AuthForm = (props) => {
   const [activeTab, setActiveTab] = useState('1');
 
   const toggle = tab => {
@@ -34,11 +33,10 @@ const login_signup = (props) => {
             <LoginForm/>        
         </TabPane>
         <TabPane tabId="2">
-          <SignupForm/>
         </TabPane>
     </TabContent>
     </div>
   );
 }
 
-export default login_signup;
+export default AuthForm;
