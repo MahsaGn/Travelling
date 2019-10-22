@@ -2,6 +2,7 @@ import React from 'react'
 import axios from 'axios' 
 import {Button,CustomInput, Form, FormGroup,FormText, Label, Input } from 'reactstrap';
 import 'bootstrap/dist/css/bootstrap.css';
+import './login_signupForm.css'
 
 class becomeLeaderForm extends React.Component{
     constructor(){
@@ -20,28 +21,32 @@ class becomeLeaderForm extends React.Component{
     }
     
     handleSubmit(e) {
+      console.log("in handle submite")
+      console.log(localStorage.access)
       console.log("in handel submit")
       e.preventDefault();
-          axios.post('http://localhost:8000/api/token/',{
+          axios.post('http://localhost:8000/api/become-leader/',{
             nationalID:this.state.nationalID,
             has_car:this.state.has_car,
             car_capacity:this.state.car_capacity,
             car_model:this.state.car_model
           },{
             headers:{
-              'authorization': token,
-              'Accept' : 'application/json',
-              'Content-Type': 'application/json'
+              'Authorization': localStorage.access,
+              'Content-Type': 'application/json',
+              'Access-Control-Allow-Origin': "*",
+              'Access-Control-Allow-Methods':"GET, POST, PUT, DELETE, OPTIONS"
             }
           }).then(json => {
         console.log("response")
+        console.log(localStorage.access)
          console.log(json)
          console.log("has token")
          localStorage.setItem("token", json.data);
          console.log(localStorage)
          return window.location.replace('/')
       }).catch(error =>{
-        alert("نام کاربری یا گذرواژه نادرست میباشد")
+        console.log(error.message)
     });
   }
 
@@ -78,19 +83,20 @@ class becomeLeaderForm extends React.Component{
         const capacity = this.state.has_car ? <Input value={this.state.car_capacity} onChange={this.updateCar_capacity} type="number"/>:
         <Input disabled value={this.state.car_capacity} onChange={this.updateCar_capacity} type="number"/>
     return(
-        <Form id="loginForm" onSubmit={this.handleSubmit}>
+        <Form id="Form" onSubmit={this.handleSubmit}>
       <FormGroup className="mb-2 mr-sm-2 mb-sm-0">
-        <Label for="exampleEmail" id="login_label" className="mr-sm-2">کد ملی</Label>
-        <Input value={this.state.nationalID} onChange={this.updateNationalID} pattern="[0-9]{*}" id="login_input"/>
+        <Label id="form_label" className="mr-sm-2">کد ملی</Label>
+        <Input value={this.state.nationalID} onChange={this.updateNationalID} pattern="[0-9]{*}" id="form_input"/>
       </FormGroup>
       <FormGroup className="mb-2 mr-sm-2 mb-sm-0">
-        <CustomInput onChange={this.updateHas_car} type="switch" id="exampleCustomSwitch" name="customSwitch" label="آیا برای گردشگری درصورت درخواست مالک خودرو میباشید؟" />
-        <Label>مدل ماشین</Label>
+        <Label id="form_label">آیا برای گردشگری درصورت درخواست مالک خودرو میباشید؟</Label>
+        <CustomInput onChange={this.updateHas_car} type="switch" id="exampleCustomSwitch" className="switch" name="customSwitch" />
+        <Label id="form_label">مدل ماشین</Label>
         {model}
-        <Label>ظرفیت ماشین</Label>
+        <Label id="form_label">ظرفیت ماشین</Label>
         {capacity}
       </FormGroup>
-      <Button id="loginform_submit">ثبت</Button>
+      <Button id="form_submit">ثبت</Button>
 
     </Form>
   
