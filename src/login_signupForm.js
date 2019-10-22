@@ -4,6 +4,7 @@ import classnames from 'classnames';
 import 'bootstrap/dist/css/bootstrap.css';
 import './login_signupForm.css';
 import LoginForm from './loginForm';
+import SignupForm from './signupForm'
 
 const AuthForm = (props) => {
   const [activeTab, setActiveTab] = useState('1');
@@ -33,6 +34,7 @@ const AuthForm = (props) => {
             <LoginForm/>        
         </TabPane>
         <TabPane tabId="2">
+          <SignupForm/>
         </TabPane>
     </TabContent>
     </div>
