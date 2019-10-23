@@ -31,13 +31,13 @@ class becomeLeaderForm extends React.Component{
             car_capacity:this.state.car_capacity,
             car_model:this.state.car_model
           },{
-            headers:{
-              'Authorization': localStorage.access,
-              'Content-Type': 'application/json',
-              'Access-Control-Allow-Origin': "*",
-              'Access-Control-Allow-Methods':"GET, POST, PUT, DELETE, OPTIONS"
+             headers:
+              {
+                "Authorization" : `Bearer ${localStorage.access}`,
+                'Accept' : 'application/json',
+                'Content-Type': 'application/json'
             }
-          }).then(json => {
+             }).then(json => {
         console.log("response")
         console.log(localStorage.access)
          console.log(json)
