@@ -29,20 +29,16 @@ export default class createPlace extends React.Component{
       handleSubmit(e) {
         console.log("in handel submit")
         e.preventDefault();
-        axios.post('http://localhost:8000/api/Places/CreatePlace/',{
-          Categories:this.state.category,
-          Title :this.state.title,
-          Description:this.state.discriptions,
-          Hardness:this.state.hardness,
-          Address:this.state.addrress,
-          Time:this.state.time,
-          City:this.state.city,
-          Likes:this.state.likes,
-          image_1:this.state.image_1,
-          image_2:this.state.image_2
-        }).then(json => {
+        fetch('http://localhost:8000/api/Places/CreatePlace/',{
+          headers: { "Content-Type": "application/json" },
+          method: 'POST',
+          body:{
+            Title :"بیستون",
+            Description:"عمارت"
+          }
+        }).then(response => {
           console.log("response")
-          console.log(json)
+          console.log(response.json())
         return window.location.replace('/')
         }).catch(error =>{
           alert(error.message)
@@ -80,7 +76,7 @@ export default class createPlace extends React.Component{
         </FormGroup>
         <FormGroup className="mb-2 mr-sm-2 mb-sm-0 place_input">
           <Label className="mr-sm-2" id="place_label">تاریخچه</Label>
-          <Input name="description" value={this.state.description} onChange={this.updateState} type="text" id="place_input"/>
+          <Input name="descriptions" value={this.state.descriptions} onChange={this.updateState} type="text" id="place_input"/>
         </FormGroup>
         <FormGroup className="mb-2 mr-sm-2 mb-sm-0 place_input">
           <Label className="mr-sm-2" id="place_label">نشانی</Label>
