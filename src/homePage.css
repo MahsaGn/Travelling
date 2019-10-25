@@ -15,20 +15,15 @@
   clear: both;
 }
 
-.btn{
+.selectButton{
   background-color: rgb(86, 86, 206);
   color: white;
 }
 .loginSignupButton{
-  background-color: blue;
-  margin-right: 10px;
+  background-color: green;
+  color: white;
+  
 }
-.login{
-  position: relative;
-    width: 30%;
-    margin-top: 10%;
-    right: 3%;
-    background-color: rgb(192, 238, 238);
-    border-color:rgb(180, 221, 221);
-    color: black;
+#bg{
+  margin-top: 5PX;
 }
