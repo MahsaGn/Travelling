@@ -14,10 +14,10 @@ const homePage = (props) => {
       </ButtonGroup>
       <div class="row">
         <div class="column">
-          <CardImg  src={img}   />
+          <CardImg  src={img}/>
           <CardBody >
             <CardTitle >place1</CardTitle>
-            <CardSubtitle>this is the place1</CardSubtitle>
+            <CardSubtitle className="cardsub">this is the place1</CardSubtitle>
             <Button className="selectButton">select</Button>
           </CardBody>
         </div>
@@ -25,7 +25,7 @@ const homePage = (props) => {
           <CardImg  src={img} />
           <CardBody>
             <CardTitle >place2</CardTitle>
-            <CardSubtitle>this is the place2</CardSubtitle>
+            <CardSubtitle className="cardsub">this is the place2</CardSubtitle>
             <Button className="selectButton">select</Button>
           </CardBody>
          </div>
@@ -33,7 +33,33 @@ const homePage = (props) => {
           <CardImg  src={img} />
           <CardBody>
             <CardTitle >place3</CardTitle>
-            <CardSubtitle>this is the place3</CardSubtitle>
+            <CardSubtitle className="cardsub">this is the place3</CardSubtitle>
+            <Button className="selectButton">select</Button>
+          </CardBody>
+          </div> 
+      </div>
+      <div class="row">
+        <div class="column">
+          <CardImg  src={img}/>
+          <CardBody >
+            <CardTitle >place1</CardTitle>
+            <CardSubtitle className="cardsub">this is the place1</CardSubtitle>
+            <Button className="selectButton">select</Button>
+          </CardBody>
+        </div>
+        <div class="column">
+          <CardImg  src={img} />
+          <CardBody>
+            <CardTitle >place2</CardTitle>
+            <CardSubtitle className="cardsub">this is the place2</CardSubtitle>
+            <Button className="selectButton">select</Button>
+          </CardBody>
+         </div>
+         <div class="column">
+          <CardImg  src={img} />
+          <CardBody>
+            <CardTitle >place3</CardTitle>
+            <CardSubtitle className="cardsub">this is the place3</CardSubtitle>
             <Button className="selectButton">select</Button>
           </CardBody>
           </div> 
