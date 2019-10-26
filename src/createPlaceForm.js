@@ -1,6 +1,7 @@
   
 import React from 'react'
 import axios from 'axios' 
+import qs from 'qs'
 import './place.css'
 import {Button,CustomInput, Form, FormGroup,FormText, Label, Input } from 'reactstrap';
 import 'bootstrap/dist/css/bootstrap.css';
@@ -10,7 +11,7 @@ export default class createPlace extends React.Component{
     constructor(){
         super();
         this.state={
-          category:"gr",
+          category:"تاریخی",
           title:"",
           descriptions:"",
           hardness:"",
@@ -28,14 +29,24 @@ export default class createPlace extends React.Component{
         this.updateState=this.updateState.bind(this);
         this.updateStateNum=this.updateStateNum.bind(this)
       }
+/*
 
+          images:[
+            (
+               this.state.image_1
+            ),
+            (
+              this.state.image_1
+           )
+          ]
+*/
 
 
       handleSubmit(e) {
         console.log("in handel submit")
         e.preventDefault();
-        var j = {
-          title :this.state.title,
+        var j ={
+          title:this.state.title,
           Description:this.state.descriptions,
           Likes:this.state.likes,
           categories:this.state.category,
@@ -45,20 +56,16 @@ export default class createPlace extends React.Component{
           StartTime:this.state.startTime,
           EndTime:this.state.endTime,
           City:this.state.city,
-          Average:this.state.average,
-          images:[
-            (
-               this.state.image_1
-            ),
-            (
-              this.state.image_1
-           )
-          ]
+          images:{
+            image:this.state.image_1,
+            image:this.state.image_1
           }
-          console.log(j)
-        axios.post('http://localhost:8000/api/Places/CreatePlace/',j).then(response => {
+          }
+        console.log(j)
+        axios.post('http://localhost:8000/api/Places/CreatePlace/',qs.stringify(j))
+        .then(response => {
           console.log("response")
-          console.log(response.json())
+          console.log(response)
         return window.location.replace('/')
         }).catch(error =>{
           alert(error.message)
