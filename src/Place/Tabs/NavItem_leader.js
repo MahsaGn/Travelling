@@ -6,42 +6,32 @@ import NavItems from './NavItems'
 import { CardImg,CardBody, Card, Button, CardTitle, CardText, Row, Col } from 'reactstrap';
 import classnames from 'classnames';
 import { runInThisContext } from 'vm';
+import Axios from 'axios';
+import LeaderCard from './leaderCard'
 
 export default class NavItem_leader extends React.Component{
 
     constructor(props){
       super(props);
+      this.state={
+        leaders:[]
+      }
+    }
+    componentWillMount(){
+      Axios.get('url')
+      .then(datas=>{
+        console.log(datas)
+        this.setState({
+          leaders : datas.map((data)=><LeaderCard info={data}/>)
+        })
+      })
     }
 
     render(){
         return(
           <div>
-          <Card id="leader_card">
-          <CardImg top src={this.props.img} alt="Card image cap" />
-          <CardBody>
-            <CardTitle>{this.props.username}</CardTitle>
-            <CardText>{this.props.rate}</CardText>            <CardText>
-            </CardText>
-          </CardBody>
-        </Card>
-        <Card id="leader_card">
-        <CardImg top src={this.props.img} alt="Card image cap" />
-          <CardBody>
-          <CardTitle>{this.props.username}</CardTitle>
-            <CardText>{this.props.rate}</CardText>
-            <CardText>
-            </CardText>
-          </CardBody>
-        </Card>
-        <Card id="leader_card">
-        <CardImg top src={this.props.img} alt="Card image cap" />
-          <CardBody>
-          <CardTitle>{this.props.username}</CardTitle>
-            <CardText>{this.props.rate}</CardText>            <CardText>
-            </CardText>
-          </CardBody>
-        </Card>
-        </div>
+            {LeaderCard}
+          </div>
         );
     }
 }
