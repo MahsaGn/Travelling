@@ -4,21 +4,25 @@ import axios from 'axios'
 import './place.css'
 import {Button,CustomInput, Form, FormGroup,FormText, Label, Input } from 'reactstrap';
 import 'bootstrap/dist/css/bootstrap.css';
+import { throwStatement } from '@babel/types';
 
 export default class createPlace extends React.Component{
     constructor(){
         super();
         this.state={
-          category:"",
+          category:"gr",
           title:"",
           descriptions:"",
           hardness:"",
           address:"",
-          time:"",
+          time:"2",
           city:"",
           likes:"",
           image_1:"",
-          image_2:""
+          image_2:"",
+          average:"2",
+          startTime:"",
+          endTime:""
       };
         this.handleSubmit=this.handleSubmit.bind(this);
         this.updateState=this.updateState.bind(this);
@@ -26,17 +30,33 @@ export default class createPlace extends React.Component{
       }
 
 
+
       handleSubmit(e) {
         console.log("in handel submit")
         e.preventDefault();
-        fetch('http://localhost:8000/api/Places/CreatePlace/',{
-          headers: { "Content-Type": "application/json" },
-          method: 'POST',
-          body:{
-            Title :"بیستون",
-            Description:"عمارت"
+        var j = {
+          title :this.state.title,
+          Description:this.state.descriptions,
+          Likes:this.state.likes,
+          categories:this.state.category,
+          Hardness:this.state.hardness,
+          Address:this.state.address,
+          Time:this.state.time,
+          StartTime:this.state.startTime,
+          EndTime:this.state.endTime,
+          City:this.state.city,
+          Average:this.state.average,
+          images:[
+            (
+               this.state.image_1
+            ),
+            (
+              this.state.image_1
+           )
+          ]
           }
-        }).then(response => {
+          console.log(j)
+        axios.post('http://localhost:8000/api/Places/CreatePlace/',j).then(response => {
           console.log("response")
           console.log(response.json())
         return window.location.replace('/')
@@ -72,7 +92,7 @@ export default class createPlace extends React.Component{
       <Form onSubmit={this.handleSubmit} id="placeForm">
         <FormGroup className="mb-2 mr-sm-2 mb-sm-0 place_input">
           <Label className="mr-sm-2" id="place_label">نام</Label>
-          <Input name="title" value={this.state.Title} onChange={this.updateState} type="text" id="place_input"/>
+          <Input name="title" value={this.state.title} onChange={this.updateState} type="text" id="place_input"/>
         </FormGroup>
         <FormGroup className="mb-2 mr-sm-2 mb-sm-0 place_input">
           <Label className="mr-sm-2" id="place_label">تاریخچه</Label>
@@ -80,7 +100,7 @@ export default class createPlace extends React.Component{
         </FormGroup>
         <FormGroup className="mb-2 mr-sm-2 mb-sm-0 place_input">
           <Label className="mr-sm-2" id="place_label">نشانی</Label>
-          <Input name="address" value={this.state.addrress} onChange={this.updateState} type="text" id="place_input"/>
+          <Input name="address" value={this.state.address} onChange={this.updateState} type="text" id="place_input"/>
         </FormGroup>
         <FormGroup className="mb-2 mr-sm-2 mb-sm-0 place_input">
           <Label className="mr-sm-2" id="place_label">شهر</Label>
@@ -88,20 +108,29 @@ export default class createPlace extends React.Component{
         </FormGroup>
         <FormGroup className="mb-2 mr-sm-2 mb-sm-0 place_input">
         <Label for="exampleSelect" id="place_label">نوع مکان</Label>
-          <Input type="select" name="select" id="place_input">
+          <Input type="select" onChange={this.updateState} value={this.state.category}  name="category" id="place_input">
             <option>تاریخی</option>
             <option>موزه</option>
             <option>جنگل</option>
             <option>کوه</option>
             <option>طبیعت</option>
             <option>پارک ملی</option>
-            <option>هنر عمومی</option>
+            <option>هنر عمومی</option >
             <option>مذهبی</option>
           </Input>
         </FormGroup>
         <FormGroup className="mb-2 mr-sm-2 mb-sm-0 place_input">
           <Label className="mr-sm-2" id="place_label">میزان سختی از 10</Label>
           <Input name="hardness" value={this.state.hardness} pattern="[1-5]" onChange={this.updateStateNum} type="number" id="place_input"/>
+        </FormGroup>
+        <FormGroup className="mb-2 mr-sm-2 mb-sm-0 place_input">
+          <Label className="mr-sm-2" id="place_label">زمان پایان
+          </Label>
+          <Input name="endTime" value={this.state.endTime} onChange={this.updateState} type="text" id="place_input"/>
+        </FormGroup>
+        <FormGroup className="mb-2 mr-sm-2 mb-sm-0 place_input">
+          <Label className="mr-sm-2" id="place_label">زمان شروع</Label>
+          <Input name="startTime" value={this.state.startTime} onChange={this.updateState} type="text" id="place_input"/>
         </FormGroup>
         <FormGroup className="mb-2 mr-sm-2 mb-sm-0 place_input">
           <Label className="mr-sm-2" id="place_label"> محبوبیت از 5</Label>
