@@ -32,6 +32,7 @@ import NavItem_history from './NavItem_history'
              <div>
             <NavItems  activeTab ={this.state.activeTab} toggle={this.toggle}/>
             <TabContent id="tab_content" activeTab={this.state.activeTab} >
+            <hr/>
               <TabPane tabId="1">
                 <NavItem_info info={this.props.info}/>
               </TabPane>

@@ -2,7 +2,7 @@ import React from 'react'
 function History(props){
     
     return(
-      <div>
+      <div id="nav_item_history">
           {props.info}
       </div>  
     );

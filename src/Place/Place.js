@@ -30,8 +30,8 @@ export default class Place extends React.Component {
     axios.get('http://localhost:8000/api/Places/ViewPlace/')
     .then(json => {
       console.log("response")
-      console.log(json.data[32])
-      this.setState({info: json.data[32]})
+      console.log(json.data[5])
+      this.setState({info: json.data[5]})
       console.log(this.state.placeid)
     }).catch(
     console.log("error"));
@@ -40,7 +40,7 @@ export default class Place extends React.Component {
 
   render() {
     console.log("in place")
-    console.log(this.state.info)
+    console.log(this.state.info.images)
     return (
       <div id="mystyle">
         <header >
