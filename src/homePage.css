@@ -1,7 +1,8 @@
 .column {
   float: left;
-  width: 33%;
-  padding: 0 10px;
+  width: 33.333333333333333333333333333%;
+  margin-top: 1px;
+  padding: 0 5px;
 }
 
 .row {
@@ -19,8 +20,26 @@
   background-color: rgb(86, 86, 206);
   color: white;
 }
-
-
-.cardsub{
-  margin-bottom: 5px;
+.navbar{
+  background-color: rgb(83, 151, 83);
+  color: white;
 }
+.navbarbutton{
+  background-color: rgb(56, 161, 121);
+  
+}
+.navlink{
+  color: antiquewhite;
+
+}
+#navbrand{
+  color: black;
+  font-family: fantasy;
+  font-size: 30px;
+}
+#homePic{
+  margin-bottom: 0px;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+ }
