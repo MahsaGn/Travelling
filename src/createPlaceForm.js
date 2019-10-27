@@ -21,6 +21,7 @@ export default class createPlace extends React.Component{
           likes:"",
           image_1:"",
           image_2:"",
+          image_3:"",
           average:"2",
           startTime:"",
           endTime:"",
@@ -59,12 +60,12 @@ export default class createPlace extends React.Component{
           City:this.state.city,
           images:[
               {image:this.state.image_1},
-              {image:this.state.image_2},
-              {image:this.state.image_3}
+              {image:this.state.image_1},
+              {image:this.state.image_1}
           ]
           }
         console.log(JSON.stringify(j))
-        axios.post('http://localhost:8000/api/Places/CreatePlace/',JSON.stringify(j))
+        axios.post('http://localhost:8000/api/Places/CreatePlace/',j)
         .then(response => {
           console.log("response")
           console.log(response)
