@@ -10,8 +10,8 @@ class becomeLeaderForm extends React.Component{
       this.state={
         nationalID:"",
         has_car:false,
-        car_capacity:"",
-        car_model:""
+        car_capacity:0,
+        car_model:"ندارد"
     };
       this.handleSubmit=this.handleSubmit.bind(this);
       this.updateNationalID=this.updateNationalID.bind(this);
@@ -46,7 +46,7 @@ class becomeLeaderForm extends React.Component{
          console.log(localStorage)
          return window.location.replace('/')
       }).catch(error =>{
-        console.log(error.message)
+        console.log(error)
     });
   }
 
