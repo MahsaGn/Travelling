@@ -1,6 +1,7 @@
   
 import React from 'react'
 import axios from 'axios' 
+import FormData from 'form-data'
 import qs from 'qs'
 import './place.css'
 import {Button,CustomInput, Form, FormGroup,FormText, Label, Input } from 'reactstrap';
@@ -11,6 +12,7 @@ export default class createPlace extends React.Component{
     constructor(){
         super();
         this.state={
+          i:0,
           category:"تاریخی",
           title:"",
           descriptions:"",
@@ -19,60 +21,47 @@ export default class createPlace extends React.Component{
           time:"2",
           city:"",
           likes:"",
-          image_1:"",
-          image_2:"",
-          image_3:"",
+          image1:null,
+          image2:null,
+          image3:null,
           average:"2",
           startTime:"",
           endTime:"",
-          images:[]
       };
         this.handleSubmit=this.handleSubmit.bind(this);
         this.updateState=this.updateState.bind(this);
         this.updateStateNum=this.updateStateNum.bind(this)
+        this.updateStateImage=this.updateStateImage.bind(this)
       }
-/*
-
-          images:[
-            (
-               this.state.image_1
-            ),
-            (
-              this.state.image_1
-           )
-          ]
-*/
-
 
       handleSubmit(e) {
         console.log("in handel submit")
         e.preventDefault();
-        var j ={
-          title:this.state.title,
-          Description:this.state.descriptions,
-          Likes:this.state.likes,
-          categories:this.state.category,
-          Hardness:this.state.hardness,
-          Address:this.state.address,
-          Time:this.state.time,
-          StartTime:this.state.startTime,
-          EndTime:this.state.endTime,
-          City:this.state.city,
-          images:[
-              {image:this.state.image_1},
-              {image:this.state.image_1},
-              {image:this.state.image_1}
-          ]
-          }
-        console.log(JSON.stringify(j))
-        axios.post('http://localhost:8000/api/Places/CreatePlace/',j)
-        .then(response => {
-          console.log("response")
-          console.log(response)
-        return window.location.replace('/')
-        }).catch(error =>{
-          alert(error.message)
-      });
+          var formData = new FormData()
+          formData.append('title', this.state.title)
+          formData.append('Description',this.state.descriptions)
+          formData.append('Likes', this.state.likes)
+          formData.append('categories', this.state.category)
+          formData.append('Hardness',this.state.hardness)
+          formData.append('Address', this.state.address)
+          formData.append('Time', this.state.title)
+          formData.append('StartTime', this.state.startTime)
+          formData.append('EndTime', this.state.endTime)
+          formData.append('City', this.state.city)
+          console.log(this.state.image1)
+          formData.append('image1', this.state.image1)
+          formData.append('image2', this.state.image2)
+          formData.append('image3', this.state.image3)
+          console.log(formData.values())
+          axios.post('http://localhost:8000/api/Places/CreatePlace/',formData  )
+          .then(response => {
+            console.log("response")
+            console.log(response)
+          return window.location.replace('/')
+          }).catch(error =>{
+            alert(error.message)
+        });
+  
     }
     
       updateState(e){
@@ -94,6 +83,13 @@ export default class createPlace extends React.Component{
       updateHardness(e){
         this.setState({
           Hardness: this.state.hardness
+        })
+      }
+
+      updateStateImage(e){
+        console.log(e.target.name)
+        this.setState({
+          [e.target.name]:e.target.files[0]
         })
       }
       
@@ -148,11 +144,15 @@ export default class createPlace extends React.Component{
         </FormGroup>
         <FormGroup className="place_input">
           <Label id="place_label">1بارگذاری عکس</Label>
-          <input value={this.state.image_1} onChange={this.updateState} type="file" name="image_1" id="place_input"/>
+          <input onChange={this.updateStateImage} type="file" name="image1" id="place_input"/>
         </FormGroup>
         <FormGroup className="place_input">
           <Label id="place_label">2بارگذاری عکس</Label>
-          <CustomInput value={this.state.image_2} onChange={this.updateState} type="file" accept=".jpg, .png, .JPEG" name="image_2" id="place_input" />
+          <input onChange={this.updateStateImage} type="file" name="image2" id="place_input"/>
+        </FormGroup>
+        <FormGroup className="place_input">
+          <Label id="place_label">3بارگذاری عکس</Label>
+          <input onChange={this.updateStateImage} type="file" name="image3" id="place_input"/>
         </FormGroup>
           <Button id="placeform_submit">ثبت</Button>
       </Form>
