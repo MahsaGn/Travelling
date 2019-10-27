@@ -31,7 +31,9 @@ import axios from 'axios'
             <br/>
             <Link to='/authentication'>click to auth</Link>
                 <br/>
-                <Link to='become leader'>click to become leader</Link>
+                <Link to='/becomeLeader'>click to become leader</Link>
+                <br/>
+                <Link to='/profile'>click to see profile</Link>
           </div>
         );
       }

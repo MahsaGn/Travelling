@@ -1,10 +1,11 @@
-import React from 'react';
+import React, { Profiler } from 'react';
 import {BrowserRouter, Route} from "react-router-dom";
 import Home from './home'
 import Place from './Place/Place'
 import CreatePlaceForm from './createPlaceForm'
 import SearchedPlaces from './searchedPlaces'
 import Auth from './login_signupForm'
+import Profile from './userProfile'
 import becomeLeaderForm from './becomeLeaderForm';
 class App extends React.Component
 {
@@ -17,6 +18,7 @@ class App extends React.Component
           <Route path='/createNewPlace' component={CreatePlaceForm} />
           <Route path='/authentication' component={Auth}/>
           <Route path='/becomeLeader' component={becomeLeaderForm}/>
+          <Route path='/profile' component={Profile}/>
       </BrowserRouter>
     )
   }
