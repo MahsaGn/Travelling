@@ -148,7 +148,7 @@ export default class createPlace extends React.Component{
         </FormGroup>
         <FormGroup className="place_input">
           <Label id="place_label">1بارگذاری عکس</Label>
-          <CustomInput value={this.state.image_1} onChange={this.updateState} type="file" name="image_1" id="place_input"/>
+          <input value={this.state.image_1} onChange={this.updateState} type="file" name="image_1" id="place_input"/>
         </FormGroup>
         <FormGroup className="place_input">
           <Label id="place_label">2بارگذاری عکس</Label>
