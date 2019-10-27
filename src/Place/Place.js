@@ -37,10 +37,9 @@ export default class Place extends React.Component {
     axios.get(`http://127.0.0.1:8000/api/Places/UniquePlace/?search=${idp}`)
     .then(json => {
       console.log("response")
-      console.log(json.data[0].images)
       this.setState({
         info: json.data[0],
-        slidesinfo:json.data[0].images
+        slidesinfo:[json.data[0].image1,json.data[0].image2,json.data[0].image3]
       })
       console.log(this.state.slidesinfo)
     }).catch(
