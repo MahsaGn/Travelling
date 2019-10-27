@@ -13,14 +13,14 @@ export default class searchedPlace extends React.Component{
         console.log("insearch")
         var searchedVal = window.location.pathname.split('/')[2]
         console.log(searchedVal)
-        axios.get(`http://127.0.0.1:8000/api/Places/UniquePlace/?search=${searchedVal}`)
+        axios.get(`http://127.0.0.1:8000/api/Places/ViewPlace/?search=${searchedVal}`)
     .then(json => {
       console.log("response")
       console.log(json.data)
       this.setState({info: json.data.map((d)=>{
           return <PlaceCard 
             title={d.title} 
-            src="https://cdn.surfiran.com/wp-content/uploads/2016/12/Persepolis-1.jpg" 
+            src= {d.image1}
             discriptions={d.Discriptions}
             id={d.id}/>
       })})
