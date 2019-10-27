@@ -23,6 +23,7 @@ import axios from 'axios'
             <p onClick={this.handleClick}>hiiii clock on me</p>
               <Link to={{pathname: `/place/${id}`,
             data : {info: 1}}}>click to see first plasey</Link>
+            <Link to="/createNewPlace">click to create new place</Link>
           </div>
         );
       }
