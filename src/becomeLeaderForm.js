@@ -3,6 +3,7 @@ import axios from 'axios'
 import {Button,CustomInput, Form, FormGroup,FormText, Label, Input } from 'reactstrap';
 import 'bootstrap/dist/css/bootstrap.css';
 import './login_signupForm.css'
+import {logedIn} from './loginController'
 
 class becomeLeaderForm extends React.Component{
     constructor(){
@@ -25,6 +26,7 @@ class becomeLeaderForm extends React.Component{
       console.log(localStorage.access)
       console.log("in handel submit")
       e.preventDefault();
+      //logedIn()
           axios.post('http://localhost:8000/api/become-leader/',{
             nationalID:this.state.nationalID,
             has_car:this.state.has_car,

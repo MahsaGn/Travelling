@@ -1,5 +1,7 @@
-import Axios from "axios"
+import axios from "axios"
 
 export const logedIn=()=>{
-    localStorage.setItem("access", Axios.get(localStorage.getItem("refresh")))
+    var a =  axios.get(localStorage.getItem("refresh"))
+    console.log(a)
+    localStorage.setItem("access",a)
 }
