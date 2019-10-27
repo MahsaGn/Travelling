@@ -50,7 +50,7 @@ class Slides extends Component {
           onExiting={this.onExiting}
           onExited={this.onExited}
           key={index}>
-          <img id="place_image" src={item.image}/>
+          <img id="place_image" src={item}/>
         </CarouselItem>);
         return (
           <Carousel
