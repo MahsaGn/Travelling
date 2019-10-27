@@ -28,6 +28,10 @@ import axios from 'axios'
             <Link to="/createNewPlace">click to create new place</Link>
             <br/>
             <SearchBaar/>
+            <br/>
+            <Link to='/authentication'>click to auth</Link>
+                <br/>
+                <Link to='become leader'>click to become leader</Link>
           </div>
         );
       }

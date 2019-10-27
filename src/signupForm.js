@@ -42,7 +42,8 @@ class signupForm extends React.Component{
               console.log(da.data) 
               localStorage.setItem("refresh", da.data.refresh);
               localStorage.setItem("access", da.data.access);  
-              console.log(localStorage.refresh)     
+              console.log(localStorage.refresh)
+              return window.location.replace('/')     
           })
         }).catch(error=>{
           console.log(error.message)
