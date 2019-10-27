@@ -25,22 +25,15 @@ export default class Place extends React.Component {
     super();
     this.state={
       info :"",
-      id:""
     }
    
   }
   
   componentWillMount(){
     console.log("in handel submit")
-    if(typeof(this.props.location.data)!= "undefined")
-    {
-
-      console.log(this.props.location.data.info)
-      this.setState({id : this.props.location.data.info});
-      console.log("id is")
-      console.log(this.state.id)
-    }
-    axios.get(`http://127.0.0.1:8000/api/Places/UniquePlace/?search=${this.state.id}`)
+    var idp = window.location.pathname.split('/')[2]
+    console.log(idp)
+    axios.get(`http://127.0.0.1:8000/api/Places/UniquePlace/?search=${idp}`)
     .then(json => {
       console.log("response")
       console.log(json.data[0])
