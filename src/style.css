@@ -1,0 +1,109 @@
+body{
+  background-color: rgb(233, 233, 233);
+  text-align: right;
+  font-size: 14px;
+  font-family: 'Courier New', Courier, monospace;
+}
+
+#tabs{
+  float: right;
+  margin-right: 3%;
+}
+.custom-tag {
+  margin-top: 1%;
+  border-radius: 5px;;
+  width: 94%;
+  height: 500px;
+  background: gray;
+  left: 3%;
+  margin-bottom: 30px;
+  color: rgb(27, 236, 44);
+}
+
+.green{
+  color: greenyellow;
+}
+
+#tab_content{
+  clear: both;
+  margin-right: 3%;
+}
+
+#tab_content_info{
+  float: right;
+  border-radius: 15%;
+  width: 97%;
+  
+}
+
+#tab_content_info_item_nam{
+  clear: both;
+  float: right;
+  padding: 7px;
+  padding-right: 10px;
+  margin-top: 5px;
+  height: 40px;
+  width: 25%;
+  border-radius: 5px;
+  border: solid 0.25mm;
+  border-color: rgb(171, 199, 199);
+  transition: transform 500ms;
+}
+#tab_content_info_item_val{
+  float: right;
+  padding: 7px;
+  margin-top: 5px;
+  height: fit-content;
+  width: 73%;
+  margin-right:5px ;
+  padding: 10px;
+  margin-top: 5px;
+  border-radius: 5px;
+  border: solid 0.25mm;
+  border-color: rgb(171, 199, 199);
+  transition: transform 500ms;
+  padding-right:3% ;
+}
+#tab_content_info_item:hover{
+  transform: scale(1.005);
+  background-color: rgb(249, 255, 255);
+}
+
+#leader_card{
+  background-color: white;
+  padding: 10px;
+  border-radius: 5px;
+  border: solid rgb(171, 199, 199) 1px;
+  float: left;
+  margin: 1%;
+  width: 30%;
+  left:5%;  
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+#place_image{
+  position: relative;
+  width: 100%;
+  height: 100%;
+  border-radius: 5px;
+}
+ #slides{
+   position: relative;
+   top:100px;
+ }
+.custom-tag{
+  margin-top:2%;
+  width: 80%;
+  left: 10%;
+  height: 60vh;
+  box-shadow: 2px 2px 15px 1px #000000;
+}
+
+#nav_item_history{
+  background-color: white;
+  padding: 10px;
+  border-radius: 5px;
+  border: solid rgb(171, 199, 199) 1px;
+  width: 97%;
+  position: relative;
+  left:2% ;
+}
