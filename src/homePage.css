@@ -1,3 +1,6 @@
+#maindiv{
+  background-color: rgb(178, 241, 178)
+}
 .column {
   float: left;
   width: 33.333333333333333333333333333%;
@@ -33,9 +36,10 @@
 
 }
 #navbrand{
-  color: black;
+  color: rgb(2, 41, 31);
   font-family: fantasy;
   font-size: 30px;
+  background-image: url(./homepic.jpg);
 }
 #homePic{
   margin-bottom: 0px;
