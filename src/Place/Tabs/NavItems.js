@@ -3,13 +3,8 @@ import '../../style.css';
 import { Nav, NavItem, NavLink } from 'reactstrap';
 import classnames from 'classnames';
 import 'bootstrap/dist/css/bootstrap.css';
-import { tsConstructorType } from '@babel/types';
 
 class NavItems extends React.Component{
-    constructor(props)
-    {
-        super(props);
-    }
 render()
 {
     return(

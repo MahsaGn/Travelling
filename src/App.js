@@ -1,5 +1,5 @@
 import React from 'react';
-import {BrowserRouter as BrowserRouter, Route, Link} from "react-router-dom";
+import {BrowserRouter, Route} from "react-router-dom";
 import Home from './home'
 import Place from './Place/Place'
 class App extends React.Component
@@ -7,10 +7,8 @@ class App extends React.Component
   render(){
     return(
       <BrowserRouter> 
-        <switch>
-          <Route exact path='/' component={Home} exact />
+          <Route exact path='/' component={Home}/>
           <Route path='/place/:id' component={Place} />
-        </switch>
       </BrowserRouter>
     )
   }

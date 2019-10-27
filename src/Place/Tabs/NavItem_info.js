@@ -1,11 +1,7 @@
 import React from 'react'
-import { ListGroup, ListGroupItem } from 'reactstrap';
-import { tsPropertySignature } from '@babel/types';
+import { ListGroup } from 'reactstrap';
 import ItemPlace from './Item_Place'
 class NavItem_info extends React.Component{
-  constructor(props){
-    super(props)
-  }
   render(){
     return(
         <ListGroup id="tab_content_info">

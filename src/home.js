@@ -1,8 +1,7 @@
 import React from 'react';
 import 'bootstrap/dist/css/bootstrap.css';
-import {BrowserRouter as Router, Route, Link} from "react-router-dom";
+import {Link} from "react-router-dom";
 import './style.css';
-import Place from './Place/Place'
 import axios from 'axios'
  export default class home extends React.Component{
     constructor(props) {
@@ -11,10 +10,10 @@ import axios from 'axios'
           palceData:[],
           placeid: "10"
         };
-        this.fetchPlace=this.fetchPlace.bind(this)
+        //this.fetchPlace=this.fetchPlace.bind(this)
       }
       //id ro too url behesh bedam???
-      fetchPlace(e) {
+      /*fetchPlace(e) {
         console.log("in handel submit")
         e.preventDefault();
         axios.get('http://localhost:8000/api/Places/ViewPlace/')
@@ -26,17 +25,19 @@ import axios from 'axios'
         }).catch(e =>{
         console.log(e.message)
       });
-    }
+    }*/
     handleClick(){
-      return window.location.replace('/place/1')
+      return window.location.replace('/place')
     }
     render() {
         console.log("in render home")
         console.log(this.state.palceData.id)
+        var id =1
         return (
           <div >
             <p onClick={this.handleClick}>hiiii clock on me</p>
-              <Link to={{pathname: `/place/1`}}>click to see first plasey</Link>
+              <Link to={{pathname: `/place/${id}`,
+            data : {info: 1}}}>click to see first plasey</Link>
           </div>
         );
       }

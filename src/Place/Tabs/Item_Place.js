@@ -1,6 +1,5 @@
 import React from 'react'
-import { ListGroup, ListGroupItem } from 'reactstrap';
-import { tsPropertySignature } from '@babel/types';
+import { ListGroupItem } from 'reactstrap';
 function GetIfItemExist(props){
     return(
         props.val!=null &&  props.val!="NotSet" ? 

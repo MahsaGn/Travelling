@@ -5,9 +5,7 @@ import {
     Carousel,
     CarouselItem,
     CarouselControl,
-    CarouselIndicators,
-    CarouselCaption
-  } from 'reactstrap';
+    CarouselIndicators} from 'reactstrap';
   
 class Slides extends Component {
     constructor(props){
@@ -45,14 +43,13 @@ class Slides extends Component {
     } 
     render(){
         const { activeIndex } = this.state;
-        const slides = this.props.photos.map((item) => {
+        const slides = this.props.photos.map((item,index) => {
           return (
             <CarouselItem className="custom-tag"
           onExiting={this.onExiting}
           onExited={this.onExited}
-          key={item.src}
-        >
-          <img id="place_image" src={item.src} alt={item.altText} />
+          key={item.key}>
+          <img id="place_image" src={item.image}/>
         </CarouselItem>
           );
         });
@@ -62,7 +59,7 @@ class Slides extends Component {
             next={this.next}
             previous={this.previous}
           >
-            <CarouselIndicators id="slides" items={this.props.photos} activeIndex={activeIndex} onClickHandler={this.goToIndex} />
+            <CarouselIndicators id="slides" items={slides} activeIndex={activeIndex} onClickHandler={this.goToIndex} />
             {slides}
             <CarouselControl  id="slides" direction="prev" directionText="Previous" onClickHandler={this.previous} />
             <CarouselControl  id="slides" direction="next" directionText="Next" onClickHandler={this.next} />
