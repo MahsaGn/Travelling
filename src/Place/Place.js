@@ -25,6 +25,7 @@ export default class Place extends React.Component {
     super();
     this.state={
       info :"",
+      slidesinfo:[]
     }
    
   }
@@ -36,9 +37,12 @@ export default class Place extends React.Component {
     axios.get(`http://127.0.0.1:8000/api/Places/UniquePlace/?search=${idp}`)
     .then(json => {
       console.log("response")
-      console.log(json.data[0])
-      this.setState({info: json.data[0]})
-      console.log(this.state.placeid)
+      console.log(json.data[0].images)
+      this.setState({
+        info: json.data[0],
+        slidesinfo:json.data[0].images
+      })
+      console.log(this.state.slidesinfo)
     }).catch(
     console.log("error"));
 
@@ -52,7 +56,7 @@ export default class Place extends React.Component {
         <header >
         </header>
         <body>
-          <Slides photos={items}/>
+          <Slides photos={this.state.slidesinfo}/>
           <Place_nav info={this.state.info}  />
         </body>
       </div>

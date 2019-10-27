@@ -43,16 +43,15 @@ class Slides extends Component {
     } 
     render(){
         const { activeIndex } = this.state;
-        const slides = this.props.photos.map((item,index) => {
-          return (
+        console.log("in slides")
+        console.log(this.props.photos)
+        const slides = this.props.photos.map((item,index) => 
             <CarouselItem className="custom-tag"
           onExiting={this.onExiting}
           onExited={this.onExited}
-          key={item.key}>
+          key={index}>
           <img id="place_image" src={item.image}/>
-        </CarouselItem>
-          );
-        });
+        </CarouselItem>);
         return (
           <Carousel
             activeIndex={activeIndex}
