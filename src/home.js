@@ -2,6 +2,7 @@ import React from 'react';
 import 'bootstrap/dist/css/bootstrap.css';
 import {Link} from "react-router-dom";
 import './style.css';
+import SearchBaar from './searchPlaceBar'
 import axios from 'axios'
  export default class home extends React.Component{
     constructor(props) {
@@ -23,7 +24,10 @@ import axios from 'axios'
             <p onClick={this.handleClick}>hiiii clock on me</p>
               <Link to={{pathname: `/place/${id}`,
             data : {info: 1}}}>click to see first plasey</Link>
+            <br/>
             <Link to="/createNewPlace">click to create new place</Link>
+            <br/>
+            <SearchBaar/>
           </div>
         );
       }
