@@ -25,3 +25,27 @@
   border-top-right-radius: 0.25rem;
   border-bottom-right-radius: 0.25rem;
 }
+
+.card{
+    max-width: 15%;
+    min-width: 200px;
+    height: auto;
+    padding: 0px;
+    margin: 0px;
+}
+
+.place_card_img{
+    width: 100%;
+    margin: 0px;
+    padding: 0px;
+
+}
+.place_card_title{
+    text-align: right;
+    padding: 10px;
+    padding-bottom: 0px;
+}
+.place_card_disc{
+    padding-right: 5px;
+    text-align: right;
+}
