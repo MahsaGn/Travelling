@@ -20,11 +20,12 @@ return(
   <Nav >
     <NavLink href="#ContactUs" className="navlink">ارتباط با ما</NavLink>
     <NavLink href="#AboutUs" className="navlink">درباره ما</NavLink>
-    <NavLink href="#BecomeLeader" className="navlink">!میخوام لیدر شم</NavLink>
+    <NavLink href="/becomeLeader" className="navlink">!میخوام لیدر شم</NavLink>
     <NavLink href="/createNewPlace" className="navlink">اضافه کردن مکان</NavLink>
   </Nav>
-  
-  <Button variant="outline-primary" className="navbarbutton">ورود/ثبت نام</Button>
+  <Link to="/authentication">
+    <Button variant="outline-primary" className="navbarbutton" >ورود/ثبت نام</Button>
+  </Link>
 </Form>
 </Navbar>
 )
