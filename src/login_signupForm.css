@@ -6,7 +6,7 @@
 
 }
 
-#loginForm{
+#Form{
   position: relative;
     text-align: right;
     clear: both;
@@ -15,7 +15,7 @@
     left: 25%;
 }
 
-#loginform_submit{
+#form_submit{
   position: relative;
     width: 30%;
     margin-top: 10%;
@@ -46,14 +46,14 @@ footer{
     clear: both;
     margin-right: 3%;
   }
-#login_input{
+#form_input{
   text-align: right;
   height: 40px;
   padding-top:10px ;
   padding-right: 15px;
 }
 
-#login_label{
-  font-size: 18px ;
+#form_label{
+  font-size: 20px ;
   padding-top: 6%;
 }

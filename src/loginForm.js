@@ -23,10 +23,11 @@ class loginForm extends React.Component{
           password:this.state.password
           }).then(json => {
         console.log("response")
-         console.log(json)
+         console.log(json.data)
          console.log("has token")
-         localStorage.setItem("token", json.data);
-         console.log(localStorage)
+         localStorage.setItem("refresh", json.data.refresh);
+         localStorage.setItem("access", json.data.access);
+         console.log(localStorage.refresh)
          return window.location.replace('/dashboard')
       }).catch(error =>{
         alert("نام کاربری یا گذرواژه نادرست میباشد")
@@ -48,16 +49,16 @@ class loginForm extends React.Component{
  
     render(){
     return(
-        <Form id="loginForm" onSubmit={this.handleSubmit}>
+        <Form id="Form" onSubmit={this.handleSubmit}>
       <FormGroup className="mb-2 mr-sm-2 mb-sm-0">
-        <Label for="exampleEmail" id="login_label" className="mr-sm-2">نام کاربری</Label>
-        <Input value={this.state.username} onChange={this.updateUsername} type="text" id="login_input" placeholder="نام کاربری خود را وارد کنید" />
+        <Label  id="form_label" className="mr-sm-2">نام کاربری</Label>
+        <Input value={this.state.username} onChange={this.updateUsername} type="text" id="form_input" />
       </FormGroup>
       <FormGroup className="mb-2 mr-sm-2 mb-sm-0">
-        <Label for="examplePassword" id="login_label" className="mr-sm-2">گذرواژه</Label>
-        <Input  value={this.state.password} onChange={this.updatePassword} type="password" id="login_input"  name="password" placeholder="گذرواژه خود را وارد کنید" />
+        <Label id="form_label" className="mr-sm-2">گذرواژه</Label>
+        <Input  value={this.state.password} onChange={this.updatePassword} type="password" id="form_input"  name="password"/>
       </FormGroup>
-      <Button id="loginform_submit">ثبت</Button>
+      <Button id="form_submit">ثبت</Button>
     </Form>
   
     );
