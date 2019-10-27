@@ -7,6 +7,8 @@ import './place.css'
 import {Button,CustomInput, Form, FormGroup,FormText, Label, Input } from 'reactstrap';
 import 'bootstrap/dist/css/bootstrap.css';
 import { throwStatement } from '@babel/types';
+import Header from './header';
+
 
 export default class createPlace extends React.Component{
     constructor(){
@@ -95,7 +97,9 @@ export default class createPlace extends React.Component{
       
     render(){
     return(
-      <Form onSubmit={this.handleSubmit} id="placeForm">
+      <div>
+        <Header/>
+        <Form onSubmit={this.handleSubmit} id="placeForm">
         <FormGroup className="mb-2 mr-sm-2 mb-sm-0 place_input">
           <Label className="mr-sm-2" id="place_label">نام</Label>
           <Input name="title" value={this.state.title} onChange={this.updateState} type="text" id="place_input"/>
@@ -156,6 +160,7 @@ export default class createPlace extends React.Component{
         </FormGroup>
           <Button id="placeform_submit">ثبت</Button>
       </Form>
+      </div>
         );
     }
 }

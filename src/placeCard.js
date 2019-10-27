@@ -2,7 +2,7 @@ import React from 'react'
 import Card from '@material-ui/core/Card';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
-import './homePage.css'
+import './searchBar.css'
 export default class placeCard extends React.Component{
     constructor(){
         super()
@@ -13,7 +13,6 @@ export default class placeCard extends React.Component{
     }
     render(){
         return(
-            <div>
                 <Card className="card">
                 <img className="place_card_img" src={this.props.src}/>
                     <Typography className="place_card_title" gutterBottom variant="h6" component="h1">
@@ -25,7 +24,6 @@ export default class placeCard extends React.Component{
                     نمایش اطلاعات
                     </Button>
                 </Card>
-            </div>
         )
     }
 }

@@ -5,6 +5,7 @@ import 'bootstrap/dist/css/bootstrap.css';
 import './login_signupForm.css';
 import LoginForm from './loginForm';
 import SignupForm from './signupForm'
+import Header from './header'
 
 const AuthForm = (props) => {
   const [activeTab, setActiveTab] = useState('1');
@@ -15,6 +16,7 @@ const AuthForm = (props) => {
 
   return (
     <div id="login_signup">
+      <Header/>
     <Nav tabs id="login_signupForm">
       <NavItem>
         <NavLink

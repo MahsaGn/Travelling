@@ -8,9 +8,10 @@ import PlaceCard from './placeCard';
 import SearchField from "react-search-field";
 import axios from 'axios';
 import Header from './header';
+import { async } from 'q';
 
 
-const data = [
+const dataa = [
   {
   "image1" : 'https://www.alaedin.travel/Files/Jazebe/Marvdasht/persepolis/Alaedin-Travel-Company-Attraction-Persepolis-Shiraz-23.jpg',
   "title" : 'تخت جمشید' 
@@ -27,40 +28,51 @@ const data = [
 class homePage extends React.Component {
   constructor(){
     super();
-    this.state={topPlaces:[]}
+    this.state={
+      data1:"",
+      data2:"",
+      data3:"",
+      topPlaces:[]
+    }
+    this.handleChange=this.handleChange.bind(this)
   };
   
-  componentWillMount(){
+  componentWillMount= async()=>{
     console.log("in component");
-    const data1=null;
-    const data2=null;
-    const data3=null;
-    axios.get(`http://127.0.0.1:8000/api/Places/UniquePlace/?search=$1`)
+    await axios.get(`http://127.0.0.1:8000/api/Places/UniquePlace/?search=1`)
     .then(json => {
       console.log("responce");
-      data1=json.data[0];
-    }).catch(console.log("error"));
-    axios.get(`http://127.0.0.1:8000/api/Places/UniquePlace/?search=$2`)
-    .then(json => {
-      console.log("responce");
-      data2=json.data[0];
-    }).catch(console.log("error"));
-    axios.get(`http://127.0.0.1:8000/api/Places/UniquePlace/?search=$3`)
-    .then(json => {
-      console.log("responce");
-      data3=json.data[0];
-    }).catch(console.log("error"));
-       //var data=[data1,data2,data3];
-      var topPlacesData = data.map(d=><PlaceCard 
-     
-      title={d.title} 
-      src= {d.image1}
-      discriptions={d.Discriptions}
-      id={d.id} /> )
       this.setState({
-      topPlaces:topPlacesData
+        data1:json.data[0]
       })
+    }).catch(console.log("error"));
+    await axios.get(`http://127.0.0.1:8000/api/Places/UniquePlace/?search=2`)
+    .then(json => {
+      console.log("responce");
+      this.setState({
+        data2:json.data[0]
+      })
+    }).catch(console.log("error"));
+    await axios.get(`http://127.0.0.1:8000/api/Places/UniquePlace/?search=2`)
+    .then(json => {
+      console.log(json.data[0]);
+      this.setState({
+        data3:json.data[0]
+      })
+    }).catch(console.log("error"));
+    this.handleChange()
   }
+    handleChange(){
+      let data=[this.state.data1,this.state.data2,this.state.data3];
+      console.log("in")
+      console.log(data)
+     this.setState({
+     topPlaces: data.map(d=><PlaceCard 
+       title={d.title} 
+       src= {d.image1}
+       discriptions={d.Discriptions}
+     id={d.id} /> )})
+     }
 
   render(){
     

@@ -1,6 +1,7 @@
 import React from 'react'
 import PlaceCard from './placeCard'
 import axios from 'axios'
+import Header from './header'
 export default class searchedPlace extends React.Component{
 
     constructor(){
@@ -34,6 +35,7 @@ export default class searchedPlace extends React.Component{
         
         return(
             <div>
+                <Header/>
                 {this.state.info}
             </div>
         )
