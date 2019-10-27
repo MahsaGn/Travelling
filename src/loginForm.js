@@ -28,8 +28,7 @@ class loginForm extends React.Component{
          localStorage.setItem("refresh", json.data.refresh);
          localStorage.setItem("access", json.data.access);
          console.log(localStorage.refresh)
-         window.location.replace('/leaderProfile')
-         return
+         return window.location.replace('/')
       }).catch(error =>{
         alert("نام کاربری یا گذرواژه نادرست میباشد")
     });
