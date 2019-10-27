@@ -1,12 +1,12 @@
 import React from 'react';
 import {BrowserRouter as BrowserRouter, Route, Link} from "react-router-dom";
 import Auth from './login_signupForm'
-import leaderProfile from './leaderProfile';
+import leaderProfile from './profile/leaderProfile/leaderProfile';
 import Home from './home'
 import Place from './Place/Place'
 import CreatePlaceForm from './createPlaceForm'
 import SearchedPlaces from './searchedPlaces'
-import Profile from './userProfile'
+import Profile from './profile/userProfile'
 import becomeLeaderForm from './becomeLeaderForm';
 class App extends React.Component
 {

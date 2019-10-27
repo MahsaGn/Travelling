@@ -2,9 +2,9 @@ import React from 'react'
 import 'bootstrap/dist/css/bootstrap.css';
 import { ListGroup, ListGroupItem } from 'reactstrap';
 import { stat } from 'fs';
-import Profile_item from './profile_item'
+import Profile_item from '../profile_item'
 import axios from 'axios'
-
+import {fetchLeaderProfile} from '../profileController' 
 export default class leaderProfile extends React.Component{
     constructor(props){
         super(props);
@@ -16,27 +16,15 @@ export default class leaderProfile extends React.Component{
         }
     }
     componentWillMount(){
-        if(typeof(this.props.location.data)!= "undefined")
-        {
-        console.log(this.props.location.data.info)
-        this.setState({id : this.props.location.data.info});
-        }
-        console.log("in handel submit")
-        axios.get('http://localhost:8000/api/me/leader/',{
-            headers:
-             {
-               "Authorization" : `Bearer ${localStorage.access}`,
-               'Accept' : 'application/json',
-               'Content-Type': 'application/json'
-           }
-    }).then(json => {
-          console.log("response")
-          console.log(json.data)
+        //console.log("in handel submit")
+        fetchLeaderProfile(this.props.location.data)
+        .then(json => {
+          //console.log("response")
+          //console.log(json.data)
           this.setState({
               data:json.data
           })
-        }).catch(
-        console.log("error"));
+        })
     
       }
 
