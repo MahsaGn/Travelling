@@ -1,6 +1,6 @@
 import React, { Profiler } from 'react';
 import {BrowserRouter, Route} from "react-router-dom";
-import Home from './home'
+import Home from './homePage'
 import Place from './Place/Place'
 import CreatePlaceForm from './createPlaceForm'
 import SearchedPlaces from './searchedPlaces'
