@@ -1,5 +1,6 @@
 #maindiv{
-  background-color: rgb(178, 241, 178)
+  background-color: rgb(178, 241, 178);
+  height: 100%;
 }
 .column {
   float: left;
@@ -7,7 +8,11 @@
   margin-top: 1px;
   padding: 0 5px;
 }
+.pcard{
+  float: left;
+  width: 33.33;
 
+}
 .row {
   margin: 0 -5px;
   margin-top: 5px;
@@ -35,15 +40,21 @@
   color: antiquewhite;
 
 }
+/*
 #navbrand{
   color: rgb(2, 41, 31);
   font-family: fantasy;
   font-size: 30px;
   background-image: url(./homepic.jpg);
-}
+}*/
 #homePic{
   margin-bottom: 0px;
   width: 100%;
   height: 100%;
   object-fit: contain;
+ }
+ .searchbar{
+   float: left;
+   width: auto;
+   height: 100%;
  }

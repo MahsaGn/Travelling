@@ -3,22 +3,24 @@ import 'bootstrap/dist/css/bootstrap.css';
 import './homePage.css';
 import Column from './column';
 import SearchPlaceBar from './searchPlaceBar';
-import { Button ,Nav, NavLink, Navbar, Form, NavbarBrand } from 'reactstrap';
+import { Button ,Nav, NavLink, Navbar, Form, NavbarBrand} from 'reactstrap';
+import PlaceCard from './placeCard';
 import SearchField from "react-search-field";
 import axios from 'axios';
 import Header from './header';
 
+
 const data = [
   {
-  "image" : 'https://www.alaedin.travel/Files/Jazebe/Marvdasht/persepolis/Alaedin-Travel-Company-Attraction-Persepolis-Shiraz-23.jpg',
+  "image1" : 'https://www.alaedin.travel/Files/Jazebe/Marvdasht/persepolis/Alaedin-Travel-Company-Attraction-Persepolis-Shiraz-23.jpg',
   "title" : 'تخت جمشید' 
   },
   {
-    "image" : 'https://www.alaedin.travel/Files/Jazebe/Marvdasht/persepolis/Alaedin-Travel-Company-Attraction-Persepolis-Shiraz-23.jpg',
+    "image1" : 'https://www.alaedin.travel/Files/Jazebe/Marvdasht/persepolis/Alaedin-Travel-Company-Attraction-Persepolis-Shiraz-23.jpg',
     "title" : 'تخت جمشید' 
   },
   {
-    "image" : 'https://www.alaedin.travel/Files/Jazebe/Marvdasht/persepolis/Alaedin-Travel-Company-Attraction-Persepolis-Shiraz-23.jpg',
+    "image1" : 'https://www.alaedin.travel/Files/Jazebe/Marvdasht/persepolis/Alaedin-Travel-Company-Attraction-Persepolis-Shiraz-23.jpg',
     "title" : 'تخت جمشید'
   }
   ];
@@ -36,20 +38,25 @@ class homePage extends React.Component {
     axios.get(`http://127.0.0.1:8000/api/Places/UniquePlace/?search=$1`)
     .then(json => {
       console.log("responce");
-      data1=json;
+      data1=json.data[0];
     }).catch(console.log("error"));
     axios.get(`http://127.0.0.1:8000/api/Places/UniquePlace/?search=$2`)
     .then(json => {
       console.log("responce");
-      data2=json;
+      data2=json.data[0];
     }).catch(console.log("error"));
     axios.get(`http://127.0.0.1:8000/api/Places/UniquePlace/?search=$3`)
     .then(json => {
       console.log("responce");
-      data3=json;
+      data3=json.data[0];
     }).catch(console.log("error"));
        
-      var topPlacesData = data.map((topData)=> <Column info={topData}/>); 
+      var topPlacesData = data.map(d=>  <div className="row"><PlaceCard 
+      className="pcard"
+      title={d.title} 
+      src= {d.image1}
+      discriptions={d.Discriptions}
+      id={d.id} /> </div>)
       this.setState({
       topPlaces:topPlacesData
       })
