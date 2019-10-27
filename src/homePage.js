@@ -6,6 +6,7 @@ import SearchPlaceBar from './searchPlaceBar';
 import { Button ,Nav, NavLink, Navbar, Form, NavbarBrand } from 'reactstrap';
 import SearchField from "react-search-field";
 import axios from 'axios';
+import Header from './header';
 
 const data = [
   {
@@ -59,23 +60,7 @@ class homePage extends React.Component {
       
     return (
       <div id="maindiv">
-        <Navbar >
-          {//<NavbarBrand href="#home" id="navbrand" >Home</NavbarBrand>//
-          }
-          <SearchPlaceBar />
-          <Form inline>
-            <Nav >
-              <NavLink href="#ContactUs" className="navlink">ارتباط با ما</NavLink>
-              <NavLink href="#AboutUs" className="navlink">درباره ما</NavLink>
-              <NavLink href="#BecomeLeader" className="navlink">!میخوام لیدر شم</NavLink>
-              <NavLink href="#AddPlace" className="navlink">اضافه کردن مکان</NavLink>
-            </Nav>
-            
-            <Button variant="outline-primary" className="navbarbutton">ورود/ثبت نام</Button>
-          </Form>
-        </Navbar>
-        <img id="homePic" src={'https://tourkadeh.net/source/matalebnew/shiraz/jamshid2/jamshid.jpg'}/>
-  
+        <Header/>
         <div class="row">
           {this.state.topPlaces}
         </div>
