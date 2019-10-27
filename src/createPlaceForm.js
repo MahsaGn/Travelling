@@ -23,7 +23,8 @@ export default class createPlace extends React.Component{
           image_2:"",
           average:"2",
           startTime:"",
-          endTime:""
+          endTime:"",
+          images:[]
       };
         this.handleSubmit=this.handleSubmit.bind(this);
         this.updateState=this.updateState.bind(this);
@@ -56,13 +57,14 @@ export default class createPlace extends React.Component{
           StartTime:this.state.startTime,
           EndTime:this.state.endTime,
           City:this.state.city,
-          images:{
-            image:this.state.image_1,
-            image:this.state.image_1
+          images:[
+              {image:this.state.image_1},
+              {image:this.state.image_2},
+              {image:this.state.image_3}
+          ]
           }
-          }
-        console.log(j)
-        axios.post('http://localhost:8000/api/Places/CreatePlace/',qs.stringify(j))
+        console.log(JSON.stringify(j))
+        axios.post('http://localhost:8000/api/Places/CreatePlace/',JSON.stringify(j))
         .then(response => {
           console.log("response")
           console.log(response)
@@ -145,11 +147,11 @@ export default class createPlace extends React.Component{
         </FormGroup>
         <FormGroup className="place_input">
           <Label id="place_label">1بارگذاری عکس</Label>
-          <CustomInput value={this.state.image_1} onChange={this.updateState} type="file" accept=".JPG, .png, .JPEG" name="image_1" id="place_input"/>
+          <CustomInput value={this.state.image_1} onChange={this.updateState} type="file" name="image_1" id="place_input"/>
         </FormGroup>
         <FormGroup className="place_input">
           <Label id="place_label">2بارگذاری عکس</Label>
-          <CustomInput value={this.state.image_2} onChange={this.updateState} type="file" accept=".JPG, .png, .JPEG" name="image_2" id="place_input" />
+          <CustomInput value={this.state.image_2} onChange={this.updateState} type="file" accept=".jpg, .png, .JPEG" name="image_2" id="place_input" />
         </FormGroup>
           <Button id="placeform_submit">ثبت</Button>
       </Form>
