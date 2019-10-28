@@ -13,8 +13,9 @@ class Header extends React.Component {
       this.Signout=this.Signout.bind(this);
     };
     Signout(){
-      localStorage.removeItem("access")
-      localStorage.removeItem("refresh")
+
+      localStorage.clear();
+      window.location.replace('/');
     }
 render(){
   const logedin=localStorage.getItem("access")==null ? <Link to="/authentication">
@@ -23,17 +24,17 @@ render(){
   <Button variant="outline-primary" className="navbarbutton" >پروفایل</Button>
 </Link>
 <Button variant="outline-primary" className="navbarbutton" onClick={this.Signout}>خروج</Button>
-</div>;
+<NavLink href="/becomeLeader" className="navlink">!میخوام لیدر شم</NavLink></div>
+
+
 return(
     <Navbar>
-    {//<NavbarBrand href="#home" id="navbrand" >Home</NavbarBrand>//
-}
 <SearchPlaceBar className="searchbar"/>
+<NavbarBrand href="#home" id="navbrand" >Home</NavbarBrand>
 <Form inline>
   <Nav >
     <NavLink href="#ContactUs" className="navlink">ارتباط با ما</NavLink>
     <NavLink href="#AboutUs" className="navlink">درباره ما</NavLink>
-    <NavLink href="/becomeLeader" className="navlink">!میخوام لیدر شم</NavLink>
     <NavLink href="/createNewPlace" className="navlink">اضافه کردن مکان</NavLink>
   </Nav>
   {logedin}
