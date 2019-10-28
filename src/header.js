@@ -8,9 +8,22 @@ import {Link} from 'react-router-dom';
 class Header extends React.Component {
     constructor(){
       super();
-      this.state={topPlaces:[]}
+      this.state={topPlaces:[]
+      }
+      this.Signout=this.Signout.bind(this);
     };
+    Signout(){
+      localStorage.removeItem("access")
+      localStorage.removeItem("refresh")
+    }
 render(){
+  const logedin=localStorage.getItem("access")==null ? <Link to="/authentication">
+  <Button variant="outline-primary" className="navbarbutton" >ورود/ثبت نام</Button>
+</Link> : <div><Link to="/profile">
+  <Button variant="outline-primary" className="navbarbutton" >پروفایل</Button>
+</Link>
+<Button variant="outline-primary" className="navbarbutton" onClick={this.Signout}>خروج</Button>
+</div>;
 return(
     <Navbar>
     {//<NavbarBrand href="#home" id="navbrand" >Home</NavbarBrand>//
@@ -23,9 +36,7 @@ return(
     <NavLink href="/becomeLeader" className="navlink">!میخوام لیدر شم</NavLink>
     <NavLink href="/createNewPlace" className="navlink">اضافه کردن مکان</NavLink>
   </Nav>
-  <Link to="/authentication">
-    <Button variant="outline-primary" className="navbarbutton" >ورود/ثبت نام</Button>
-  </Link>
+  {logedin}
 </Form>
 </Navbar>
 )
