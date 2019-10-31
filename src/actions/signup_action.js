@@ -18,10 +18,10 @@ export const signup_failure = () => {
 
 
 
-export const signupAction = (user, pass) => {
+export const signupAction = (user, pass,first,last,iti) => {
     // type: "login"
     return async function (dispatch) {
-        let response = await Auth_api.signup_api(user,pass)
+        let response = await Auth_api.signup_api(user,pass,first,last,iti)
         console.log("response",response)
         if(response!= false)
         {

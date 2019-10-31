@@ -62,3 +62,10 @@ footer{
   position: relative;
   right: 90%;
 }
+
+.validity{
+  text-align: right;
+  height: 40px;
+  padding-top:10px ;
+  padding-right: 25px;
+}

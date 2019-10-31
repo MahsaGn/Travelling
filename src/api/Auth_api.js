@@ -14,16 +14,16 @@ class Auth_api {
             }
     };
 
-    static signup_api = async (user, pass) => {
+    static signup_api = async (user, pass,first,last,iti) => {
         console.log("in api signup")
         try{
           let x =await axios.post('http://localhost:8000/api/sign-up/',{
             username:user,
             password:pass,
             email:"",
-            first_name:"",
-            last_name:"",
-            itinerary:"",
+            first_name:first,
+            last_name:last,
+            itinerary:iti,
             phone_number:""
           })
             console.log(x.data)
