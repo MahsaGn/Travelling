@@ -1,24 +1,29 @@
 import React from 'react';
 import 'bootstrap/dist/css/bootstrap.css';
+import {connect} from 'react-redux'
 import './homePage.css';
 import SearchPlaceBar from './searchPlaceBar';
 import { Button ,Nav, NavLink, Navbar, Form, NavbarBrand } from 'reactstrap';
 import {Link} from 'react-router-dom';
+import {logoutAction} from './actions/login_action'
+import homePage from './homePage';
+import { format } from 'url';
 
 class Header extends React.Component {
-    constructor(){
-      super();
+    constructor(props){
+      super(props);
       this.state={topPlaces:[]
       }
       this.Signout=this.Signout.bind(this);
     };
     Signout(){
 
-      localStorage.clear();
+      logoutAction()()
       window.location.replace('/');
     }
 render(){
-  const logedin=localStorage.getItem("access")==null ? <Link to="/authentication">
+  console.log("in headeeeeeeeeer",this.props.logged_in)
+  const logedin=this.props.logged_in!=true   ? <Link to="/authentication">
   <Button variant="outline-primary" className="navbarbutton" >ورود/ثبت نام</Button>
 </Link> : <div><Link to="/profile">
   <Button variant="outline-primary" className="navbarbutton" >پروفایل</Button>
@@ -44,4 +49,8 @@ return(
 )
 }
 }
-export default Header; 
+const mapsStateToProps = (state) =>({
+  logged_in: state.login.logged_in
+});
+
+export default connect(mapsStateToProps)(Header);

@@ -20,6 +20,7 @@ class loginForm extends React.Component{
     async handleSubmit(e) {
       console.log("in submit login")
       e.preventDefault();
+      console.log("info:",this.state.username,"-",this.state.password)
       await loginAction(this.state.username,this.state.password)()
       console.log("login state:",this.props.logged_in)
       if (true == this.props.logged_in)
@@ -53,8 +54,6 @@ class loginForm extends React.Component{
 }
 }
 const mapsStateToProps = (state) =>({
-  username: state.username,
-  password: state.password,
   logged_in: state.login.logged_in
 });
 

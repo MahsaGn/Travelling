@@ -10,7 +10,7 @@ class Auth_api {
             return x.data
             }catch{
                 console.log("wrong")
-                return "undef"
+                return false
             }
     };
 

@@ -8,12 +8,14 @@ export const session_action_types = {
     LOGOUT_SUCCESS: 'LOGOUT_SUCCESS'
 }
 
-export const login_success = () => {
+export const login_success = (acc,ref) => {
     console.log("loginSuccess")
     return {
         type: session_action_types.LOGIN_SUCCESS,
         payload:{
-            logged_in : true
+            logged_in : true,
+            access:acc,
+            refresh:ref
         }
     }
 }
@@ -26,9 +28,11 @@ export const login_failure = () => {
 
 export const logout_success = () => {
     return {
-        type: session_action_types.LOGIN_SUCCESS,
+        type: session_action_types.LOGOUT_SUCCESS,
         payload:{
-            logged_in : false
+            logged_in : false,
+            access:null,
+            refresh:null
         }
     }
 }
@@ -46,10 +50,17 @@ export const loginAction = (user, pass) => {
             console.log("after reducer")
         }
         else{
-            store.dispatch(login_success())
+            store.dispatch(login_success(response.access,response.refresh))
             console.log("store:",store.getState())
 
         }
 
+    }
+}
+export const logoutAction = () => {
+    // type: "login"
+    console.log("logout action")
+    return function (dispatch) {
+        store.dispatch(logout_success())
     }
 }

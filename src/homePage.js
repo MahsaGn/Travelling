@@ -2,6 +2,7 @@ import React from 'react';
 import 'bootstrap/dist/css/bootstrap.css';
 import './homePage.css';
 import Column from './column';
+
 import SearchPlaceBar from './searchPlaceBar';
 import { Button ,Nav, NavLink, Navbar, Form, NavbarBrand,Image} from 'reactstrap';
 import PlaceCard from './placeCard';
