@@ -1,7 +1,7 @@
 import React from 'react'
-import axios from 'axios' 
+import {connect} from 'react-redux'
 import {Button, Form, FormGroup, Label, Input } from 'reactstrap';
-
+import {signupAction} from '../actions/signup_action'
 class signupForm extends React.Component{
     constructor(){
       super();
@@ -17,43 +17,15 @@ class signupForm extends React.Component{
       this.reenterPass=this.reenterPass.bind(this);
     }
     
-    handleSubmit(e) {
+    async handleSubmit(e) {
       if(this.reenterPass())
       {
         console.log("in handel submit")
         e.preventDefault();
-        axios.post('http://localhost:8000/api/sign-up/',{
-          username:this.state.username,
-          password:this.state.password,
-          email:"",
-          first_name:"",
-          last_name:"",
-          itinerary:"",
-          phone_number:""
-        }).then(json => {
-            console.log(json)
-            console.log("has token") 
-            console.log("befir login axios")
-            axios.post('http://localhost:8000/api/token/',{
-            username:this.state.username,
-            password:this.state.password
-            }).then(da => {
-              console.log("after loginreg")   
-              console.log(da.data) 
-              localStorage.setItem("refresh", da.data.refresh);
-              localStorage.setItem("access", da.data.access);  
-              console.log(localStorage.refresh)
-              return window.location.replace('/')     
-          })
-        }).catch(error=>{
-          console.log(error.message)
-          this.setState({
-            password:"",
-            repassword:""
-          })
-          alert("نام کاربری تکراری میباشد")
-        });
-      }
+        await signupAction(this.state.username,this.state.password)()
+        if(this.props.logged_in ==true)
+          return window.location.replace('/')
+      } 
       else{
         e.preventDefault();
         alert("گذرنامه شما به درستی تکرار نشده ست")
@@ -108,4 +80,8 @@ reenterPass(e){
     );
 }
 }
-export default signupForm;
+const mapsStateToProps = (state) =>({
+  logged_in: state.login.logged_in
+});
+
+export default connect(mapsStateToProps)(signupForm);

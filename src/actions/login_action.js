@@ -41,7 +41,7 @@ export const logout_success = () => {
 export const loginAction = (user, pass) => {
     // type: "login"
     return async function (dispatch) {
-        let response = await Auth_api.handleSubmit(user, pass) 
+        let response = await Auth_api.login_api(user, pass) 
         console.log("responce:",response)
         if( response==false ){
             console.log('there was an error with login')
