@@ -18,16 +18,10 @@ class loginForm extends React.Component{
     }
     
     async handleSubmit(e) {
-      console.log("in submit login")
       e.preventDefault();
-      console.log("info:",this.state.username,"-",this.state.password)
       await loginAction(this.state.username,this.state.password)()
-      console.log("login state:",this.props.logged_in)
       if (true == this.props.logged_in)
-      {
-        console.log("replace window")  
         return window.location.replace('/')
-      }
   }
 
   handleChange(e){

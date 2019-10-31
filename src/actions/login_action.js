@@ -40,7 +40,6 @@ export const logout_success = () => {
 
 export const loginAction = (user, pass) => {
     // type: "login"
-    console.log("befor return")
     return async function (dispatch) {
         let response = await Auth_api.handleSubmit(user, pass) 
         console.log("responce:",response)
@@ -49,16 +48,12 @@ export const loginAction = (user, pass) => {
             store.dispatch(login_failure())
             console.log("after reducer")
         }
-        else{
+        else
             store.dispatch(login_success(response.access,response.refresh))
-            console.log("store:",store.getState())
-
-        }
-
     }
 }
 export const logoutAction = () => {
-    // type: "login"
+    // type: "logout"
     console.log("logout action")
     return function (dispatch) {
         store.dispatch(logout_success())
