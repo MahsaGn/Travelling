@@ -19,9 +19,14 @@ class loginForm extends React.Component{
     
     async handleSubmit(e) {
       e.preventDefault();
-      await loginAction(this.state.username,this.state.password)()
-      if (true == this.props.logged_in)
-        return window.location.replace('/')
+      if(this.state.username!="" && this.state.password!="")
+      {
+        await loginAction(this.state.username,this.state.password)()
+        if (true == this.props.logged_in)
+          return window.location.replace('/')
+        else 
+          alert("نام کاربری یا رمزعبور نادرست میباشد")
+      }
   }
 
   handleChange(e){
@@ -31,15 +36,19 @@ class loginForm extends React.Component{
   }
  
     render(){
+      const validityUsername = this.state.username!="" ? <Input valid className="validity" name="username" value={this.state.username} onChange={this.handleChange} type="text" />:
+      <Input className="validity" invalid name="username" value={this.state.username} onChange={this.handleChange} type="text"/>
+      const validityPass = this.state.password!=""?<Input valid name="password" value={this.state.password} onChange={this.handleChange} type="password" className="validity"  name="password"  />:
+      <Input invalid name="password" value={this.state.password} onChange={this.handleChange} type="password" className="validity"  name="password"  />
     return(
         <Form id="Form" onSubmit={this.handleSubmit}>
       <FormGroup className="mb-2 mr-sm-2 mb-sm-0">
         <Label  id="form_label" className="mr-sm-2">نام کاربری</Label>
-        <Input value={this.state.username} name="username" onChange={this.handleChange} type="text" id="form_input" />
+        {validityUsername}
       </FormGroup>
       <FormGroup className="mb-2 mr-sm-2 mb-sm-0">
         <Label id="form_label" className="mr-sm-2">گذرواژه</Label>
-        <Input value={this.state.password} name="password" onChange={this.handleChange} type="password" id="form_input"  name="password"/>
+        {validityPass}
       </FormGroup>
       <Button id="form_submit">ثبت</Button>
     </Form>
