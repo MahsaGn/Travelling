@@ -6,7 +6,10 @@ const allReducers = combineReducers({
 })
 function saveToLocalStorage(state){
   try{
-    const serializedState = JSON.stringify(state)
+    let preState={
+      login: state.login
+    }
+    const serializedState = JSON.stringify(preState)
     localStorage.setItem('state',serializedState)
   }catch(e){
     console.lod(e)

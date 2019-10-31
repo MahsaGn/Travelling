@@ -5,7 +5,8 @@ import { async } from 'q';
 export const session_action_types = {
     LOGIN_SUCCESS: 'LOGIN_SUCCESS',
     LOGIN_FAILURE: 'LOGIN_FAILUR',
-    LOGOUT_SUCCESS: 'LOGOUT_SUCCESS'
+    LOGOUT_SUCCESS: 'LOGOUT_SUCCESS',
+    FORM_CHANGE:'FORM_CHANGE'
 }
 
 export const login_success = (acc,ref) => {
@@ -37,6 +38,17 @@ export const logout_success = () => {
     }
 }
 
+export const form_change = (name,value) => {
+    const state = store.getState()
+    console.log(state)
+    return {
+        type: session_action_types.FORM_CHANGE,
+        payload:{
+            ...state.login,
+            [name]: value
+        }
+    }
+}
 
 export const loginAction = (user, pass) => {
     // type: "login"
@@ -57,5 +69,11 @@ export const logoutAction = () => {
     console.log("logout action")
     return function (dispatch) {
         store.dispatch(logout_success())
+    }
+}
+
+export const ChangePropsAction = (name,value) =>{
+    return function(dispatch) {
+        store.dispatch(form_change(name,value))
     }
 }

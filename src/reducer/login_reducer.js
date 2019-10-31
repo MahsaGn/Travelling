@@ -4,7 +4,9 @@ const initialState = {
     logged_in : false,
     login_error : false,
     access:null,
-    refresh:null
+    refresh:null,
+    username:"",
+    password:""
 }
 
 export const Login_reducer = (state = initialState , action) => {
@@ -16,6 +18,8 @@ export const Login_reducer = (state = initialState , action) => {
             return action.payload
         case "LOGIN_FAILURE":
             return action.payload
+        case "FORM_CHANGE":
+            return action.payload   
         default:
             return state
     }
