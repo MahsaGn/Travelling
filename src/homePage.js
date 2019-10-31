@@ -5,6 +5,7 @@ import Column from './column';
 import SearchPlaceBar from './searchPlaceBar';
 import { Button ,Nav, NavLink, Navbar, Form, NavbarBrand,Image} from 'reactstrap';
 import PlaceCard from './placeCard';
+import SearchField from "react-search-field";
 import axios from 'axios';
 import Header from './header';
 import { async } from 'q';
