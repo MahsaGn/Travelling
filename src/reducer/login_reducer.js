@@ -10,16 +10,25 @@ const initialState = {
 }
 
 export const Login_reducer = (state = initialState , action) => {
-    console.log("in login reducer",action.type)
+    console.log("in login reducer",action)
     switch(action.type){
         case "LOGIN_SUCCESS":
-            return action.payload
+            return {
+                logged_in:true
+            }
         case "LOGOUT_SUCCESS" :
-            return action.payload
+            return {
+                logged_in:false
+            }
         case "LOGIN_FAILURE":
-            return action.payload
+            return {
+                logged_in:false
+            }
         case "FORM_CHANGE":
-            return action.payload   
+            return {
+                ...state.login,
+                [action.name]:action.value
+            }
         default:
             return state
     }

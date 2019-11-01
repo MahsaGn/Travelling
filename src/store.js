@@ -1,8 +1,10 @@
 import {Login_reducer} from './reducer/login_reducer'
+import {Signup_reducer} from './reducer/signup_reducer'
 import {combineReducers,createStore} from 'redux'
 
 const allReducers = combineReducers({
-  login:Login_reducer
+  login:Login_reducer,
+  signup:Signup_reducer
 })
 function saveToLocalStorage(state){
   try{

@@ -1,11 +1,14 @@
 import axios from 'axios'
+import store from '../store'
+import { stat } from 'fs';
 class Auth_api {
-    static login_api = async (user, pass) => {
+    static login_api = async () => {
+        const state = store.getState().login
         console.log("in api login")
         try{
           let x = await axios.post('http://localhost:8000/api/token/', {
-            username: user,
-            password: pass})
+            username: state.username,
+            password: state.password})
             console.log(x.data)
             return x.data
             }catch{
@@ -14,16 +17,17 @@ class Auth_api {
             }
     };
 
-    static signup_api = async (user, pass,first,last,iti) => {
+    static signup_api = async () => {
+        const state = store.getState()
         console.log("in api signup")
         try{
           let x =await axios.post('http://localhost:8000/api/sign-up/',{
-            username:user,
-            password:pass,
+            username:state.login.username,
+            password:state.login.password,
             email:"",
-            first_name:first,
-            last_name:last,
-            itinerary:iti,
+            first_name:state.signup.firstname,
+            last_name:state.signup.lastname,
+            itinerary:state.signup.itinerary,
             phone_number:""
           })
             console.log(x.data)

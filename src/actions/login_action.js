@@ -1,6 +1,6 @@
-import store from '../store'
 import Auth_api from "../api/Auth_api";
 import { async } from 'q';
+import store from '../store'
 
 export const session_action_types = {
     LOGIN_SUCCESS: 'LOGIN_SUCCESS',
@@ -8,52 +8,40 @@ export const session_action_types = {
     LOGOUT_SUCCESS: 'LOGOUT_SUCCESS',
     FORM_CHANGE:'FORM_CHANGE'
 }
-
 export const login_success = (acc,ref) => {
     console.log("loginSuccess")
     return {
         type: session_action_types.LOGIN_SUCCESS,
-        payload:{
-            logged_in : true,
-            access:acc,
-            refresh:ref
-        }
+        access:acc,
+        refresh:ref
     }
-}
+}    
+
 
 export const login_failure = () => {
     return {
-        type: session_action_types.LOGIN_FAILURE,
+        type: session_action_types.LOGIN_FAILURE
     }
 }
 
 export const logout_success = () => {
     return {
-        type: session_action_types.LOGOUT_SUCCESS,
-        payload:{
-            logged_in : false,
-            access:null,
-            refresh:null
-        }
+        type: session_action_types.LOGOUT_SUCCESS
     }
 }
 
 export const form_change = (name,value) => {
-    const state = store.getState()
-    console.log(state)
     return {
         type: session_action_types.FORM_CHANGE,
-        payload:{
-            ...state.login,
-            [name]: value
-        }
+        name : name,
+        value: value
     }
 }
 
-export const loginAction = (user, pass) => {
+export const loginAction = () => {
     // type: "login"
     return async function (dispatch) {
-        let response = await Auth_api.login_api(user, pass) 
+        let response = await Auth_api.login_api() 
         console.log("responce:",response)
         if( response==false ){
             console.log('there was an error with login')
@@ -72,8 +60,8 @@ export const logoutAction = () => {
     }
 }
 
-export const ChangePropsAction = (name,value) =>{
+export const ChangePropsAction = (user,pass) =>{
     return function(dispatch) {
-        store.dispatch(form_change(name,value))
+        store.dispatch(form_change(user,pass))
     }
 }
