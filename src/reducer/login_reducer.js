@@ -2,11 +2,8 @@ import {session_action_types} from "../actions/login_action"
 
 const initialState = {
     logged_in : false,
-    login_error : false,
     access:null,
     refresh:null,
-    username:"",
-    password:""
 }
 
 export const Login_reducer = (state = initialState , action) => {
@@ -14,7 +11,9 @@ export const Login_reducer = (state = initialState , action) => {
     switch(action.type){
         case "LOGIN_SUCCESS":
             return {
-                logged_in:true
+                logged_in:true,
+                access:action.access,
+                refresh:action.refresh
             }
         case "LOGOUT_SUCCESS" :
             return {
@@ -23,11 +22,6 @@ export const Login_reducer = (state = initialState , action) => {
         case "LOGIN_FAILURE":
             return {
                 logged_in:false
-            }
-        case "FORM_CHANGE":
-            return {
-                ...state.login,
-                [action.name]:action.value
             }
         default:
             return state

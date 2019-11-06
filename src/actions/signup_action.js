@@ -7,65 +7,49 @@ export const session_action_types = {
     SIGNUP_SUCCESS: 'SIGNUP_SUCCESS',
     SIGNUP_FAILUR: 'SIGNUP_FAILUR'
 }
-const state = store.getState()
-
 
 export const signup_failure = () => {
     return {
         type: session_action_types.SIGNUP_FAILUR,
-        playload:{
-            signed_up:false,
-            username:state.signup.username,
-            password:state.signup.password,
-            repassword:state.signup.repassword,
-            itinerary:state.signup.itinerary,
-            firstname:state.signup.firstname,
-            lastname:state.signup.lastname
-        }
     }
 }
 
 
 
-export const signupAction = () => {
+export const signup = (signup_info) => {
     // type: "login"
-    return async function (dispatch) {
-        let response = await Auth_api.signup_api()
-        console.log("response",response)
-        if(response!= false)
+    return function (dispatch) {if(reenterPass() && signup_info.username!="" && signup_info.password!="")
+        if(reenterPass(signup_info.password,signup_info.repassword)
+         && signup_info.username!="" && signup_info.password!="")
         {
-            let loginRes = await Auth_api.login_api()
-            if( loginRes==false ){
-                console.log('there was an error with login')
-                store.dispatch(login_failure())
-                console.log("after reducer")
-            }
-            else
-            {
-                console.log("loginSuccess")
-                store.dispatch(login_success(loginRes.access,loginRes.refresh))
-            }
-        }else{
-            store.dispatch(signup_failure(response.access,response.refresh))
+            return Auth_api.signup_api(signup_info)
+            .then((response)=>{
+                if(response!= false)
+                {
+                    console.log("after signup");
+                    let login_info = {
+                        username:signup_info.username,
+                        password: signup_info.password
+                    }
+                    Auth_api.login(login_info).then((loginRes)=>{
+                        if( loginRes==false )
+                        {
+                            console.log("after login")
+                            dispatch(login_failure())
+                        }
+                        else
+                            dispatch(login_success(loginRes.access,loginRes.refresh))
+                        
+                    })
+                }
+            })
         }
     }
-
 }
 
-export async function signupSubmitAction(e) {
-    if(this.reenterPass() && state.username!="" && state.password!="")
-    {
-      console.log("in handel submit")
-      e.preventDefault();
-      await signupAction()()
-      if(state.logged_in ==true)
-        return window.location.replace('/')
-    } 
-    else{
-      e.preventDefault();
-      alert("موارد خواسته شده به درستی پر نشده اند")
-      this.setState({
-        password:"",
-        repassword:""})
+  function reenterPass(password,repassword){
+    if(password==repassword){
+      return true;
     }
+    return false;
   }

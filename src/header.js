@@ -5,7 +5,7 @@ import './homePage.css';
 import SearchPlaceBar from './searchPlaceBar';
 import { Button ,Nav, NavLink, Navbar, Form, NavbarBrand } from 'reactstrap';
 import {Link} from 'react-router-dom';
-import {logoutAction} from './actions/login_action'
+import * as sessionAction from './actions/login_action'
 import homePage from './homePage';
 import { format } from 'url';
 
@@ -18,7 +18,7 @@ class Header extends React.Component {
     };
     Signout(){
 
-      logoutAction()()
+      this.props.logout()()
       window.location.replace('/');
     }
 render(){
@@ -50,7 +50,12 @@ return(
 }
 }
 const mapsStateToProps = (state) =>({
-  logged_in: state.login.logged_in
+  logged_in: state.logged_in
 });
+const mapDispatchToProps = (dispatch) => {
+  return{
+      logout : (login_info) => dispatch(sessionAction.logout(login_info))
+  }
+}
 
-export default connect(mapsStateToProps)(Header);
+export default connect(mapsStateToProps,mapDispatchToProps)(Header);
