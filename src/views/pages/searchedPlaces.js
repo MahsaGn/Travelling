@@ -1,7 +1,7 @@
 import React from 'react'
-import PlaceCard from './placeCard'
+import PlaceCard from '../components/placeCard'
 import axios from 'axios'
-import Header from './header'
+import Header from '../components/header'
 export default class searchedPlace extends React.Component{
 
     constructor(){

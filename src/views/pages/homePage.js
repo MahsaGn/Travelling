@@ -1,15 +1,9 @@
 import React from 'react';
 import 'bootstrap/dist/css/bootstrap.css';
-import './homePage.css';
-import Column from './column';
-
-import SearchPlaceBar from './searchPlaceBar';
-import { Button ,Nav, NavLink, Navbar, Form, NavbarBrand,Image} from 'reactstrap';
-import PlaceCard from './placeCard';
-import SearchField from "react-search-field";
+import '../styles/homePage.css';
+import PlaceCard from '../components/placeCard';
 import axios from 'axios';
-import Header from './header';
-import { async } from 'q';
+import Header from '../components/header';
 
 
 const dataa = [

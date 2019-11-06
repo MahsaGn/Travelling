@@ -1,5 +1,5 @@
 import React from 'react'
-import './searchBar.css'
+import '../styles/searchBar.css'
 import { MDBCol, MDBIcon } from "mdbreact";
 
 export default class searchPlace extends React.Component{

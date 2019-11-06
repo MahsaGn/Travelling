@@ -1,5 +1,5 @@
 import React from 'react'
-import '../../style.css';
+import '../../../styles/style.css';
 import { Nav, NavItem, NavLink } from 'reactstrap';
 import classnames from 'classnames';
 import 'bootstrap/dist/css/bootstrap.css';

@@ -1,10 +1,10 @@
 import React from 'react'
 import 'bootstrap/dist/css/bootstrap.css';
-import { ListGroup, ListGroupItem } from 'reactstrap';
-import { stat } from 'fs';
-import Profile_item from './profile_item'
+import { ListGroup } from 'reactstrap';
+import Profile_item from '../components/profile_item'
 import axios from 'axios'
-import './profile.css'
+import '../styles/profile.css'
+
 export default class leaderProfile extends React.Component{
     constructor(props){
         super(props);

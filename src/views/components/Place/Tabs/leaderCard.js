@@ -1,6 +1,6 @@
 import React from 'react'
 import 'bootstrap/dist/css/bootstrap.css';
-import '../../style.css';
+import '../../../styles/style.css';
 import { CardImg,CardBody, Card, Button, CardTitle } from 'reactstrap';
 import {Link} from 'react-router-dom'
 export default class NavItem_leader extends React.Component{

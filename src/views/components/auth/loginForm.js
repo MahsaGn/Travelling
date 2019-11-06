@@ -2,8 +2,7 @@ import React from 'react'
 import {connect} from 'react-redux'
 import {Button, Form, FormGroup, Label, Input } from 'reactstrap';
 import 'bootstrap/dist/css/bootstrap.css';
-import { throwStatement, continueStatement } from '@babel/types';
-import * as sessionAction from '../../actions/login_action'
+import * as sessionAction from '../../../core/login/login_action'
 
 class loginForm extends React.Component{
     constructor(props){

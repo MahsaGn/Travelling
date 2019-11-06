@@ -1,5 +1,4 @@
 import axios from 'axios'
-import store from '../store'
 class AuthApi{
 static login =async (login_info) => {
     console.log("in api login",login_info.username,login_info.password)

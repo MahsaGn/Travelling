@@ -1,4 +1,4 @@
-import {session_action_types} from "../actions/login_action"
+import {session_action_types} from "./login_action"
 
 const initialState = {
     logged_in : false,

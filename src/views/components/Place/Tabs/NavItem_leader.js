@@ -1,6 +1,6 @@
 import React from 'react'
 import 'bootstrap/dist/css/bootstrap.css';
-import '../../style.css';
+import '../../../styles/style.css';
 import Axios from 'axios';
 import LeaderCard from './leaderCard'
 

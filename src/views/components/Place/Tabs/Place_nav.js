@@ -1,7 +1,7 @@
 import React from 'react'
 import NavItem_info from './NavItem_info'
 import 'bootstrap/dist/css/bootstrap.css';
-import '../../style.css';
+import '../../../styles/style.css';
 import NavItems from './NavItems'
 import { TabContent, TabPane} from 'reactstrap';
 import NavItem_leader from './NavItem_leader'

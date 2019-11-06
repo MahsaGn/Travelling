@@ -2,10 +2,10 @@ import React, { useState } from 'react';
 import { TabContent, TabPane, Nav, NavItem, NavLink } from 'reactstrap';
 import classnames from 'classnames';
 import 'bootstrap/dist/css/bootstrap.css';
-import './login_signupForm.css';
-import LoginForm from './loginForm';
-import SignupForm from './signupForm'
-import Header from '../header'
+import '../styles/login_signupForm.css';
+import LoginForm from '../components/auth/loginForm';
+import SignupForm from '../components/auth/signupForm'
+import Header from '../components/header'
 
 const AuthForm = (props) => {
   const [activeTab, setActiveTab] = useState('1');

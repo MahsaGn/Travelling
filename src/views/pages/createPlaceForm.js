@@ -2,12 +2,10 @@
 import React from 'react'
 import axios from 'axios' 
 import FormData from 'form-data'
-import qs from 'qs'
-import './place.css'
-import {Button,CustomInput, Form, FormGroup,FormText, Label, Input } from 'reactstrap';
+import '../styles/place.css'
+import {Button, Form, FormGroup, Label, Input } from 'reactstrap';
 import 'bootstrap/dist/css/bootstrap.css';
-import { throwStatement } from '@babel/types';
-import Header from './header';
+import Header from '../components/header';
 
 
 export default class createPlace extends React.Component{

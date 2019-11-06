@@ -1,8 +1,8 @@
 import React from 'react'
 import {connect} from 'react-redux'
 import {Button, Form, FormGroup, Label, Input,FormFeedback,FormText } from 'reactstrap';
-import * as signupAction from '../../actions/signup_action'
-import * as loginAction from '../../actions/login_action'
+import * as signupAction from '../../../core/signup/signup_action'
+import * as loginAction from '../../../core/login/login_action'
 class signupForm extends React.Component{
     constructor(props){
       super(props);

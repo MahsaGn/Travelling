@@ -1,5 +1,5 @@
-import {login_reducer} from './reducer/login_reducer'
-import {signup_reducer} from './reducer/signup_reducer'
+import {login_reducer} from './core/login/login_reducer'
+import {signup_reducer} from './core/signup/signup_reducer'
 import {combineReducers,createStore,applyMiddleware,compose} from 'redux'
 import thunk from 'redux-thunk';
 

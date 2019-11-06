@@ -1,5 +1,3 @@
-import {session_action_types} from "../actions/login_action"
-
 const initialState = {
     signed_up:false
 }

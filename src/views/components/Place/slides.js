@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import 'bootstrap/dist/css/bootstrap.css';
-import '../style.css';
+import '../../styles/style.css';
 import {
     Carousel,
     CarouselItem,

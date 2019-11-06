@@ -1,13 +1,11 @@
 import React from 'react';
 import 'bootstrap/dist/css/bootstrap.css';
 import {connect} from 'react-redux'
-import './homePage.css';
-import SearchPlaceBar from './searchPlaceBar';
+import '../styles/homePage.css';
+import SearchPlaceBar from '../components/searchPlaceBar';
 import { Button ,Nav, NavLink, Navbar, Form, NavbarBrand } from 'reactstrap';
 import {Link} from 'react-router-dom';
-import * as sessionAction from './actions/login_action'
-import homePage from './homePage';
-import { format } from 'url';
+import * as sessionAction from '../../core/login/login_action'
 
 class Header extends React.Component {
     constructor(props){

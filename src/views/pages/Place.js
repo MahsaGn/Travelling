@@ -1,7 +1,7 @@
 import React from 'react';
-import Place_nav from './Tabs/Place_nav'
-import Slides from './slides';
-import '../style.css';
+import Place_nav from '../components/Place/Tabs/Place_nav'
+import Slides from '../components/Place/slides';
+import '../styles/style.css';
 import axios from 'axios'
 import 'bootstrap/dist/css/bootstrap.css';
 const items = [
