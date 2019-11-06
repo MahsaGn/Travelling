@@ -1,32 +1,33 @@
   
 import React from 'react'
-import axios from 'axios' 
-import FormData from 'form-data'
+import {connect} from 'react-redux'
 import '../styles/place.css'
 import {Button, Form, FormGroup, Label, Input } from 'reactstrap';
 import 'bootstrap/dist/css/bootstrap.css';
 import Header from '../components/header';
+import * as createPlaceAction from '../../core/createPlace/createPlace_action'
+import { format } from 'util';
 
-
-export default class createPlace extends React.Component{
+class createPlace extends React.Component{
     constructor(){
         super();
         this.state={
-          i:0,
-          category:"تاریخی",
-          title:"",
-          descriptions:"",
-          hardness:"",
-          address:"",
-          time:"2",
-          city:"",
-          likes:"",
-          image1:null,
-          image2:null,
-          image3:null,
-          average:"2",
-          startTime:"",
-          endTime:"",
+          place_info:{
+            category:"تاریخی",
+            title:"",
+            descriptions:"",
+            hardness:"",
+            address:"",
+            time:"",
+            city:"",
+            likes:"",
+            image1:"",
+            image2:"",
+            image3:"",
+            average:"",
+            startTime:"",
+            endTime:"",
+          }
       };
         this.handleSubmit=this.handleSubmit.bind(this);
         this.updateState=this.updateState.bind(this);
@@ -34,62 +35,41 @@ export default class createPlace extends React.Component{
         this.updateStateImage=this.updateStateImage.bind(this)
       }
 
-      handleSubmit(e) {
+      async handleSubmit(e) {
         console.log("in handel submit")
         e.preventDefault();
-          var formData = new FormData()
-          formData.append('title', this.state.title)
-          formData.append('Description',this.state.descriptions)
-          formData.append('Likes', this.state.likes)
-          formData.append('categories', this.state.category)
-          formData.append('Hardness',this.state.hardness)
-          formData.append('Address', this.state.address)
-          formData.append('Time', this.state.title)
-          formData.append('StartTime', this.state.startTime)
-          formData.append('EndTime', this.state.endTime)
-          formData.append('City', this.state.city)
-          console.log(this.state.image1)
-          formData.append('image1', this.state.image1)
-          formData.append('image2', this.state.image2)
-          formData.append('image3', this.state.image3)
-          console.log(formData.values())
-          axios.post('http://localhost:8000/api/Places/CreatePlace/',formData  )
-          .then(response => {
-            console.log("response")
-            console.log(response)
+        await this.props.createPlace(this.state.place_info)
+        if(this.props.isCreated)
           return window.location.replace('/')
-          }).catch(error =>{
-            alert(error.message)
-        });
+        else{
+          e.preventDefault()
+          alert("مکان مورد نظر قبلا در سایت ذخیره شده ست")
+        }
   
     }
     
       updateState(e){
         e.preventDefault()
-          this.setState({
-              [e.target.name]: e.target.value
-          });
+        let curentSt = this.state.place_info
+        curentSt[e.target.name] = e.target.value
+        this.setState({
+          place_info:curentSt
+    })
       }
 
       updateStateNum(e){
         e.preventDefault()
         if(e.target.validity.valid && e.target.value>0 && e.target.value<11) {
-          this.setState({
-              [e.target.name]: e.target.value
-          });
+          this.updateState(e)
         }
-      }
-
-      updateHardness(e){
-        this.setState({
-          Hardness: this.state.hardness
-        })
       }
 
       updateStateImage(e){
         console.log(e.target.name)
+        let curentSt = this.state.place_info
+        curentSt[e.target.name] = e.target.files[0]
         this.setState({
-          [e.target.name]:e.target.files[0]
+          palce_info:curentSt
         })
       }
       
@@ -100,23 +80,23 @@ export default class createPlace extends React.Component{
         <Form onSubmit={this.handleSubmit} id="placeForm">
         <FormGroup className="mb-2 mr-sm-2 mb-sm-0 place_input">
           <Label className="mr-sm-2" id="place_label">نام</Label>
-          <Input name="title" value={this.state.title} onChange={this.updateState} type="text" id="place_input"/>
+          <Input name="title" value={this.state.place_info.title} onChange={this.updateState} type="text" id="place_input"/>
         </FormGroup>
         <FormGroup className="mb-2 mr-sm-2 mb-sm-0 place_input">
           <Label className="mr-sm-2" id="place_label">تاریخچه</Label>
-          <Input name="descriptions" value={this.state.descriptions} onChange={this.updateState} type="text" id="place_input"/>
+          <Input name="descriptions" value={this.state.place_info.descriptions} onChange={this.updateState} type="text" id="place_input"/>
         </FormGroup>
         <FormGroup className="mb-2 mr-sm-2 mb-sm-0 place_input">
           <Label className="mr-sm-2" id="place_label">نشانی</Label>
-          <Input name="address" value={this.state.address} onChange={this.updateState} type="text" id="place_input"/>
+          <Input name="address" value={this.state.place_info.address} onChange={this.updateState} type="text" id="place_input"/>
         </FormGroup>
         <FormGroup className="mb-2 mr-sm-2 mb-sm-0 place_input">
           <Label className="mr-sm-2" id="place_label">شهر</Label>
-          <Input name="city" value={this.state.city} onChange={this.updateState} type="text" id="place_input"/>
+          <Input name="city" value={this.state.place_info.city} onChange={this.updateState} type="text" id="place_input"/>
         </FormGroup>
         <FormGroup className="mb-2 mr-sm-2 mb-sm-0 place_input">
         <Label for="exampleSelect" id="place_label">نوع مکان</Label>
-          <Input type="select" onChange={this.updateState} value={this.state.category}  name="category" id="place_input">
+          <Input type="select" onChange={this.updateState} value={this.state.place_info.category}  name="category" id="place_input">
             <option>تاریخی</option>
             <option>موزه</option>
             <option>جنگل</option>
@@ -129,32 +109,32 @@ export default class createPlace extends React.Component{
         </FormGroup>
         <FormGroup className="mb-2 mr-sm-2 mb-sm-0 place_input">
           <Label className="mr-sm-2" id="place_label">میزان سختی از 10</Label>
-          <Input name="hardness" value={this.state.hardness} pattern="[1-5]" onChange={this.updateStateNum} type="number" id="place_input"/>
+          <Input name="hardness" value={this.state.place_info.hardness} pattern="[1-5]" onChange={this.updateStateNum} type="number" id="place_input"/>
         </FormGroup>
         <FormGroup className="mb-2 mr-sm-2 mb-sm-0 place_input">
           <Label className="mr-sm-2" id="place_label">زمان پایان
           </Label>
-          <Input name="endTime" value={this.state.endTime} onChange={this.updateState} type="text" id="place_input"/>
+          <Input name="endTime" value={this.state.place_info.endTime} onChange={this.updateState} type="text" id="place_input"/>
         </FormGroup>
         <FormGroup className="mb-2 mr-sm-2 mb-sm-0 place_input">
           <Label className="mr-sm-2" id="place_label">زمان شروع</Label>
-          <Input name="startTime" value={this.state.startTime} onChange={this.updateState} type="text" id="place_input"/>
+          <Input name="startTime" value={this.state.place_info.startTime} onChange={this.updateState} type="text" id="place_input"/>
         </FormGroup>
         <FormGroup className="mb-2 mr-sm-2 mb-sm-0 place_input">
           <Label className="mr-sm-2" id="place_label"> محبوبیت از 5</Label>
-          <Input name="likes" value={this.state.likes} pattern="[0-9]" onChange={this.updateStateNum} type="number" id="place_input"/>
+          <Input name="likes" value={this.state.place_info.likes} pattern="[0-9]" onChange={this.updateStateNum} type="number" id="place_input"/>
         </FormGroup>
         <FormGroup className="place_input">
           <Label id="place_label">1بارگذاری عکس</Label>
-          <input onChange={this.updateStateImage} type="file" name="image1" id="place_input"/>
+          <input onChange={this.updateStateImage} value={this.state.place_info.image1} type="file" name="image1" id="place_input"/>
         </FormGroup>
         <FormGroup className="place_input">
           <Label id="place_label">2بارگذاری عکس</Label>
-          <input onChange={this.updateStateImage} type="file" name="image2" id="place_input"/>
+          <input onChange={this.updateStateImage} value={this.state.place_info.image2}  type="file" name="image2" id="place_input"/>
         </FormGroup>
         <FormGroup className="place_input">
           <Label id="place_label">3بارگذاری عکس</Label>
-          <input onChange={this.updateStateImage} type="file" name="image3" id="place_input"/>
+          <input onChange={this.updateStateImage} value={this.state.place_info.image3}  type="file" name="image3" id="place_input"/>
         </FormGroup>
           <Button id="placeform_submit">ثبت</Button>
       </Form>
@@ -162,3 +142,17 @@ export default class createPlace extends React.Component{
         );
     }
 }
+const mapStateToProps = (state) => {
+    
+  return{
+    isCreated : state.createPlace_reducer.isCreated
+  }
+}
+
+const mapDispatchToProps = (dispatch) => {
+  return{
+      createPlace : (place_info) => dispatch(createPlaceAction.createPlace(place_info))
+  }
+}
+
+export default connect(mapStateToProps,mapDispatchToProps)(createPlace);
