@@ -1,48 +1,52 @@
-import store from '../store'
 import Auth_api from "../api/Auth_api";
-import {login_success,login_failure} from './login_action'
-import { stat } from 'fs';
 
-export const session_action_types = {
+export const signup_action_types = {
     SIGNUP_SUCCESS: 'SIGNUP_SUCCESS',
     SIGNUP_FAILUR: 'SIGNUP_FAILUR'
 }
 
 export const signup_failure = () => {
     return {
-        type: session_action_types.SIGNUP_FAILUR,
+        type: signup_action_types.SIGNUP_FAILUR,
+    }
+}
+export const signup_success = () => {
+    return {
+        type: signup_action_types.SIGNUP_SUCCESS,
     }
 }
 
 
-
 export const signup = (signup_info) => {
     // type: "login"
-    return function (dispatch) {if(reenterPass() && signup_info.username!="" && signup_info.password!="")
+    console.log("in signup action",signup_info)
+    return async function (dispatch) {
         if(reenterPass(signup_info.password,signup_info.repassword)
          && signup_info.username!="" && signup_info.password!="")
         {
-            return Auth_api.signup_api(signup_info)
-            .then((response)=>{
+            console.log("in signup action function",signup_info)
+            let response =await Auth_api.signup(signup_info)
+            try
+            {
                 if(response!= false)
                 {
-                    console.log("after signup");
-                    let login_info = {
-                        username:signup_info.username,
-                        password: signup_info.password
-                    }
-                    Auth_api.login(login_info).then((loginRes)=>{
-                        if( loginRes==false )
-                        {
-                            console.log("after login")
-                            dispatch(login_failure())
-                        }
-                        else
-                            dispatch(login_success(loginRes.access,loginRes.refresh))
-                        
-                    })
+                    console.log("befoe dispatch success signup")
+                    dispatch(signup_success())
+                    // console.log("after signup");
+                    // let login_info = {
+                    //     username:signup_info.username,
+                    //     password: signup_info.password
+                    // }
+                    // await dispatch(login(login_info))
+                    // console.log("after login dispathch in sighup")
+                    return 
                 }
-            })
+            }catch{
+                console.log("befoe dispatch cash signup")
+                dispatch(signup_failure())
+                console.log("in chash after signup post")
+                return
+            }
         }
     }
 }

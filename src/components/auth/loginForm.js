@@ -3,7 +3,7 @@ import {connect} from 'react-redux'
 import {Button, Form, FormGroup, Label, Input } from 'reactstrap';
 import 'bootstrap/dist/css/bootstrap.css';
 import { throwStatement, continueStatement } from '@babel/types';
-import * as sessionAction from '../actions/login_action'
+import * as sessionAction from '../../actions/login_action'
 
 class loginForm extends React.Component{
     constructor(props){
@@ -18,11 +18,11 @@ class loginForm extends React.Component{
       this.handleChange=this.handleChange.bind(this);
     }
     
-    handleSubmit(e) {
+    async handleSubmit(e) {
       e.preventDefault();
       if(this.state.username!="" && this.state.password!="")
       {
-        this.props.login(this.state.login_info)
+        await this.props.login(this.state.login_info)
         if (true == this.props.logged_in)
           return window.location.replace('/')
         else 
@@ -65,7 +65,7 @@ class loginForm extends React.Component{
 const mapStateToProps = (state) => {
     
   return{
-    logged_in : state.Login_reducer.logged_in
+    logged_in : state.login_reducer.logged_in
   }
 }
 

@@ -4,7 +4,7 @@ import Home from './homePage'
 import Place from './Place/Place'
 import CreatePlaceForm from './createPlaceForm'
 import SearchedPlaces from './searchedPlaces'
-import Auth from './auth/login_signupForm'
+import Auth from './components/auth/login_signupForm'
 import Profile from './userProfile'
 import becomeLeaderForm from './becomeLeaderForm';
 import {Provider} from 'react-redux'

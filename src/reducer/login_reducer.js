@@ -6,7 +6,7 @@ const initialState = {
     refresh:null,
 }
 
-export const Login_reducer = (state = initialState , action) => {
+export const login_reducer = (state = initialState , action) => {
     console.log("in login reducer",action)
     switch(action.type){
         case "LOGIN_SUCCESS":

@@ -1,9 +1,8 @@
 import React from 'react'
 import {connect} from 'react-redux'
 import {Button, Form, FormGroup, Label, Input,FormFeedback,FormText } from 'reactstrap';
-import * as authAction from '../actions/signup_action'
-import { stat } from 'fs';
-import { throwStatement, thisTypeAnnotation } from '@babel/types';
+import * as signupAction from '../../actions/signup_action'
+import * as loginAction from '../../actions/login_action'
 class signupForm extends React.Component{
     constructor(props){
       super(props);
@@ -22,10 +21,23 @@ class signupForm extends React.Component{
       this.handleSubmit = this.handleSubmit.bind(this);
     }
 
-  handleSubmit(e){
+  async handleSubmit(e){
     e.preventDefault()
-    this.props.signup()
-    e.preventDefault()
+    console.log("after submit form")
+    await this.props.signup(this.state.signup_info)
+    console.log(this.props.signed_up)
+    if(this.props.signed_up)
+    {
+      console.log("signin done going to login")
+      let login_info = {
+        username: this.state.username,
+        password: this.state.password
+      }
+      await this.props.login(login_info)
+      console.log("user auth done correctly")
+      return window.location.replace('/')
+    }
+    console.log("bad auth")
   }
 
   handleChange(e){
@@ -48,7 +60,7 @@ validityRepass(){
       const validityPass = this.state.password!=""?<Input valid name="password" value={this.state.password} onChange={this.handleChange} type="password" className="validity"  name="password"  />:
       <Input invalid name="password" value={this.state.password} onChange={this.handleChange} type="password" className="validity"  name="password"  />
     return(
-        <Form id="Form" onSubmit={this.props.handleSubmit}>
+        <Form id="Form" onSubmit={this.handleSubmit}>
       <FormGroup className="mb-2 mr-sm-2 mb-sm-0">
         <Label id="form_label" className="mr-sm-2">نام کاربری</Label>
         {validityUsername}
@@ -86,12 +98,14 @@ validityRepass(){
 }
 }
 const mapsStateToProps = (state) =>({
-  logged_in: state.logged_in
+  logged_in: state.login_reducer.logged_in,
+  signed_up: state.signup_reducer.signed_up
 });
 
 const mapDispatchToProps = (dispatch) => {
   return{
-      signup : (signup_info) => dispatch(authAction.signup(signup_info))
+      signup : (signup_info) => dispatch(signupAction.signup(signup_info)),
+      login : (login_info) => dispatch(loginAction.login(login_info))
   }
 }
 export default connect(mapsStateToProps,mapDispatchToProps)(signupForm);

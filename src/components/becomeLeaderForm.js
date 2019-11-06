@@ -2,7 +2,7 @@ import React from 'react'
 import axios from 'axios' 
 import {Button,CustomInput, Form, FormGroup,FormText, Label, Input } from 'reactstrap';
 import 'bootstrap/dist/css/bootstrap.css';
-import './auth/login_signupForm.css'
+import './components/auth/login_signupForm.css'
 
 class becomeLeaderForm extends React.Component{
     constructor(){
