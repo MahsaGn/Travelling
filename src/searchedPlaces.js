@@ -28,7 +28,6 @@ export default class searchedPlace extends React.Component{
     }).catch(
     console.log("error"));
 
-
     }
     render(){
         
