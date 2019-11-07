@@ -1,7 +1,7 @@
 import {login_reducer} from './core/login/login_reducer'
 import {signup_reducer} from './core/signup/signup_reducer'
 import {createPlace_reducer} from './core/createPlace/createPlace_reducer'
-import (becomeLeader_reducer) fom './core/becomeLeader/becomeLeader_reducer'
+import {beacomeLeader_reducer} from './core/becomeLeader/becomeLeader_reducer'
 import {combineReducers,createStore,applyMiddleware,compose} from 'redux'
 import thunk from 'redux-thunk';
 
@@ -9,12 +9,13 @@ const allReducers = combineReducers({
   login_reducer,
   signup_reducer,
   createPlace_reducer,
-  becomeLeader_reducer
+  beacomeLeader_reducer
 })
 function saveToLocalStorage(state){
   try{
+    console.log("this is current state",state)
     let preState={
-      login: state.login
+      login_reducer:state.login_reducer
     }
     const serializedState = JSON.stringify(preState)
     localStorage.setItem('state',serializedState)

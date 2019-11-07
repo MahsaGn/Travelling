@@ -1,9 +1,9 @@
 import React from 'react'
-import axios from 'axios' 
+import {connect} from 'react-redux'
 import {Button,CustomInput, Form, FormGroup, Label, Input } from 'reactstrap';
 import 'bootstrap/dist/css/bootstrap.css';
 import '../styles/login_signupForm.css'
-import { thisExpression } from '@babel/types';
+import * as becomeLeaderAction from '../../core/becomeLeader/becomeLeader_action'
 
 class becomeLeaderForm extends React.Component{
     constructor(){
@@ -21,34 +21,15 @@ class becomeLeaderForm extends React.Component{
       this.handleChangeNum = this.handleChangeNum.bind(this);
     }
     
-    handleSubmit(e) {
+    async handleSubmit(e) {
       console.log("in handle submite")
       console.log(localStorage.access)
-      console.log("in handel submit")
       e.preventDefault();
-          axios.post('http://localhost:8000/api/become-leader/',{
-            nationalID:this.state.nationalID,
-            has_car:this.state.has_car,
-            car_capacity:this.state.car_capacity,
-            car_model:this.state.car_model
-          },{
-             headers:
-              {
-                "Authorization" : `Bearer ${localStorage.access}`,
-                'Accept' : 'application/json',
-                'Content-Type': 'application/json'
-            }
-             }).then(json => {
-        console.log("response")
-        console.log(localStorage.access)
-         console.log(json)
-         console.log("has token")
-         localStorage.setItem("token", json.data);
-         console.log(localStorage)
+      await this.props.becomeLeader(this.state.leader_info)
+      if(this.props.isLeader)
          return window.location.replace('/')
-      }).catch(error =>{
-        console.log(error)
-    });
+      else
+        alert(" راهنمای گردشگری شدن برای شماامکان پذیر نمی باشد")
   }
 
     handleChange(e){

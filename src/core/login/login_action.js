@@ -1,4 +1,5 @@
 import Auth_api from "../api/Auth_api";
+import { async } from "q";
 
 export const login_action_types = {
     LOGIN_SUCCESS: 'LOGIN_SUCCESS',
@@ -30,15 +31,15 @@ export const logout_success = () => {
 export const login = (login_info) => {
     // type: "login"
     console.log("login_info",login_info)
-    return  function (dispatch) {
-        let response =  Auth_api.login(login_info)
+    return async function (dispatch) {
+        let response = await Auth_api.login(login_info)
             if(response==false){
                 console.log('there was an error with login')
                 dispatch(login_failure())
                 console.log("after reducer")
             }else
             {
-                console.log("befoe dispatch success login")
+                console.log("befoe dispatch success login",response)
                 dispatch(login_success(response.access,response.refresh))
             }
      

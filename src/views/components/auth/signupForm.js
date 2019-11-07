@@ -30,9 +30,10 @@ class signupForm extends React.Component{
     {
       console.log("signin done going to login")
       let login_info = {
-        username: this.state.username,
-        password: this.state.password
+        username: this.state.signup_info.username,
+        password: this.state.signup_info.password
       }
+      console.log("login info before sending to login in signup",login_info)
       await this.props.login(login_info)
       console.log("user auth done correctly")
       return window.location.replace('/')

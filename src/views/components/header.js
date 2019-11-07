@@ -10,18 +10,20 @@ import * as sessionAction from '../../core/login/login_action'
 class Header extends React.Component {
     constructor(props){
       super(props);
-      this.state={topPlaces:[]
+      this.state={
+        topPlaces:[]
       }
       this.Signout=this.Signout.bind(this);
     };
     Signout(){
 
-      this.props.logout()()
+      this.props.logout()
       window.location.replace('/');
     }
 render(){
   console.log("in headeeeeeeeeer",this.props.logged_in)
-  const logedin=this.props.logged_in!=true   ? <Link to="/authentication">
+  console.log(localStorage.getItem('access'));
+  const logedin=this.props.logged_in==false ? <Link to="/authentication">
   <Button variant="outline-primary" className="navbarbutton" >ورود/ثبت نام</Button>
 </Link> : <div><Link to="/profile">
   <Button variant="outline-primary" className="navbarbutton" >پروفایل</Button>
@@ -48,7 +50,7 @@ return(
 }
 }
 const mapsStateToProps = (state) =>({
-  logged_in: state.logged_in
+  logged_in: state.login_reducer.logged_in
 });
 const mapDispatchToProps = (dispatch) => {
   return{

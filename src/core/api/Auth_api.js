@@ -6,8 +6,8 @@ static login =async (login_info) => {
       let x = await axios.post('http://localhost:8000/api/token/', {
         username: login_info.username,
         password: login_info.password})
-          console.log(x.data)
-          return x.data
+        console.log(x);  
+        return x.data
         }catch{
             console.log("wrong login")
             return false

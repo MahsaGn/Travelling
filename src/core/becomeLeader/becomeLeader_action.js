@@ -1,4 +1,4 @@
-import BeacomeLeader_api from "../api/becomeLeader_api";
+import becomeLeader_api from "../api/becomeLeader_api";
 
 export const beacomeLeader_action_types = {
     BECOMELEADER_SUCCESS: 'BECOMELEADER_SUCCESS',
@@ -24,7 +24,7 @@ export const beacomeLeader = (leader_info) => {
     // type: "login"
     console.log("leader_info",leader_info)
     return  function (dispatch) {
-        let response =  beacomeLeader_api.login(leader_info)
+        let response =  becomeLeader_api.becomeLeader(leader_info)
             if(response==false){
                 console.log('there was an error with beacomeLeader')
                 dispatch(beacomeLeader_failure())
