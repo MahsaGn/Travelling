@@ -4,61 +4,51 @@ import Slides from '../components/Place/slides';
 import '../styles/style.css';
 import axios from 'axios'
 import 'bootstrap/dist/css/bootstrap.css';
-const items = [
-  {
-    key:1,
-    image: 'https://illia.tech/wp-content/uploads/2019/04/Persepolis-1030x474.jpg',
-  },
-  {
-    key:2,
-    image: 'https://illia.tech/wp-content/uploads/2019/04/Persepolis-1030x474.jpg',
-  },
-  {
-    key:3,
-    image: 'https://illia.tech/wp-content/uploads/2019/04/Persepolis-1030x474.jpg',
-  }
-];
-
+import { place } from '../../core/place/place_action';
 
 export default class Place extends React.Component {
-  constructor() {
-    super();
-    this.state={
-      info :"",
-      slidesinfo:[]
-    }
-   
+  constructor(props) {
+    super(props);
   }
   
   componentWillMount(){
     console.log("in handel submit")
     var idp = window.location.pathname.split('/')[2]
     console.log(idp)
-    axios.get(`http://127.0.0.1:8000/api/Places/UniquePlace/?search=${idp}`)
-    .then(json => {
-      console.log("response")
-      this.setState({
-        info: json.data[0],
-        slidesinfo:[json.data[0].image1,json.data[0].image2,json.data[0].image3]
-      })
-      console.log(this.state.slidesinfo)
-    }).catch(
-    console.log("error"));
-
+        //info: json.data[0],
+        //slidesinfo:[json.data[0].image1,json.data[0].image2,json.data[0].image3]
   }
 
   render() {
     console.log("in place")
-    console.log(this.state.info)
+    console.log(this.props.info)
     return (
       <div id="mystyle">
         <header >
         </header>
         <body>
-          <Slides photos={this.state.slidesinfo}/>
-          <Place_nav info={this.state.info}  />
+          <Slides photos={this.props.slidesinfo}/>
+          <Place_nav info={this.props.info}  />
         </body>
       </div>
     );
   }
 }
+const mapStateToProps = (state) => {
+    
+  return{
+    info : state.place_reducer.data[0],
+    slidesinfo : state.place_reducer.Slides,
+    placeLeaded : state.place_reducer.profile_info
+  }
+}
+
+const mapDispatchToProps = (dispatch) => {
+  return{
+      place : (place_id) => dispatch(placeActiob.place(place_id))
+  }
+}
+
+export default connect(mapStateToProps,mapDispatchToProps)(Place);
+
+
