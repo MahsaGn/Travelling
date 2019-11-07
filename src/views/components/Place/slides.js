@@ -6,6 +6,7 @@ import {
     CarouselItem,
     CarouselControl,
     CarouselIndicators} from 'reactstrap';
+import { connect } from 'react-redux';
   
 class Slides extends Component {
     constructor(props){
@@ -27,13 +28,13 @@ class Slides extends Component {
   
     next() {
       if (this.animating) return;
-      const nextIndex = this.state.activeIndex === this.props.photos.length - 1 ? 0 : this.state.activeIndex + 1;
+      const nextIndex = this.state.activeIndex === this.props.slides.length - 1 ? 0 : this.state.activeIndex + 1;
       this.setState({ activeIndex: nextIndex });
     }
   
     previous() {
       if (this.animating) return;
-      const nextIndex = this.state.activeIndex === 0 ? this.props.photos.length - 1 : this.state.activeIndex - 1;
+      const nextIndex = this.state.activeIndex === 0 ? this.props.slides.length - 1 : this.state.activeIndex - 1;
       this.setState({ activeIndex: nextIndex });
     }
   
@@ -45,11 +46,13 @@ class Slides extends Component {
         const { activeIndex } = this.state;
         console.log("in slides")
         console.log(this.props.photos)
-        const slides = this.props.photos.map((item,index) => 
-            <CarouselItem className="custom-tag"
+        console.log("slides are:", this.props.slides)
+        const slides = this.props.slides.map((item,index) => 
+          <CarouselItem className="custom-tag"
           onExiting={this.onExiting}
           onExited={this.onExited}
-          key={index}>
+          key={index}
+          >
           <img id="place_image" src={item}/>
         </CarouselItem>);
         return (
@@ -67,5 +70,10 @@ class Slides extends Component {
      }
 
  }
-
-export default Slides;
+ const mapStateToProps = (state) => {
+    
+  return{
+    slides : state.place_reducer.slide_info
+  }
+}
+export default connect(mapStateToProps)(Slides);

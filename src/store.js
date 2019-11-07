@@ -3,15 +3,18 @@ import {signup_reducer} from './core/signup/signup_reducer'
 import {createPlace_reducer} from './core/createPlace/createPlace_reducer'
 import {beacomeLeader_reducer} from './core/becomeLeader/becomeLeader_reducer'
 import {userProfile_reducer} from './core/userProfile/userProfile_reducer'
+import {place_reducer} from './core/place/place_reducer'
 import {combineReducers,createStore,applyMiddleware,compose} from 'redux'
 import thunk from 'redux-thunk';
+import { stat } from 'fs'
 
 const allReducers = combineReducers({
   login_reducer,
   signup_reducer,
   createPlace_reducer,
   beacomeLeader_reducer,
-  userProfile_reducer
+  userProfile_reducer,
+  place_reducer
 })
 function saveToLocalStorage(state){
   try{

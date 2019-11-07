@@ -1,5 +1,6 @@
 import axios from 'axios'
 import store from '../../store.js'
+import {connect} from 'react-redux'
 class place_api{
 static place =async () => {
     console.log("in api place",store.getState().place_reducer.place_id)

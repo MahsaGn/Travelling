@@ -1,10 +1,18 @@
 import React from 'react'
-function History(props){
-    
-    return(
-      <div id="nav_item_history">
-          {props.info}
-      </div>  
-    );
+import {connect} from 'react-redux'
+class History extends React.Component{
+    render(){
+      return(
+        <div id="nav_item_history">
+            {this.props.info}
+        </div>  
+      );
+    }
 }
-export default History
+const mapStateToProps = (state) => {
+    
+  return{
+    info : state.place_reducer.place_info.Description
+  }
+}
+export default connect(mapStateToProps)(History)

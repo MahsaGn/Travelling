@@ -15,7 +15,8 @@ export const place_reducer = (state = initialState , action) => {
             return {
                 ...state,
                 placeLoaded:true,
-                place_info:action.data
+                place_info:action.data,
+                slide_info:action.slides
             }
         case "PLACEINFO_FAILURE" :
             return {

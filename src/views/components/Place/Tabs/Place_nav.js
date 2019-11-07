@@ -7,15 +7,11 @@ import { TabContent, TabPane} from 'reactstrap';
 import NavItem_leader from './NavItem_leader'
 import NavItem_history from './NavItem_history'
 
-
- export default class Place_nav extends React.Component{
+class Place_nav extends React.Component{
      constructor(){
        super();
      this.state = {
       activeTab: '1',
-      palceData:[],
-      hasToken: true,
-      activePlace: []
     };
   }
      toggle = (tab) => {
@@ -32,16 +28,19 @@ import NavItem_history from './NavItem_history'
             <TabContent id="tab_content" activeTab={this.state.activeTab} >
             <hr />
               <TabPane tabId="1">
-                <NavItem_info info={this.props.info} />
+                <NavItem_info/>
               </TabPane>
               <TabPane tabId="2">
                 <NavItem_leader />
               </TabPane>
               <TabPane tabId="3">
-                <NavItem_history info={this.props.info.Description} />
+                <NavItem_history/>
               </TabPane>
             </TabContent>
           </div>
          );
      }
  }
+
+export default Place_nav;
+

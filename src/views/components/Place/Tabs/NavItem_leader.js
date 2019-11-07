@@ -4,7 +4,7 @@ import '../../../styles/style.css';
 import Axios from 'axios';
 import LeaderCard from './leaderCard'
 
-export default class NavItem_leader extends React.Component{
+class NavItem_leader extends React.Component{
 
     constructor(props){
       super(props);
@@ -30,3 +30,4 @@ export default class NavItem_leader extends React.Component{
         );
     }
 }
+export default NavItem_leader
