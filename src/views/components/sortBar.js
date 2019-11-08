@@ -1,8 +1,6 @@
-import React, { useState } from 'react';
-import { Nav, NavItem, NavLink} from 'reactstrap';
+import React from 'react';
+import { Nav} from 'reactstrap';
 import SortBar_navLink from '../components/sortBar_navLink'
-import {connect} from 'react-redux'
-import * as sortPlaceAction  from '../../core/sortPlace/sortPlace_action';
 
 
 class sortBar extends React.Component {
@@ -24,7 +22,7 @@ class sortBar extends React.Component {
       <Nav tabs>
           <SortBar_navLink 
           number={1}
-          option="Likes"
+          option="-Likes"
           title="محبوب ترین"/>
 
           <SortBar_navLink 
@@ -61,22 +59,6 @@ class sortBar extends React.Component {
     </div>
   )}
 }
-
-const mapStateToProps = (state) => {
-    
-  return{
-      sortedPlaceLoaded : state.sortPlace_reducer.searchedPlaceLoaded,
-      info: state.sortPlace_reducer.places_info,
-  }
-}
-
-const mapDispatchToProps = (dispatch) => {
-  return{
-      sortPlace : (sorted_option) => dispatch(sortPlaceAction.sortPlace(sorted_option)),
-
-  }
-}
-
-export default connect(mapStateToProps,mapDispatchToProps)(sortBar);
+export default sortBar;
 
 

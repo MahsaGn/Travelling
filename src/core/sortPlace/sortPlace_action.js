@@ -26,10 +26,12 @@ export const change_activeTab = (activeTab,option) =>{
     }
 }
 
-export const sortPlace = () => {
+export const sortPlace =(activeTab,option) => {
     // type: "sortPlace"
     console.log("sortPlace")
     return async function (dispatch) {
+        await sortPlace_api.sortPlace()
+        dispatch(change_activeTab(activeTab,option))
         let response = await sortPlace_api.sortPlace()
         if(response==false){
             console.log('there was an error with sortP')

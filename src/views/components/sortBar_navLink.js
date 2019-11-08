@@ -4,17 +4,26 @@ import classnames from 'classnames';
 import {connect} from 'react-redux'
 import * as sortPlaceAction from '../../core/sortPlace/sortPlace_action'
 import { format } from 'path';
+import { async } from 'q';
+
 
 class sortBar_navLik extends React.Component{
     constructor(props){
         super(props)
+        this.sortPlace=this.sortPlace.bind(this)
+    }
+    sortPlace =async ()=>{
+        localStorage.setItem("activeTab",this.props.activeTab)
+        localStorage.setItem("option",this.props.option)
+        window.location.replace('/')
+        //await this.props.toggle(this.props.number,this.props.option)
     }
     render(){
         return(
         <NavItem>
             <NavLink
             className={classnames({ active: this.props.activeTab === this.props.number })}
-            onClick={() => { this.props.toggle(this.props.number,this.props.option); }}
+            onClick={this.sortPlace}
             >
             {this.props.title}
           </NavLink>
@@ -26,13 +35,14 @@ class sortBar_navLik extends React.Component{
 const mapStateToProps = (state) => {
     
     return{
-        activeTab : state.sortPlace_reducer.activeTab
+        activeTab : state.sortPlace_reducer.activeTab,
+        sortPlace_option :state.sortPlace_reducer.sortPlace_option
     }
   }
   
   const mapDispatchToProps = (dispatch) => {
     return{
-        toggle : (activeTab,option) => dispatch(sortPlaceAction.change_activeTab(activeTab,option)),
+        toggle : (activeTab,option) => dispatch(sortPlaceAction.sortPlace(activeTab,option)),
   
     }
   }
