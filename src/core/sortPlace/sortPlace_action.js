@@ -2,7 +2,8 @@ import sortPlace_api from "../api/sortPlace_api";
 export const sortPlace_action_types = {
     SORTPLACE_SUCCESS: 'SORTPLACE_SUCCESS',
     SORTPLACE_FAILURE: 'SORTPLACE_FAILURE',
-    SORTPLACE_OPTION: 'SORTPLACE_OPTION'
+    SORTPLACE_OPTION: 'SORTPLACE_OPTION',
+    CHANGE_ACTIVETAB:'CHANGE_ACTIVETAB'
 }
 export const sortPlace_success = (data) => {
     return {
@@ -23,6 +24,12 @@ export const sortPlace_option = (option) => {
         option:option
     }
 } 
+export const change_activeTab = (activeTab) =>{
+    return{
+        type: sortPlace_action_types.CHANGE_ACTIVETAB,
+        activeTab:activeTab
+    }
+}
 
 export const sortPlace = (option) => {
     // type: "sortPlace"

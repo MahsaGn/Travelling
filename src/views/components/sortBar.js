@@ -1,6 +1,9 @@
 import React, { useState } from 'react';
 import { Nav, NavItem, NavLink} from 'reactstrap';
-import classnames from 'classnames';
+import SortBar_navLink from '../components/sortBar_navLink'
+import {connect} from 'react-redux'
+import * as sortPlaceAction  from '../../core/sortPlace/sortPlace_action';
+
 
 class sortBar extends React.Component {
   constructor(props){
@@ -19,56 +22,68 @@ class sortBar extends React.Component {
   return (
     <div id="sorting_option">
       <Nav tabs>
-        <NavItem>
-          <NavLink
-            className={classnames({ active: this.props.activeTab === '1' })}
-            onClick={() => { this.props.toggle('1'); }}
-          >
-            محبوب ترین
-          </NavLink>
-        </NavItem>
-        <NavItem>
-          <NavLink
-            className={classnames({ active: this.props.activeTab === '2' })}
-            onClick={() => { this.props.toggle('2'); }}
-          >
-            زودترین زمان شروع
-          </NavLink>
-        </NavItem>
-        <NavLink
-            className={classnames({ active: this.props.activeTab === '3' })}
-            onClick={() => { this.props.toggle('3'); }}
-          >
-            محبوب ترین
-          </NavLink>
-          <NavLink
-            className={classnames({ active: this.props.activeTab === '4' })}
-            onClick={() => { this.props.toggle('4'); }}
-          >
-              دیرترین زمان پایان
-          </NavLink>
-          <NavLink
-            className={classnames({ active: this.props.activeTab === '5' })}
-            onClick={() => { this.props.toggle('5'); }}
-          >
-            آسان ترین
-          </NavLink>
-          <NavLink
-            className={classnames({ active: this.props.activeTab === '6' })}
-            onClick={() => { this.props.toggle('6'); }}
-          >
-        سخت ترین
-          </NavLink>
-          <NavLink
-            className={classnames({ active: this.props.activeTab === '7' })}
-            onClick={() => { this.props.toggle('7'); }}
-          >
-        کوتاه ترین زمان بازدید
-          </NavLink>
+          <SortBar_navLink 
+          activeTab={this.props.activeTab}
+          number={1}
+          toggle={this.props.toggle}
+          option=""
+          title="محبوب ترین"/>
+
+          <SortBar_navLink 
+          activeTab={this.props.activeTab}
+          number={2}
+          toggle={this.props.toggle}
+          option=""
+          title="زودترین زمان شروع"/>
+
+          <SortBar_navLink 
+          activeTab={this.props.activeTab}
+          number={3}
+          toggle={this.props.toggle}
+          option=""
+          title="دیرترین زمان پایان"/>
+
+          <SortBar_navLink 
+          activeTab={this.props.activeTab}
+          number={4}
+          toggle={this.props.toggle}
+          option=""
+          title="آسان ترین"/>
+
+          <SortBar_navLink 
+          activeTab={this.props.activeTab}
+          number={5}
+          toggle={this.props.toggle}
+          option=""
+          title="سخت ترین"/>
+
+          <SortBar_navLink 
+          activeTab={this.props.activeTab}
+          number={6}
+          toggle={this.props.toggle}
+          option=""
+          title="کوتاه ترین زمان بازدید"/>
       </Nav>
       
     </div>
   )}
 }
 
-export default sortBar;
+const mapStateToProps = (state) => {
+    
+  return{
+      sortedPlaceLoaded : state.sortPlace_reducer.searchedPlaceLoaded,
+      info: state.sortPlace_reducer.places_info,
+  }
+}
+
+const mapDispatchToProps = (dispatch) => {
+  return{
+      sortPlace : (sorted_option) => dispatch(sortPlaceAction.sortPlace(sorted_option)),
+
+  }
+}
+
+export default connect(mapStateToProps,mapDispatchToProps)(sortBar);
+
+
