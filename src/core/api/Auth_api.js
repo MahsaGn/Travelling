@@ -24,7 +24,8 @@ static  signup = async (signup_info) => {
         first_name:signup_info.firstname,
         last_name:signup_info.lastname,
         itinerary:signup_info.itinerary,
-        phone_number:""
+        phone_number:"",
+        avatar:signup_info.image
       })
       console.log("after then signup")
        return true
