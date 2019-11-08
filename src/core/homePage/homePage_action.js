@@ -1,24 +1,38 @@
 import homePage_api from "../api/homePage_api";
 
-export const homePage_action_types={
-    LOGEDIN_SUCCESS: 'LOGEDIN_SUCCESS',
-    LOGEDIN_FAILURE: 'LOGEDIN_FAILURE'
+export const homePage_action_types = {
+    LOADPLACEHOME_SUCCESS: 'LOADPLACEHOME_SUCCESS',
+    LOADPLACEHOME_FAILURE: 'LOADPLACEHOME_FAILURE',
 }
-
-export const logedin_failure = () => {
+export const homePage_success = (data) => {
     return {
-        type: homePage_action_types.LOGEDIN_FAILUR,
-    }
-}
-export const logedin_success = () => {
-    return {
-        type: homePage_action_types.LOGEDIN_FAILURE,
-    }
-}
-
-export const show_place = (data) => {
-    let topPlace = [data.image1,data.image2,data.image3]
-    return {
+        type: homePage_action_types.LOADPLACEHOME_SUCCESS,
         data: data
     }
-} 
+}  
+
+export const homePage_failure = () => {
+    return {
+        type: homePage_action_types.LOADPLACEHOME_FAILURE
+    }
+}                                                  
+
+
+export const homePage = (id) => {
+    // type: "homePage"
+    console.log("homePage")
+    return async function (dispatch) {
+        let response = await homePage_api.homePage()
+        if(response==false){
+            console.log('there was an error with homePage')
+            dispatch(homePage_failure())
+            console.log("after reducer homePage")
+        }else
+        {
+            console.log("in homePage action,response is",response)
+            dispatch(homePage_success(response))
+        }
+     
+            
+    }
+}

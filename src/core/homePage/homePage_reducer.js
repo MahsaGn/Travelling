@@ -1,16 +1,20 @@
 const initialState = {
-    logedin : false
+    homePlace_info : [],
+    homePlaceLoaded:false
 }
-const homePage_reducer=(state=initialState,action)=>{
+export const homePage_reducer=(state=initialState,action)=>{
     console.log("in homepage reducer",action);
     switch(action.type){
-        case "LOGEDIN_SUCCESS":
+        case "LOADPLACEHOME_SUCCESS":
             return {
-                logedin:true
+                ...state,
+                homePlaceLoaded:true,
+                homePlace_info:action.data
             }
-        case "LOGEDIN_FAILURE":
+        case "LOADPLACEHOME_FAILURE":
             return {
-                logedin:false
+                ...state,
+                homePlaceLoaded:false
             }
         default:
             return state

@@ -1,17 +1,15 @@
-import {connect} from react-redux;
-import store from '../../store.js';
-
+import axios from 'axios'
 class homePage_api{
-    static homePage =async () => {
-    console.log("in api home");
+static homePage =async () => {
+    console.log("in api home page")
     try{
-      let x = await axios.get(`http://127.0.0.1:8000/api/Places/UniquePlace/?search=${store.getState().homePage_reducer}`)
+      let x = await axios.get(`http://127.0.0.1:8000/api/Places/RandomPlace/`)
         console.log(x);  
         return x.data
         }catch{
-            console.log("wrong")
+            console.log("wrong homePage")
             return false
         }
-};  
-}
-export default connect()(homePage_api);
+};
+
+}export default homePage_api
