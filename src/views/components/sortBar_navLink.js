@@ -8,18 +8,13 @@ import { format } from 'path';
 class sortBar_navLik extends React.Component{
     constructor(props){
         super(props)
-        this.handleSort=this.handleSort.bind(this)
-    }
-    handleSort(){
-        console.log("option is:",this.props.option)
     }
     render(){
-        console.log(this.props.number,this.props.activeTab)
         return(
         <NavItem>
             <NavLink
             className={classnames({ active: this.props.activeTab === this.props.number })}
-            onClick={() => { this.props.toggle(this.props.number); }}
+            onClick={() => { this.props.toggle(this.props.number,this.props.option); }}
             >
             {this.props.title}
           </NavLink>
@@ -37,7 +32,7 @@ const mapStateToProps = (state) => {
   
   const mapDispatchToProps = (dispatch) => {
     return{
-        toggle : (activeTab) => dispatch(sortPlaceAction.change_activeTab(activeTab)),
+        toggle : (activeTab,option) => dispatch(sortPlaceAction.change_activeTab(activeTab,option)),
   
     }
   }

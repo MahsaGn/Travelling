@@ -26,35 +26,35 @@ class sortBar extends React.Component {
           activeTab={this.props.activeTab}
           number={1}
           toggle={this.props.toggle}
-          option=""
+          option="title"
           title="محبوب ترین"/>
 
           <SortBar_navLink 
           activeTab={this.props.activeTab}
           number={2}
           toggle={this.props.toggle}
-          option=""
+          option="-StartTime"
           title="زودترین زمان شروع"/>
 
           <SortBar_navLink 
           activeTab={this.props.activeTab}
           number={3}
           toggle={this.props.toggle}
-          option=""
+          option="-EndTime"
           title="دیرترین زمان پایان"/>
 
           <SortBar_navLink 
           activeTab={this.props.activeTab}
           number={4}
           toggle={this.props.toggle}
-          option=""
+          option="-Hardness"
           title="آسان ترین"/>
 
           <SortBar_navLink 
           activeTab={this.props.activeTab}
           number={5}
           toggle={this.props.toggle}
-          option=""
+          option="Hardness"
           title="سخت ترین"/>
 
           <SortBar_navLink 

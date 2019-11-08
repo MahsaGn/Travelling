@@ -2,7 +2,7 @@
 const initialState = {
     sortedPlaceLoaded : false,
     places_info:"",
-    searchedPlace_option:"",
+    sortPlace_option:"",
     activeTab:1
 }
 
@@ -20,14 +20,10 @@ export const sortPlace_reducer = (state = initialState , action) => {
                 ...state,
                 sortedPlaceLoaded:false
             }
-        case "SORTPLACE_OPTION":
-            return {
-                ...state,
-                searchedPlace_option:action.option
-            }
         case "CHANGE_ACTIVETAB":
             return{
                 ...state,
+                sortPlace_option:action.option,
                 activeTab:action.activeTab
             }
             
