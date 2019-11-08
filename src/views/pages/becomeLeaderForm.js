@@ -10,15 +10,16 @@ class becomeLeaderForm extends React.Component{
       super();
       this.state={
           leader_info:{
-          nationalID:"",
-          has_car:false,
-          car_capacity:"",
-          car_model:""
+            nationalID:"",
+            has_car:false,
+            car_capacity:"",
+            car_model:""
         }
     };
       this.handleSubmit=this.handleSubmit.bind(this);
       this.handleChange = this.handleChange.bind(this);
       this.handleChangeNum = this.handleChangeNum.bind(this);
+      this.handleChange_hasCar=this.handleChange_hasCar.bind(this)
     }
     
     async handleSubmit(e) {
@@ -45,21 +46,31 @@ class becomeLeaderForm extends React.Component{
             this.handleChange(e)
         }
     }
+
+    handleChange_hasCar(){
+      let curentSt = this.state.leader_info
+    curentSt["has_car"] = !curentSt["has_car"]
+    this.setState({
+      leader_info:curentSt
+    })
+    }
  
     render(){
-        const model = this.state.leader_info.has_car ?<Input value={this.state.leader_info.car_model} onChange={this.handleChange} type="text"/>:
-        <Input disabled value={this.state.leader_info.car_model} onChange={this.updateCar_model} type="text"/>
-        const capacity = this.state.leader_info.has_car ? <Input value={this.state.leader_info.car_capacity} onChange={this.handleChangeNum} type="number"/>:
-        <Input disabled value={this.state.leader_info.car_capacity} onChange={this.updateCar_capacity} type="number"/>
+      console.log("has car:",this.state.has_car)
+
+        const model = this.state.leader_info.has_car ?<Input  name="car_model" value={this.state.leader_info.car_model} onChange={this.handleChange} type="text"/>:
+        <Input  name="car_model" disabled value={this.state.leader_info.car_model} onChange={this.handleChange} type="text"/>
+        const capacity = this.state.leader_info.has_car ? <Input  name="car_capacity" value={this.state.leader_info.car_capacity} onChange={this.handleChangeNum} type="number"/>:
+        <Input  name="car_capacity" disabled value={this.state.leader_info.car_capacity} onChange={this.handleChangeNum} type="number"/>
     return(
         <Form id="Form" onSubmit={this.handleSubmit}>
       <FormGroup className="mb-2 mr-sm-2 mb-sm-0">
         <Label id="form_label" className="mr-sm-2">کد ملی</Label>
-        <Input value={this.state.leader_info.nationalID} onChange={this.handleChangeNum} pattern="[0-9]{*}" id="form_input"/>
+        <Input name="nationalID" value={this.state.leader_info.nationalID} onChange={this.handleChangeNum} pattern="[0-9]{*}" type="number" id="form_input"/>
       </FormGroup>
       <FormGroup className="mb-2 mr-sm-2 mb-sm-0">
         <Label id="form_label">آیا برای گردشگری درصورت درخواست مالک خودرو میباشید؟</Label>
-        <CustomInput onChange={this.handleChange} type="switch" id="exampleCustomSwitch" className="switch" name="customSwitch" />
+        <CustomInput onChange={this.handleChange_hasCar} type="switch" id="exampleCustomSwitch" className="switch" name="customSwitch" />
         <Label id="form_label">مدل ماشین</Label>
         {model}
         <Label id="form_label">ظرفیت ماشین</Label>
@@ -75,7 +86,7 @@ class becomeLeaderForm extends React.Component{
 const mapStateToProps = (state) => {
     
   return{
-    isLeader : state.becomeLeader_reducer.isLeader
+    isLeader : state.beacomeLeader_reducer.isLeader
   }
 }
 
