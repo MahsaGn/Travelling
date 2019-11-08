@@ -26,6 +26,7 @@ render(){
   const logedin=this.props.logged_in==false ? <Link to="/authentication">
   <Button variant="outline-primary" className="navbarbutton" >ورود/ثبت نام</Button>
 </Link> : <div><Link to="/profile">
+  <Link to="/AddPlaceForLeader"/>
   <Button variant="outline-primary" className="navbarbutton" >پروفایل</Button>
 </Link>
 <Button variant="outline-primary" className="navbarbutton" onClick={this.Signout}>خروج</Button></div>
