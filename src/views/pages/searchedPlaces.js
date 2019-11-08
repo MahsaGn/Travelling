@@ -1,35 +1,26 @@
 import React from 'react'
 import PlaceCard from '../components/placeCard'
-import axios from 'axios'
+import {connect} from 'react-redux'
 import Header from '../components/header'
-export default class searchedPlace extends React.Component{
-
-    constructor(){
-        super()
-        this.state={
-            info :""
-        }
+import searchPlace from '../components/searchPlaceBar'
+import * as searchedPlaceAction  from '../../core/searchedPlace/searchedPlace_action';
+class searchedPlace extends React.Component{
+    state={
+        info:""
     }
-    componentWillMount(){
-        console.log("insearch")
+    async componentWillMount(){
         var searchedVal = window.location.pathname.split('/')[2]
-        console.log(searchedVal)
-        axios.get(`http://127.0.0.1:8000/api/Places/ViewPlace/?search=${searchedVal}`)
-    .then(json => {
-      console.log("response")
-      console.log(json.data)
-      this.setState({info: json.data.map((d)=>{
-          return <PlaceCard 
-            title={d.title} 
-            src= {d.image1}
-            discriptions={d.Discriptions}
-            id={d.id}/>
-      })})
-      console.log(this.state.info)
-    }).catch(
-    console.log("error"));
-
-
+        console.log("in searchplace",searchedVal)
+        await this.props.searchedPlace(searchedVal)
+        if(this.props.searchedPlaceLoaded)
+        {this.setState({info: this.props.info.map((d)=>{
+            return <PlaceCard 
+              title={d.title} 
+              src= {d.image1}
+              discriptions={this.props.Discriptions}
+              id={d.id}/>
+        })})}
+        console.log("after await",this.props.info)
     }
     render(){
         
@@ -41,3 +32,23 @@ export default class searchedPlace extends React.Component{
         )
     }
 }
+const mapStateToProps = (state) => {
+    
+    return{
+        searchedPlaceLoaded : state.place_reducer.searchedPlaceLoaded,
+        info: state.searchedPlace_reducer.places_info,
+        searchedPlaceLoaded: state.searchedPlace_reducer.searchedPlaceLoaded
+    }
+  }
+  
+  const mapDispatchToProps = (dispatch) => {
+    return{
+        searchedPlace : (searched_val) => dispatch(searchedPlaceAction.searchedPlace(searched_val)),
+
+    }
+  }
+  
+  export default connect(mapStateToProps,mapDispatchToProps)(searchedPlace);
+  
+  
+  
