@@ -10,25 +10,27 @@ import { stat } from 'fs';
 class searchedPlace extends React.Component{
     constructor(props){
         super(props);
-        let activeTab = localStorage.getItem('activeTab')
-        let option = localStorage.getItem('option')
-        let searched = localStorage.getItem("searched")
+        
       this.state = {
-       activeTab:activeTab!=undefined ?activeTab:1,
-       option:option!=undefined? option:"",
        info:"",
-       searchedVal:searched!= undefined? searched:""
-
+       searchedVal:""
      };
      this.handleChange=this.handleChange.bind(this)
+     this.onSearchClick=this.onSearchClick.bind(this)
    }
     async componentWillMount(){
         var searchedVal = window.location.pathname.split('/')[2]
         console.log("in searchplace",searchedVal)
+        let activeTab = localStorage.getItem('activeTab')
+        let option = localStorage.getItem('option')
+        await this.props.toggle(activeTab,option)
         await this.props.searchedPlace(searchedVal)
+        console.log(this.props.activeTab)
         if(this.props.searchedPlaceLoaded)
         {
-            this.setState({info: this.props.info.map((d)=>{
+            this.setState({
+                searchedVal:this.state.searchedVal,
+                info: this.props.info.map((d)=>{
             return <PlaceCard 
               title={d.title} 
               src= {d.image1}
@@ -41,7 +43,10 @@ class searchedPlace extends React.Component{
         localStorage.setItem("option",this.props.option)
         localStorage.setItem("searched",this.state.searchedVal)
         console.log("foooooooooooooooooooooooooooooooo",window.location.href)
-        window.location.replace(`${window.location.href}`)
+        if(this.state.searchedVal!="")
+            window.location.replace(`/places/${this.state.searchedVal}`)
+        else
+            window.location.replace(window.location.href)
     }
 
     handleChange(e){
@@ -79,6 +84,7 @@ const mapStateToProps = (state) => {
   
   const mapDispatchToProps = (dispatch) => {
     return{
+        toggle : (activeTab,option) => dispatch(searchedPlaceAction.change_navTab(activeTab,option)),
         searchedPlace : (searched_val,activeTab,option) => dispatch(searchedPlaceAction.searchedPlace(searched_val,activeTab,option)),
     }
   }

@@ -38,7 +38,7 @@ export const searchedPlace = (val) => {
     console.log("searchedPlace")
     return async function (dispatch) {
         dispatch(searchedPlace_val(val))
-        let response = await searchedPlace_api.searchedPlace()
+        let response = await searchedPlace_api.searchedPlace(val)
         if(response==false){
             console.log('there was an error with searchedP')
             dispatch(searchedPlace_failure())
