@@ -18,14 +18,6 @@ class sortPlace extends React.Component{
        info:""
      };
    }
-    toggle = (tab) => {
-       if (this.state.activeTab !== tab) {
-         this.setState({
-           activeTab: tab
-         });
-       }
-       console.log("active tab is",this.state.activeTab)
-   }
     async componentWillMount(){
         var sortedOptoin = window.location.pathname.split('/')[2]
         console.log("in sortedplace",sortedOptoin)
