@@ -4,6 +4,7 @@ import {createPlace_reducer} from './core/createPlace/createPlace_reducer'
 import {beacomeLeader_reducer} from './core/becomeLeader/becomeLeader_reducer'
 import {userProfile_reducer} from './core/userProfile/userProfile_reducer'
 import {place_reducer} from './core/place/place_reducer'
+import {sortPlace_reducer} from './core/sortPlace/sortPlace_reducer'
 import {homePage_reducer} from './core/homePage/homePage_reducer'
 import {searchedPlace_reducer} from './core/searchedPlace/searchedPlace_reducer'
 import {combineReducers,createStore,applyMiddleware,compose} from 'redux'
@@ -18,7 +19,8 @@ const allReducers = combineReducers({
   userProfile_reducer,
   place_reducer,
   searchedPlace_reducer,
-  homePage_reducer
+  homePage_reducer,
+  sortPlace_reducer
 })
 function saveToLocalStorage(state){
   try{

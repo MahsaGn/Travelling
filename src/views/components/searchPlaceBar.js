@@ -31,7 +31,7 @@ export default class searchPlace extends React.Component{
 
     render(){
         return(
-            <div className="input-group md-form form-sm form-1 pl-0 searchBar">
+            <div className=" searchBar">
                 {/*<span className="input-group-text purple lighten-3 " id="basic-text1">
                     
         </span>*/}<MDBIcon className="text-white" icon="search" />
