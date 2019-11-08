@@ -1,0 +1,46 @@
+#maindiv{
+  background-color: rgb(228, 228, 228);
+  height: 100%;
+}
+
+.selectButton{
+  background-color: rgb(86, 86, 206);
+  color: white;
+}
+.navbar{
+  background-color: rgb(83, 135, 151);
+  color: white;
+}
+.navbarbutton{
+  background-color: rgb(56, 110, 161);
+  
+}
+.navlink{
+  color: antiquewhite;
+
+}
+
+#navbrand{
+  color: rgb(2, 41, 31);
+  font-family: fantasy;
+  font-size: 30px;
+}
+#homepic{
+  height: 75vh;
+  margin-bottom: 3px;
+  width: 100%;
+  margin: 10px;
+  margin-top:3px;
+  object-fit: cover;
+  clear: both;
+ }
+ .searchbar{
+   float: left;
+   width: auto;
+   height: 100%;
+ }
+ 
+ #header{
+   height: 55px;
+   margin-bottom: 5px;
+ }

@@ -1,0 +1,71 @@
+#login_signupForm{
+    float: right;
+    margin-right: 5%;
+    margin-top: 5%;
+    border:solid 2px rgb(224, 224, 224);
+
+}
+
+#Form{
+  position: relative;
+    text-align: right;
+    clear: both;
+    top: 50px;
+    width: 50%;
+    left: 25%;
+}
+
+#form_submit{
+  position: relative;
+    width: 30%;
+    margin-top: 10%;
+    right: 3%;
+    background-color: rgb(192, 238, 238);
+    border-color:rgb(180, 221, 221);
+    color: black;
+}
+#tab_content_info{
+    float: right;
+    border-radius: 15%;
+    width: 97%;
+    
+  }
+
+body{
+
+    background-color: rgb(241, 241, 241);
+    text-align: right;
+    font-size: 14px;
+    font-family: 'Times New Roman', Times, serif;
+  }
+footer{
+  height: 10%;
+  background-color: white;
+}
+  #auth_tab_content{
+    clear: both;
+    margin-right: 3%;
+  }
+#form_input{
+  text-align: right;
+  height: 40px;
+  padding-top:10px ;
+  padding-right: 15px;
+}
+
+#form_label{
+  font-size: 20px ;
+  padding-top: 6%;
+}
+
+.switch{
+  position: relative;
+  right: 90%;
+}
+
+.validity{
+  text-align: right;
+  height: 40px;
+  padding-top:10px ;
+  padding-right: 25px;
+}
