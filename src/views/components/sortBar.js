@@ -21,37 +21,37 @@ class sortBar extends React.Component {
     <div id="sorting_option">
       <Nav tabs>
           <SortBar_navLink 
-          number={1}
+          number="1"
           option="-Likes"
           title="محبوب ترین"/>
 
           <SortBar_navLink 
-          number={2}
+          number="2"
           option="-StartTime"
           title="زودترین زمان شروع"/>
 
           <SortBar_navLink 
-          number={3}
+          number="3"
           option="-EndTime"
           title="دیرترین زمان پایان"/>
 
           <SortBar_navLink 
-          number={4}
+          number="4"
           option="-Hardness"
           title="آسان ترین"/>
 
           <SortBar_navLink 
-          number={5}
+          number="5"
           option="Hardness"
           title="سخت ترین"/>
 
           <SortBar_navLink 
-          number={6}
+          number="6"
           option="-Time"
           title="کوتاه ترین زمان بازدید"/>
 
           <SortBar_navLink 
-          number={7}
+          number="7"
           option="title"
           title="حروف الفبا"/>
       </Nav>

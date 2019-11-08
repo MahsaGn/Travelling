@@ -13,8 +13,8 @@ class sortPlace extends React.Component{
         let activeTab = localStorage.getItem('activeTab')
         let option = localStorage.getItem('option')
       this.state = {
-       activeTab:activeTab?activeTab:1,
-       option:option? option:"",
+       activeTab:activeTab!=undefined ?activeTab:1,
+       option:option!=undefined? option:"",
        info:""
      };
    }
