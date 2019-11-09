@@ -1,7 +1,8 @@
 import React from 'react'
 import 'bootstrap/dist/css/bootstrap.css';
 import {connect} from 'react-redux'
-import { ListGroup } from 'reactstrap';
+import {Link} from 'react-router-dom'
+import { ListGroup,Button } from 'reactstrap';
 import Profile_item from '../components/profile_item'
 import axios from 'axios'
 import '../styles/profile.css'
@@ -41,6 +42,8 @@ class userProfile extends React.Component{
                 <Profile_item title ="سفرنامه" val={this.props.data.itinerary}/>
                     {this.state.ifIsLeader}
                 </ListGroup>
+                <Link to="/addPlaceForLeader"><Button>اضافه کردن مکان</Button></Link>
+                
             </dev>
         );
     }
