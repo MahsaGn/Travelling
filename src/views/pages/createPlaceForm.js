@@ -40,7 +40,7 @@ class createPlace extends React.Component{
         e.preventDefault();
         await this.props.createPlace(this.state.place_info)
         if(this.props.isCreated)
-          return window.location.replace('/')
+          ;//return window.location.replace('/')
         else{
           e.preventDefault()
           alert("مکان مورد نظر قبلا در سایت ذخیره شده ست")
@@ -126,15 +126,15 @@ class createPlace extends React.Component{
         </FormGroup>
         <FormGroup className="place_input">
           <Label id="place_label">1بارگذاری عکس</Label>
-          <input onChange={this.updateStateImage} value={this.state.place_info.image1} type="file" name="image1" id="place_input"/>
+          <input onChange={this.updateStateImage} type="file" name="image1" id="place_input"/>
         </FormGroup>
         <FormGroup className="place_input">
           <Label id="place_label">2بارگذاری عکس</Label>
-          <input onChange={this.updateStateImage} value={this.state.place_info.image2}  type="file" name="image2" id="place_input"/>
+          <input onChange={this.updateStateImage} type="file" name="image2" id="place_input"/>
         </FormGroup>
         <FormGroup className="place_input">
           <Label id="place_label">3بارگذاری عکس</Label>
-          <input onChange={this.updateStateImage} value={this.state.place_info.image3}  type="file" name="image3" id="place_input"/>
+          <input onChange={this.updateStateImage}  type="file" name="image3" id="place_input"/>
         </FormGroup>
           <Button id="placeform_submit">ثبت</Button>
       </Form>

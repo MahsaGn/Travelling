@@ -1,4 +1,5 @@
 import axios from 'axios'
+import FormData from 'form-data'
 class createPlaceApi{
 static createPlace =async (place_info) => {
     console.log("in api createPlace",place_info)
@@ -19,6 +20,7 @@ static createPlace =async (place_info) => {
     formData.append('image3', place_info.image3)
     console.log(formData.values())
     try{
+        console.log("-------------------------",formData)
         let x = await axios.post('http://localhost:8000/api/Places/CreatePlace/',formData  )
         return true
     }catch{
