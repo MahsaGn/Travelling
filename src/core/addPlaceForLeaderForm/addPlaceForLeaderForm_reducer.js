@@ -1,22 +1,39 @@
 
 const initialState = {
-    place_info:"",
-    placeLoaded:false
+    allPlace_info:"",
+    allPlaceLoaded:false,
+    placeAddedForLeader:false,
+    choosedPlace:""
 }
 
 export const addPlaceForLeader_reducer = (state = initialState , action) => {
     console.log("in addPlaceForLeader reducer",action)
     switch(action.type){
-        case "َFETCHALLPLACE_SUCCESS":
+        case "FETCHALLPLACE_SUCCESS":
             return {
                 ...state,
-                placeLoaded:true,
-                place_info:action.data
+                allPlaceLoaded:true,
+                allPlace_info:action.data
             }
         case "FETCHALLPLACE_FAILURE" :
             return {
                 ...state,
-                placeLoaded:false
+                allPlaceLoaded:false
+            }
+        case "ADD_PLACEFORLEADER_SUCCESS":
+            return{
+                ...state,
+                placeAddedForLeader:true
+            }
+        case "ADD_PLACEFORLEADER_FAILURE":
+            return{
+                ...state,
+                placeAddedForLeader:false
+            }
+        case "CHOOSED_PLACE":
+            return{
+                ...state,
+                choosedPlace:action.choosedPlace
             }
         default:
             return state

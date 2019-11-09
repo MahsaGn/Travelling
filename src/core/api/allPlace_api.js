@@ -14,11 +14,12 @@ static allPlace =async () => {
         }
 };
 static addPlaceForLeader =async () => {
-  console.log("in api all places")
+  let choosedPlace = store.getState().addPlaceForLeader_reducer.choosedPlace
+  console.log("in api all places",choosedPlace)
   try{
     let x = await axios.post(`http://localhost:8000/api/LeadPlace/`,
     {
-      id:"1"
+      id:choosedPlace.id
     }
     ,{
       headers:
@@ -36,4 +37,4 @@ static addPlaceForLeader =async () => {
       }
 };
 
-}export default allPlace_api
+}export default connect()(allPlace_api)
