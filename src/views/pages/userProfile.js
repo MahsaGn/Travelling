@@ -32,7 +32,7 @@ class userProfile extends React.Component{
     render(){
         return(
             <dev id="profilePage">
-                <img id="profileImage" src={this.props.image? this.props.image : this.state.image} />
+                <img id="profileImage" src={this.props.data.avatar? this.props.data.avatar : this.state.image} />
                 <br/>
                 <h1 id="h1">{this.props.username}</h1>
                 <ListGroup id="items">
