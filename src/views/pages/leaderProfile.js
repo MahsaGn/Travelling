@@ -3,8 +3,10 @@ import 'bootstrap/dist/css/bootstrap.css';
 import {connect} from 'react-redux'
 import { ListGroup } from 'reactstrap';
 import Profile_item from '../components/profile_item'
+import PlaceCard from '../components/placeCard'
 import '../styles/profile.css'
 import * as leaderProfileAction from '../../core/leaderProfile/leaderProfile_action'
+import placeCard from '../components/placeCard';
 
 class leaderProfile extends React.Component{
     constructor(props){
@@ -17,6 +19,7 @@ class leaderProfile extends React.Component{
         console.log("in handel submit")
         await this.props.userProfile()
         console.log("leader data is:",this.props.data)
+        }
       }
 
     render(){
