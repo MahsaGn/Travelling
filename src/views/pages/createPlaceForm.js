@@ -40,10 +40,10 @@ class createPlace extends React.Component{
         e.preventDefault();
         await this.props.createPlace(this.state.place_info)
         if(this.props.isCreated)
-          ;//return window.location.replace('/')
+          return window.location.replace('/')
         else{
           e.preventDefault()
-          alert("مکان مورد نظر قبلا در سایت ذخیره شده ست")
+          alert("برای اضافه کردن مکان ابتدا باید بیدر باشید")
         }
   
     }
