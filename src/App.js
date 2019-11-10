@@ -1,3 +1,4 @@
+
 import React, { Profiler } from 'react';
 import {BrowserRouter, Route} from "react-router-dom";
 import Home from './views/pages/homePage'
@@ -27,4 +28,3 @@ const App=(
 )
 
 export default App;
-

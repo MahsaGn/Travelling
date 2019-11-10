@@ -15,16 +15,18 @@ static allPlace =async () => {
 };
 static addPlaceForLeader =async () => {
   let choosedPlace = store.getState().addPlaceForLeader_reducer.choosedPlace
+  let access =store.getState().login_reducer.access
+        console.log("access is ",access)
   console.log("in api all places",choosedPlace)
   try{
     let x = await axios.post(`http://localhost:8000/api/LeadPlace/`,
     {
-      id:choosedPlace.id
+      placeID:choosedPlace.id
     }
     ,{
       headers:
        {
-         "Authorization" : `Bearer ${localStorage.access}`,
+         "Authorization" : `Bearer ${access}`,
          'Accept' : 'application/json',
          'Content-Type': 'application/json'
      }
