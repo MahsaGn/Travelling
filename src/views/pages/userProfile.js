@@ -3,6 +3,7 @@ import 'bootstrap/dist/css/bootstrap.css';
 import {connect} from 'react-redux'
 import {Link} from 'react-router-dom'
 import { ListGroup,Button } from 'reactstrap';
+import PlaceCard from '../components/placeCard';
 import Profile_item from '../components/profile_item'
 import axios from 'axios'
 import '../styles/profile.css'
@@ -24,19 +25,22 @@ class userProfile extends React.Component{
         console.log("leader data is:",this.props.data)
         
         if(this.props.is_leader){
-        let places = this.props.data.places.map((place)=>
-            <placeCard src={place.image1} title={place.title} id={place.id}/>
+            console.log("places are",this.props.data.place)
+        let placess = this.props.data.place.map((place)=>
+            <PlaceCard src={place.image1} title={place.title} id={place.id}/>
         )
+        console.log(placess)
+
           this.setState({
               ifIsLeader:[
                     <Profile_item title ="اتوموبیل" val={this.props.data.has_car?"بله":"خیر"}/>,
                     <Profile_item title ="ظرفیت ماشین" val={this.props.data.car_capacity}/>,
-                    <Profile_item title="مدل ماشین" val={this.props.data.car_model}/>,
-                    <br/>,
-                    <label>مکان هایی که لیدر آن هستید</label>,
-                    {places}
-                ]})
+                    <Profile_item title="مدل ماشین" val={this.props.data.car_model}/>
+                ],
+            places:placess
+          })
             }
+        console.log(this.state.placees)
       }
 
     render(){
@@ -51,6 +55,9 @@ class userProfile extends React.Component{
                 <Profile_item title ="سفرنامه" val={this.props.data.itinerary}/>
                     {this.state.ifIsLeader}
                 </ListGroup>
+                <br/>
+            <label>مکان هایی که لیدر آن هستید</label>
+            {this.state.places}
                 <Link to="/addPlaceForLeader"><Button>اضافه کردن مکان</Button></Link>
                 
             </dev>
