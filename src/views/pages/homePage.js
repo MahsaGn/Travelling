@@ -4,8 +4,8 @@ import '../styles/homePage.css';
 import PlaceCard from '../components/placeCard';
 import * as homePageAction from '../../core/homePage/homePage_action'
 import Header from '../components/header';
+import {Link} from 'react-router-dom'
 import {connect} from 'react-redux'
-
 class homePage extends React.Component {
   state={
     placeCards:[]
@@ -35,6 +35,7 @@ class homePage extends React.Component {
         <div class="row">
           {this.state.placeCards}
         </div>
+        <Link to="/addPlaceForLeaderForm">برای لیدر شدن </Link>
       </div>
     );
   };

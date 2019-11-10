@@ -14,7 +14,7 @@ static userProfile =async () => {
           'Accept' : 'application/json',
           'Content-Type': 'application/json'
       }})
-        console.log(x);  
+        console.log("prfile data",x);  
         return x.data
         }catch{
             console.log("wrong userProfile")

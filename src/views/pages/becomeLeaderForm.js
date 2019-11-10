@@ -13,7 +13,9 @@ class becomeLeaderForm extends React.Component{
             nationalID:"",
             has_car:false,
             car_capacity:"",
-            car_model:""
+            car_model:"",
+            age:"",
+            gender:0
         }
     };
       this.handleSubmit=this.handleSubmit.bind(this);
@@ -27,6 +29,7 @@ class becomeLeaderForm extends React.Component{
       console.log(localStorage.access)
       e.preventDefault();
       await this.props.becomeLeader(this.state.leader_info)
+      console.log(this.props.isLeader)
       if(this.props.isLeader)
          return window.location.replace('/')
       else
@@ -49,15 +52,17 @@ class becomeLeaderForm extends React.Component{
 
     handleChange_hasCar(){
       let curentSt = this.state.leader_info
-    curentSt["has_car"] = !curentSt["has_car"]
+      console.log("cuurent is",curentSt)
+    if(curentSt["has_car"]==true)
+      curentSt["has_car"]=false
+    else
+      curentSt["has_car"]=true
     this.setState({
       leader_info:curentSt
     })
     }
  
     render(){
-      console.log("has car:",this.state.has_car)
-
         const model = this.state.leader_info.has_car ?<Input  name="car_model" value={this.state.leader_info.car_model} onChange={this.handleChange} type="text"/>:
         <Input  name="car_model" disabled value={this.state.leader_info.car_model} onChange={this.handleChange} type="text"/>
         const capacity = this.state.leader_info.has_car ? <Input  name="car_capacity" value={this.state.leader_info.car_capacity} onChange={this.handleChangeNum} type="number"/>:
@@ -67,6 +72,17 @@ class becomeLeaderForm extends React.Component{
       <FormGroup className="mb-2 mr-sm-2 mb-sm-0">
         <Label id="form_label" className="mr-sm-2">کد ملی</Label>
         <Input name="nationalID" value={this.state.leader_info.nationalID} onChange={this.handleChangeNum} pattern="[0-9]{*}" type="number" id="form_input"/>
+      </FormGroup>
+      <FormGroup className="mb-2 mr-sm-2 mb-sm-0">
+        <Label id="form_label" className="mr-sm-2">جنسیت</Label>
+        <Input type="select" onChange={this.handleChange} value={this.state.leader_info.gender}  name="gender" id="form_input">
+            <option>خانم</option>
+            <option>آقا</option>
+          </Input>
+      </FormGroup>
+      <FormGroup className="mb-2 mr-sm-2 mb-sm-0">
+        <Label id="form_label" className="mr-sm-2">سن</Label>
+        <Input name="age" value={this.state.leader_info.age} onChange={this.handleChangeNum} pattern="[0-9]{*}" type="number" id="form_input"/>
       </FormGroup>
       <FormGroup className="mb-2 mr-sm-2 mb-sm-0">
         <Label id="form_label">آیا برای گردشگری درصورت درخواست مالک خودرو میباشید؟</Label>
