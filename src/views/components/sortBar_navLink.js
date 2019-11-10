@@ -12,7 +12,10 @@ class sortBar_navLik extends React.Component{
     }
     sortPlace =async ()=>{
         //window.location.replace('/')
+        localStorage.setItem("activeTab",this.props.number)
+        localStorage.setItem("option",this.props.option)
         await this.props.toggle(this.props.number,this.props.option)
+        window.location.replace(window.location.href)
     }
     render(){
         console.log( this.props.activeTab,this.props.number )
