@@ -1,8 +1,11 @@
 import axios from 'axios'
 import FormData from 'form-data'
+import store from '../../store.js'
 class createPlaceApi{
 static createPlace =async (place_info) => {
     console.log("in api createPlace",place_info)
+    let access =store.getState().login_reducer.access
+        console.log("access is ",access)
     var formData = new FormData()
     formData.append('title', place_info.title)
     formData.append('Description',place_info.descriptions)
@@ -21,7 +24,15 @@ static createPlace =async (place_info) => {
     console.log(formData.values())
     try{
         console.log("-------------------------",formData)
-        let x = await axios.post('http://localhost:8000/api/Places/CreatePlace/',formData  )
+        let x = await axios.post('http://localhost:8000/api/Places/CreatePlace/',formData
+        ,{
+            headers:
+             {
+               "Authorization" : `Bearer ${access}`,
+               'Accept' : 'application/json',
+               'Content-Type': 'application/json'
+           }
+            }  )
         return true
     }catch{
         console.log("wrong createPlace")
