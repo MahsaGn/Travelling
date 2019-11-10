@@ -2,8 +2,9 @@ import React from 'react'
 import PlaceCard from '../components/placeCard'
 import {connect} from 'react-redux'
 import Header from '../components/header'
-import { TabContent, TabPane } from 'reactstrap';
+import { TabContent, TabPane,Button } from 'reactstrap';
 import SortPlaceBar from '../components/sortBar'
+import '../styles/style.css'
 import searchPlace from '../components/searchPlaceBar'
 import * as searchedPlaceAction  from '../../core/searchedPlace/searchedPlace_action';
 import { stat } from 'fs';
@@ -59,9 +60,13 @@ class searchedPlace extends React.Component{
         return(
             <div>
                 <Header/>
-                <SortPlaceBar activeTab ={this.state.activeTab} toggle={this.toggle}/>
-                <input  onChange={this.handleChange} value={this.state.searchedVal} type="text"/>
-                <button onClick={this.onSearchClick}>جست و جو</button>
+                <div className="searching_option">
+                    <SortPlaceBar activeTab ={this.state.activeTab} toggle={this.toggle}/>
+                    <div className="searchBar_searchPlace">
+                        <input className="search_input" onChange={this.handleChange} value={this.state.searchedVal} type="text"/>
+                        <Button className="search_button"onClick={this.onSearchClick}>جست و جو</Button>
+                    </div>
+                </div>
                 <TabContent activeTab={this.state.activeTab}>
                     <TabContent tabId={this.state.activeTab}/>
                     <TabPane id="sort_option" tabId={this.state.activeTab}>
