@@ -107,3 +107,62 @@ body{
   position: relative;
   left:2% ;
 }
+
+#sort_button{
+  float: right;
+  color:  black;
+  border: 0px;
+  margin-top:10px;
+  margin-left: 1px;
+  margin-right: 1px;
+  padding: 5px;
+  width: fit-content;
+  background-color: rgba(210, 105, 30, 0);
+  border-left:1px solid rgb(209, 209, 209) ;
+}
+
+#sort_label{
+  margin-top: 10px;
+  float: right;
+  margin-left: 20px;
+}
+.searching_option{
+  background-color: rgb(228, 228, 228);
+
+}
+#sort_option{
+
+  float: right;
+}
+
+.searchBar_searchPlace{
+  float: right;
+  width: 30%;
+}
+  
+#sorting_option{
+  width: 70%;
+  float: left;
+}
+
+.search_button{
+  margin-left: 2%;
+  margin-right: 2%;
+  width: 30%;
+  height:30px;
+  float: left;
+  margin-top:5px;
+  max-width: 120px;
+}
+.search_input{
+  border-radius: 5%;
+  width:65%;
+  float: left;
+  height:30px;
+  margin-top:5px ;
+}
+
+#searchBar_searchPlace{
+  float: right;
+  width: 80%;
+}
