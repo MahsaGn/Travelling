@@ -7,6 +7,7 @@ import PlaceCard from '../components/placeCard';
 import Profile_item from '../components/profile_item'
 import axios from 'axios'
 import '../styles/profile.css'
+import Header from '../components/header';
 import * as userProfileAction from '../../core/userProfile/userProfile_action'
 
 class userProfile extends React.Component{
@@ -25,14 +26,24 @@ class userProfile extends React.Component{
         console.log("leader data is:",this.props.data)
         
         if(this.props.is_leader){
+            let placess = ""
             console.log("places are",this.props.data.place)
-        let placess = this.props.data.place.map((place)=>
-            <PlaceCard src={place.image1} title={place.title} id={place.id}/>
-        )
+            if(this.props.data.place[0]!=undefined)
+            {
+                placess = this.props.data.place.map((place)=>
+                    <PlaceCard src={place.image1} title={place.title} id={place.id}/>)
+            }
+            else{
+                placess = <p>هنوز هیچ مکانی ثبت نشده است</p>
+            }
+            
+
         console.log(placess)
 
           this.setState({
               ifIsLeader:[
+                    <Profile_item title ="جنیست" val={this.props.data.gender?"خانم":"اقا"}/>,
+                    <Profile_item title ="سن" val={this.props.data.age}/>,
                     <Profile_item title ="اتوموبیل" val={this.props.data.has_car?"بله":"خیر"}/>,
                     <Profile_item title ="ظرفیت ماشین" val={this.props.data.car_capacity}/>,
                     <Profile_item title="مدل ماشین" val={this.props.data.car_model}/>
@@ -46,9 +57,10 @@ class userProfile extends React.Component{
     render(){
         return(
             <dev id="profilePage">
+                <Header/>
                 <img id="profileImage" src={this.props.data.avatar? this.props.data.avatar : this.state.image} />
                 <br/>
-                <h1 id="h1">{this.props.username}</h1>
+                <h1 id="h1">{this.props.data.username}</h1>
                 <ListGroup id="items">
                 <Profile_item title = "نام" val={this.props.data.first_name}/>
                 <Profile_item  title ="نام خانوادگی" val={this.props.data.last_name }/>
@@ -56,9 +68,11 @@ class userProfile extends React.Component{
                     {this.state.ifIsLeader}
                 </ListGroup>
                 <br/>
-            <label>مکان هایی که لیدر آن هستید</label>
+            {this.props.data.is_leader?<label>مکان هایی که لیدر آن هستید</label>:null}
+
             {this.state.places}
-                <Link to="/addPlaceForLeader"><Button>اضافه کردن مکان</Button></Link>
+            <br/>
+            {this.props.data.is_leader? null: <Link to="/addPlaceForLeaderForm"><Button>اضافه کردن مکان</Button></Link>}
                 
             </dev>
         );
