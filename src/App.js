@@ -11,6 +11,7 @@ import Profile from './views/pages/userProfile'
 import becomeLeaderForm from './views/pages/becomeLeaderForm';
 import {Provider} from 'react-redux'
 import store from './store'
+import AddTravelogu from './views/pages/addTravelogu'
 
 const App=(
       <Provider store={store}>
@@ -18,6 +19,7 @@ const App=(
           <Route exact path='/' component={Home}/>
           <Route exact path='/addPlaceForLeaderForm' component={AddPlaceForLeader}/>
           <Route path='/place/:id' component={Place} />
+          <Route path='/addTravelogu' component={AddTravelogu} />
           <Route path='/places/:searchedVal' component={SearchedPlaces} />
           <Route path='/createNewPlace' component={CreatePlaceForm} />
           <Route path='/authentication' component={Auth}/>

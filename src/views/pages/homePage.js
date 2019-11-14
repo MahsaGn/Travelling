@@ -36,6 +36,8 @@ class homePage extends React.Component {
           {this.state.placeCards}
         </div>
         <Link to="/addPlaceForLeaderForm">برای لیدر شدن </Link>
+        <br/>
+        <Link to="/addTravelogu">برای سقرنامه اضافه کردن </Link>
       </div>
     );
   };
