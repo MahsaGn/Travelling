@@ -1,5 +1,4 @@
 import userProfile_api from "../api/userProfile_api";
-import { stat } from "fs";
 
 export const userProfile_action_types = {
     GETPROFILE_SUCCESS: 'GETPROFILE_SUCCESS',
