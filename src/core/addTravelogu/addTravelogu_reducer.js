@@ -1,8 +1,7 @@
 
 const initialState = {
     choosedPlaces : [],
-    isTraveloguAdded=false,
-
+    isTraveloguAdded:false
 }
 
 export const addTravelogu_reducer = (state = initialState , action) => {

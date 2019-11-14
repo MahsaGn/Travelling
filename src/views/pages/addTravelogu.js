@@ -3,7 +3,8 @@ import {connect} from 'react-redux'
 import {Button, Form, FormGroup, Label, Input } from 'reactstrap';
 import 'bootstrap/dist/css/bootstrap.css';
 import '../styles/login_signupForm.css'
-import * as addTraveloguAction from '../../core/becomeLeader/becomeLeader_action'
+import * as addTraveloguAction from '../../core/addTravelogu/addTravelogu_action'
+import * as allPlaces from '../../core/allPlaces/allPlaces_action'
 
 class addTravelogu extends React.Component{
     constructor(props){
@@ -100,8 +101,8 @@ class addTravelogu extends React.Component{
 const mapStateToProps = (state) => {
     
   return{
-    allPlaceInfo: state.addTravelogu_reducer.allPlace_info,
-    allPlaceLoaded : state.addTravelogu_reducer.allPlaceLoaded,
+    allPlaceInfo: state.allPlaces_reducer.allPlace_info,
+    allPlaceLoaded : state.allPlaces_reducer.allPlaceLoaded,
     isTraveloguAdded : state.addTravelogu_reducer.isTraveloguAdded
   }
 }
@@ -109,7 +110,7 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
   return{
     addTravelogu : (travelogu_info) => dispatch(addTraveloguAction.addTravelogu(travelogu_info)),
-    allPlace : () => dispatch(addTraveloguAction.allPlace()),
+    allPlace : () => dispatch(allPlaces.allPlace()),
   }
 }
 

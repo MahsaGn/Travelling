@@ -7,6 +7,8 @@ import {place_reducer} from './core/place/place_reducer'
 import {addPlaceForLeader_reducer} from './core/addPlaceForLeaderForm/addPlaceForLeaderForm_reducer'
 import {homePage_reducer} from './core/homePage/homePage_reducer'
 import {searchedPlace_reducer} from './core/searchedPlace/searchedPlace_reducer'
+import {allPlaces_reducer} from './core/allPlaces/allPlaces_reducer'
+import {addTravelogu_reducer} from './core/addTravelogu/addTravelogu_reducer'
 import {combineReducers,createStore,applyMiddleware,compose} from 'redux'
 import thunk from 'redux-thunk';
 import { stat } from 'fs'
@@ -20,7 +22,9 @@ const allReducers = combineReducers({
   place_reducer,
   searchedPlace_reducer,
   homePage_reducer,
-  addPlaceForLeader_reducer
+  addPlaceForLeader_reducer,
+  allPlaces_reducer,
+  addTravelogu_reducer
 })
 function saveToLocalStorage(state){
   try{

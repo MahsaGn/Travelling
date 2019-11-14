@@ -6,6 +6,7 @@ import Header from '../components/header';
 import {connect} from 'react-redux'
 
 import * as addPlaceForLeaderAction from '../../core/addPlaceForLeaderForm/addPlaceForLeaderForm_action'
+import * as allPlaceAction from '../../core/allPlaces/allPlaces_action'
 
 
 class addPlaceForLeader extends React.Component{
@@ -80,15 +81,15 @@ class addPlaceForLeader extends React.Component{
 const mapStateToProps = (state) => {
     
     return{
-        allPlaceInfo: state.addPlaceForLeader_reducer.allPlace_info,
-        allPlaceLoaded : state.addPlaceForLeader_reducer.allPlaceLoaded,
+        allPlaceInfo: state.allPlaces_reducer.allPlace_info,
+        allPlaceLoaded : state.allPlaces_reducer.allPlaceLoaded,
         placeAddedForLeader : state.addPlaceForLeader_reducer.placeAddedForLeader
     }
   }
   
   const mapDispatchToProps = (dispatch) => {
     return{
-        allPlace : () => dispatch(addPlaceForLeaderAction.allPlace()),
+        allPlace : () => dispatch(allPlaceAction.allPlace()),
         addPlaceForLeader: (choosedPlace) =>dispatch(addPlaceForLeaderAction.addPlaceForLeader(choosedPlace))
     }
   }

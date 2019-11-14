@@ -13,30 +13,5 @@ static allPlace =async () => {
             return false
         }
 };
-static addPlaceForLeader =async () => {
-  let choosedPlace = store.getState().addPlaceForLeader_reducer.choosedPlace
-  let access =store.getState().login_reducer.access
-        console.log("access is ",access)
-  console.log("in api all places",choosedPlace)
-  try{
-    let x = await axios.post(`http://localhost:8000/api/LeadPlace/`,
-    {
-      placeID:choosedPlace.id
-    }
-    ,{
-      headers:
-       {
-         "Authorization" : `Bearer ${access}`,
-         'Accept' : 'application/json',
-         'Content-Type': 'application/json'
-     }
-    })
-      console.log(x);  
-      return x.data
-      }catch{
-          console.log("wrong all place")
-          return false
-      }
-};
 
 }export default connect()(allPlace_api)
