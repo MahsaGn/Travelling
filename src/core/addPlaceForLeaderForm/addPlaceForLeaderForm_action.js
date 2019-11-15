@@ -43,7 +43,7 @@ export const set_choosedPlace =(choosedPlace)=>{
 }
 export const addPlaceForLeader = (choosedPlace) => {
     // type: "place"
-    console.log("choosed place")
+    console.log("choosed place",choosedPlace)
     return async function (dispatch) {
         dispatch(set_choosedPlace(choosedPlace))
         let response = await allPlace_api.addPlaceForLeader()
