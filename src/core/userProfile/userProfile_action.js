@@ -1,5 +1,4 @@
 import userProfile_api from "../api/userProfile_api";
-import { stat } from "fs";
 
 export const userProfile_action_types = {
     GETPROFILE_SUCCESS: 'GETPROFILE_SUCCESS',
@@ -39,7 +38,7 @@ export const userProfile = () => {
             {
                 console.log("in profile action,response is",response)
                 dispatch(userProfile_success(response))
-                if(true)//correct this later
+                if(response.is_leader)//correct this later
                     dispatch(isLeader_success())
             }
      

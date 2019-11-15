@@ -5,7 +5,6 @@ import {Link} from 'react-router-dom'
 import { ListGroup,Button } from 'reactstrap';
 import PlaceCard from '../components/placeCard';
 import Profile_item from '../components/profile_item'
-import axios from 'axios'
 import '../styles/profile.css'
 import Header from '../components/header';
 import * as userProfileAction from '../../core/userProfile/userProfile_action'
@@ -65,6 +64,7 @@ class userProfile extends React.Component{
                 <Profile_item title = "نام" val={this.props.data.first_name}/>
                 <Profile_item  title ="نام خانوادگی" val={this.props.data.last_name }/>
                 <Profile_item title ="سفرنامه" val={this.props.data.itinerary}/>
+                <Profile_item title ="شماره تلفن" val={this.props.data.phone_number}/>
                     {this.state.ifIsLeader}
                 </ListGroup>
                 <br/>
@@ -72,7 +72,7 @@ class userProfile extends React.Component{
 
             {this.state.places}
             <br/>
-            {this.props.data.is_leader? null: <Link to="/addPlaceForLeaderForm"><Button>اضافه کردن مکان</Button></Link>}
+            {this.props.data.is_leader? <Link to="/addPlaceForLeaderForm"><Button>اضافه کردن مکان</Button></Link>:null}
                 
             </dev>
         );
@@ -82,7 +82,6 @@ const mapStateToProps = (state) => {
     
     return{
       is_leader : state.userProfile_reducer.is_leader,
-      has_profileInfo : state.userProfile_reducer.has_profileInfo,
       data : state.userProfile_reducer.profile_info
     }
   }
