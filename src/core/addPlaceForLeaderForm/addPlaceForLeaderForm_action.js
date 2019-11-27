@@ -1,4 +1,5 @@
 import allPlace_api from "../api/allPlace_api";
+import addPlaceForLeader_api from "../api/addPlaceForLeader_api";
 
 export const addPlaceForLeader_action_types = {
     ADD_PLACEFORLEADER_SUCCESS: 'ADD_PLACEFORLEADER_SUCCESS',
@@ -29,10 +30,10 @@ export const set_choosedPlace =(choosedPlace)=>{
 }
 export const addPlaceForLeader = (choosedPlace) => {
     // type: "place"
-    console.log("choosed place")
+    console.log("choosed place",choosedPlace)
     return async function (dispatch) {
         dispatch(set_choosedPlace(choosedPlace))
-        let response = await allPlace_api.addPlaceForLeader()
+        let response = await addPlaceForLeader_api.addPlaceForLeader()
         if(response==false){
             console.log('there was an error with add place fpr leader')
             dispatch(addPlaceForLeader_failure())

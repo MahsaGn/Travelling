@@ -26,7 +26,7 @@ class addPlaceForLeader extends React.Component{
         await this.props.allPlace()
         if(this.props.allPlaceLoaded)
         {
-        let options = this.props.allPlaceInfo.map((place)=><option>{place.id}.{place.title}</option>)
+        let options = this.props.allPlaceInfo.map((place)=><option>{place.id},{place.title}</option>)
             this.setState({
                 places:options,
                 choosedPlace:{
@@ -41,7 +41,6 @@ class addPlaceForLeader extends React.Component{
     async handleSubmit(e) {
         console.log("in handel submit")
         e.preventDefault();
-        alert(e.target.value)
         await this.props.addPlaceForLeader(this.state.choosedPlace)
         if(this.props.placeAddedForLeader)
           return window.location.replace('/')

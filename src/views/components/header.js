@@ -30,7 +30,7 @@ render(){
   <Button variant="outline-primary" className="navbarbutton" >پروفایل</Button>
 </Link>
 <Button variant="outline-primary" className="navbarbutton" onClick={this.Signout}>خروج</Button></div>
-  const beLeader = localStorage.getItem("access")!=null ?<NavLink href="/becomeLeader" className="navlink">!میخوام لیدر شم</NavLink>:null
+  const beLeader = this.props.logged_in!=false ?<NavLink href="/becomeLeader" className="navlink">!میخوام لیدر شم</NavLink>:null
 
 
 return(
