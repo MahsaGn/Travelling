@@ -1,37 +1,41 @@
-import allPLace_api from '../api/allPlace_api'
-export const addPlaceForLeader_action_types = {
-    FETCHALLPLACE_SUCCESS: 'FETCHALLPLACE_SUCCESS',
-    FETCHALLPLACE_FAILURE: 'FETCHALLPLACE_FAILURE',
-    ADD_PLACEFORLEADER_SUCCESS: 'ADD_PLACEFORLEADER_SUCCESS',
-    ADD_PLACEFORLEADER_FAILURE:'ADD_PLACEFORLEADER_FAILURE',
-    CHOOSED_PLACE: 'CHOOSED_PLACE'
+import addTravelogu_api from '../api/addTravelogu_api'
+export const addTravelouge_action_types = {
+    ADDTRAVELOGU_SUCCESS: 'ADDTRAVELOGU_SUCCESS',
+    ADDTRAVELOGU_FAILURE:'ADDTRAVELOGU_FAILURE',
+    TRAVELOGU_INFO: 'TRAVELOGU_INFO'
 }
  
-export const allPlace_success = (data) => {
+export const addTravelouge_success = () => {
     return {
-        type: addPlaceForLeader_action_types.FETCHALLPLACE_SUCCESS,
-        data: data
+        type: addTravelouge_action_types.ADDTRAVELOGU_SUCCESS,
     }
 }  
 
-export const allPlace_failure = () => {
+export const addTravelouge_failure = () => {
     return {
-        type: addPlaceForLeader_action_types.FETCHALLPLACE_FAILURE
+        type: addTravelouge_action_types.ADDTRAVELOGU_FAILURE
     }
-}  
-export const addTravelogu = () => {
+} 
+export const addTravelouge_info=(info) => {
+    return{
+        type:addTravelouge_action_types.TRAVELOGU_INFO,
+        data:info
+    }
+} 
+export const addTravelogu = (travelouge_info) => {
     // type: "place"
-    console.log(" allplace")
+    console.log("in add travelogu")
     return async function (dispatch) {
-        let response = await allPLace_api.allPlace()
+         dispatch(addTravelouge_info(travelouge_info))
+        let response = await addTravelogu_api.addTravelogu()
         if(response==false){
-            console.log('there was an error withall place')
-            dispatch(allPlace_failure())
-            console.log("after reducer allplace ")
+            console.log('there was an error with add travelogu')
+            dispatch(addTravelouge_failure())
+            console.log("after reducer add travelogu ")
         }else
         {
-            console.log("in allplace action,response is",response)
-            dispatch(allPlace_success(response))
+            console.log("in add travelogu action,response is")
+            dispatch(addTravelouge_success())
         }
      
             

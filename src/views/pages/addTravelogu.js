@@ -47,9 +47,13 @@ class addTravelogu extends React.Component{
     async handleSubmit(e) {
       console.log("in handle submite")
       e.preventDefault();
+      let list_placeId = this.state.travelogu_info.choosedPlaces.map(x => x.id)
+      let currents = this.state.travelogu_info
+      currents["choosedPlaces"]=list_placeId
+      this.setState({travelogu_info:currents})
       await this.props.addTravelogu(this.state.travelogu_info)
       if(this.props.isTraveloguAdded)
-         return window.location.replace('/')
+         ;//return window.location.replace('/')
       else
         alert("امکان اضافه کردن سفرنامه نمیباشد، لطفا بعدا امتحان کنید")
   }
@@ -59,7 +63,9 @@ class addTravelogu extends React.Component{
         curentSt[e.target.name] = e.target.value
         this.setState({travelogu_info:curentSt})
     }
+
     handleChangeMultiChoice(selectedItems) {
+      console.log(selectedItems)
       let curentSt = this.state.travelogu_info
         curentSt["choosedPlaces"] = selectedItems
         this.setState({travelogu_info:curentSt})
