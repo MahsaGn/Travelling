@@ -53,7 +53,7 @@ class addTravelogu extends React.Component{
       this.setState({travelogu_info:currents})
       await this.props.addTravelogu(this.state.travelogu_info)
       if(this.props.isTraveloguAdded)
-         ;//return window.location.replace('/')
+         return window.location.replace('/')
       else
         alert("امکان اضافه کردن سفرنامه نمیباشد، لطفا بعدا امتحان کنید")
   }
