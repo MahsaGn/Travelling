@@ -14,4 +14,14 @@ static place =async () => {
         }
 };
 
+static palce_travellouges=async()=>{
+  try{
+    let x = await axios.get(`http://127.0.0.1:8000/api/Places/UniquePlace/?search=${store.getState().place_reducer.place_id}`)
+      console.log(x);  
+      return x.data
+      }catch{
+          console.log("wrong travelouges place")
+          return false
+      }
+}
 }export default connect()(place_api)
