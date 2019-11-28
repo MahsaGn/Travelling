@@ -1,7 +1,7 @@
 
 const initialState = {
     placeLoaded : false,
-    placeTravellougeLoaded=false,
+    placeTravellougeLoaded:false,
     leadersLeaded:false,
     place_info:"",
     leaders_info:"",

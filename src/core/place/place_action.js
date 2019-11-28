@@ -36,7 +36,7 @@ export const place_travellouges_success=(data)=>{
     }
 }
 
-export const place_travellouges_failue=()=>{
+export const place_travellouges_failure=()=>{
     return{
         type:place_action_types.PLACE_TRAVELLOUGE_FAILURE
     }
