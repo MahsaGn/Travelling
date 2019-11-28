@@ -12,7 +12,7 @@ static addTravelogu =async () => {
     formData.append(`places[${index}]`,x)
     
   });
-    formData.append('title', "a")
+    formData.append('title', travelouge_info.title)
     formData.append('description',travelouge_info.text)
     formData.append('image3', travelouge_info.image3)
     formData.append('image1', travelouge_info.image1)
