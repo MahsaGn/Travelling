@@ -166,3 +166,13 @@ body{
   float: right;
   width: 80%;
 }
+
+#travellouge_content{
+  float: right;
+  width:70%;
+  margin-right: 2%;
+}
+#travellouge_images{
+  float: right;
+  width:28%
+}
