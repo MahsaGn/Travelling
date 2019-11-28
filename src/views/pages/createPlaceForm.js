@@ -136,7 +136,7 @@ class createPlace extends React.Component{
           <Label id="place_label">3بارگذاری عکس</Label>
           <input onChange={this.updateStateImage}  type="file" name="image3" id="place_input"/>
         </FormGroup>
-          <Button id="placeform_submit">ثبت</Button>
+          <Button onClick={this.handleSubmit} id="placeform_submit">ثبت</Button>
       </Form>
       </div>
         );
