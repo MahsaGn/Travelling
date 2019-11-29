@@ -3,6 +3,7 @@ import Header from '../components/header'
 import {connect} from 'react-redux'
 import * as travellougeAction from '../../core/travellouge/travellouge_action'
 import { from } from 'rxjs';
+import '../styles/style.css'
 
 class Travellouge extends React.Component{
     constructor(props){
@@ -21,10 +22,12 @@ class Travellouge extends React.Component{
                 <Header/>
                 <div id="travellouge">
                     <div id="travellouge_content">
+                        <p id="travellouge_content_title_text">: موضوع</p>
                         <h3 id="travellouge_content_title">{this.props.info.title}</h3>
+                        <br/><br/><br/>
                         <p id="travellouge_content_text">{this.props.info.description}</p>
                     </div>
-                    <div id="travellouge_images">
+                    <div id="travellouge_images_div">
                         <img id="travellouge_image" src={this.props.info.image1}/>
                         <img id="travellouge_image" src={this.props.info.image2}/>
                         <img id="travellouge_image" src={this.props.info.image3}/>

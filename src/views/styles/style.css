@@ -171,8 +171,38 @@ body{
   float: right;
   width:70%;
   margin-right: 2%;
+  padding:5px;
+  padding-right: 5px;
+
 }
-#travellouge_images{
+
+#travellouge_content_title{
+  margin-right: 5px;
   float: right;
-  width:28%
+}
+
+#travellouge_content_title_text{
+  color: gray;
+  float: right;
+}
+
+#travellouge_content_text{
+  clear: both;
+  margin-right: 5px;
+  font-size: 16px;
+}
+
+#travellouge_images_div{
+  float: right;
+  width:28%;
+  padding: 3px;
+
+}
+
+#travellouge_image{
+  display:inline-block;
+  clear: both;
+  width:98%;
+  height: 28vh;
+  margin-bottom: 10px;
 }
