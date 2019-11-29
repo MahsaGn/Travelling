@@ -6,6 +6,7 @@ import {userProfile_reducer} from '../userProfile/userProfile_reducer'
 import {place_reducer} from '../place/place_reducer'
 import {homePage_reducer} from '../homePage/homePage_reducer'
 import {searchedPlace_reducer} from '../searchedPlace/searchedPlace_reducer'
+import {travellouge_reducer} from '../travellouge/travellouge_reducer'
 import {combineReducers,createStore,applyMiddleware,compose} from 'redux'
 import thunk from 'redux-thunk';
 import { stat } from 'fs'
@@ -18,7 +19,8 @@ const allReducers = combineReducers({
   userProfile_reducer,
   place_reducer,
   searchedPlace_reducer,
-  homePage_reducer
+  homePage_reducer,
+  travellouge_reducer
 })
 function saveToLocalStorage(state){
   try{

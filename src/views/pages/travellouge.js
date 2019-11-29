@@ -1,15 +1,19 @@
 import React from 'react'
 import Header from '../components/header'
-import * as travellougeAction from '../../core/sortPlace/sortPlace_action'
+import {connect} from 'react-redux'
+import * as travellougeAction from '../../core/travellouge/travellouge_action'
+import { from } from 'rxjs';
 
 class Travellouge extends React.Component{
-    constructor(){
-        super();
+    constructor(props){
+        super(props);
     }
-    componentWillMount(){
+    async componentWillMount(){
+        console.log("hiiii")
         let id = window.location.pathname.split('/')[2]
         console.log("travellouge id is ",id)
-        this.props.travellouge(id)
+        await this.props.travellouge(id)
+        console.log("after get methon travellouge")
     }
     render(){
         return(

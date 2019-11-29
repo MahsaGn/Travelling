@@ -29,18 +29,18 @@ export const travellouge_id = (id) => {
 
 export const travellouge = (id) => {
     // type: "travellouge"
-    console.log("travellouge")
+    console.log("in travellouge action ",id)
     return async function (dispatch) {
         dispatch(travellouge_id(id))
         let response = await travellouge_api.travellouge()
         if(response==false){
             console.log('there was an error with travellouge')
-            dispatch(place_failure())
+            dispatch(travellouge_failure())
             console.log("after reducer travellouge")
         }else
         {
             console.log("in travellouge action,response is",response)
-            dispatch(travellouge_success(response[0]))
+            dispatch(travellouge_success(response))
         }
      
             

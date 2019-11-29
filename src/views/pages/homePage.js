@@ -38,6 +38,8 @@ class homePage extends React.Component {
         <Link to="/addPlaceForLeaderForm">برای لیدر شدن </Link>
         <br/>
         <Link to="/addTravelogu">برای سقرنامه اضافه کردن </Link>
+        <br/>
+        <Link to="/travellouge/11">برای سقرنامه اضافه کردن </Link>
       </div>
     );
   };

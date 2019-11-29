@@ -1,12 +1,12 @@
 
 const initialState = {
     travellouge_info:"",
-    travelouge_id:"",
+    travellouge_id:"",
     ifTravellouge:false
 }
 
-export const place_reducer = (state = initialState , action) => {
-    console.log("in place reducer",action)
+export const travellouge_reducer = (state = initialState , action) => {
+    console.log("in travellouge reducer",action)
     switch(action.type){
         case "TRAVELLOUGEINFO_SUCCESS":
             return {
@@ -22,7 +22,7 @@ export const place_reducer = (state = initialState , action) => {
         case "TRAVELLOUGE_ID":
             return {
                 ...state,
-                travelouge_id:action.id
+                travellouge_id:action.id
             }
         default:
             return state
