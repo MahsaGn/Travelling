@@ -23,7 +23,7 @@ class userProfile extends React.Component{
         if(this.props.is_leader)
           this.setState({
               ifIsLeader:[
-                    <Profile_item title ="اتوموبیل" val={this.props.data.has_car?"بله":"خیر"}/>,
+                    <Profile_item title ="اتومبیل" val={this.props.data.has_car?"بله":"خیر"}/>,
                     <Profile_item title ="ظرفیت ماشین" val={this.props.data.car_capacity}/>,
                     <Profile_item title="مدل ماشین" val={this.props.data.car_model}/>
                 ]})
