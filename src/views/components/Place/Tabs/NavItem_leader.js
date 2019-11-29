@@ -13,13 +13,13 @@ class NavItem_leader extends React.Component{
       }
     }
     componentWillMount(){
-      Axios.get('url')
-      .then(datas=>{
-        console.log(datas)
-        this.setState({
-          leaders : datas.map((data)=><LeaderCard info={data}/>)
-        })
-      })
+      // Axios.get('url')
+      // .then(datas=>{
+      //   console.log(datas)
+      //   this.setState({
+      //     leaders : datas.map((data)=><LeaderCard info={data}/>)
+      //   })
+      // })
     }
 
     render(){

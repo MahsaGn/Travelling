@@ -26,6 +26,7 @@ export const place_reducer = (state = initialState , action) => {
                 placeLoaded:false
             }
         case "PLACE_TRAVELLOUGE_SUCCESS":
+            console.log("travellouges infos in reducer",action.data)
             return {
                 ...state,
                 placeTravellouges:action.data,
