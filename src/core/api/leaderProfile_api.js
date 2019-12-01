@@ -1,22 +1,26 @@
-import axios from 'axios'
-import store from '../../store.js'
-import {connect} from 'react-redux'
-class leaderProfile_api{
-static leaderProfile =async () => {
-    console.log("in api leaderProfile")
-    let usename = store.getState().leaderProfile_reducer.username
-    try{
-      let x = await axios.get(`http://localhost:8000/api/me/SpecificLeader/search${1}`,{
-        headers:
+import axios from "axios";
+import store from "../../store.js";
+import { connect } from "react-redux";
+class leaderProfile_api {
+  static leaderProfile = async () => {
+    console.log("in api leaderProfile");
+    let usename = store.getState().leaderProfile_reducer.username;
+    try {
+      let x = await axios.get(
+        `http://localhost:8000/api/me/SpecificLeader/search${1}`,
         {
-          'Accept' : 'application/json',
-          'Content-Type': 'application/json'
-      }})
-        console.log(x);  
-        return x.data
-        }catch{
-            console.log("wrong leaderProfile")
-            return false
+          headers: {
+            Accept: "application/json",
+            "Content-Type": "application/json"
+          }
         }
-};
-}export default connect()(leaderProfile_api)
+      );
+      console.log(x);
+      return x.data;
+    } catch {
+      console.log("wrong leaderProfile");
+      return false;
+    }
+  };
+}
+export default connect()(leaderProfile_api);
