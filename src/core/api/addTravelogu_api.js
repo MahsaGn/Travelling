@@ -10,6 +10,7 @@ static addTravelogu =async () => {
   let index =0
   travelouge_info.choosedPlaces.forEach(x => {
     formData.append(`places[${index}]`,x)
+    index = index +1;
     
   });
     formData.append('title', travelouge_info.title)
