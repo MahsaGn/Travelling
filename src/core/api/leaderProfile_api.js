@@ -7,7 +7,7 @@ class leaderProfile_api {
     let usename = store.getState().leaderProfile_reducer.username;
     try {
       let x = await axios.get(
-        `http://localhost:8000/api/me/SpecificLeader/search${1}`,
+        `http://localhost:8000/api/SpecificLeader/search${1}`,
         {
           headers: {
             Accept: "application/json",
