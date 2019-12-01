@@ -14,7 +14,6 @@ class leaderProfile extends React.Component {
     console.log("in handel submit");
     await this.props.leaderProfile();
     console.log("leader data is:", this.props.data);
-    
   }
 
   render() {
