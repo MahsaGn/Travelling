@@ -6,6 +6,7 @@ import CreatePlaceForm from './views/pages/createPlaceForm'
 import SearchedPlaces from './views/pages/searchedPlaces'
 import Auth from './views/pages/login_signupForm'
 import Profile from './views/pages/userProfile'
+import LeaderProfile from './views/pages/leaderProfile'
 import becomeLeaderForm from './views/pages/becomeLeaderForm';
 import {Provider} from 'react-redux'
 import store from './store'
@@ -20,6 +21,7 @@ const App=(
           <Route path='/authentication' component={Auth}/>
           <Route path='/becomeLeader' component={becomeLeaderForm}/>
           <Route path='/profile' component={Profile}/>
+          <Route path='/leaderProfile/:id' component={LeaderProfile}/>
         </BrowserRouter>
       </Provider>
 )

@@ -6,7 +6,7 @@ static leaderProfile =async () => {
     console.log("in api leaderProfile")
     let usename = store.getState().leaderProfile_reducer.username
     try{
-      let x = await axios.get(`http://localhost:8000/api/me/leader/${usename}`,{
+      let x = await axios.get(`http://localhost:8000/api/me/SpecificLeader/search${1}`,{
         headers:
         {
           'Accept' : 'application/json',
