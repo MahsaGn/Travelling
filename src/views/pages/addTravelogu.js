@@ -7,6 +7,7 @@ import * as addTraveloguAction from '../../core/addTravelogu/addTravelogu_action
 import * as allPlaces from '../../core/allPlaces/allPlaces_action'
 import "@kenshooui/react-multi-select/dist/style.css"
 import MultiSelect from "@kenshooui/react-multi-select";
+import Header from '../components/header';
 import 'bootstrap/dist/css/bootstrap.css';
 class addTravelogu extends React.Component{
     constructor(props){
@@ -40,9 +41,6 @@ class addTravelogu extends React.Component{
             this.setState({
                     places:options
                 })
-        }
-        else{
-            alert("هیچ مکانی برای اضافه کردن سفرنامه موجود نمیباشد")
         }
     }
     
@@ -83,6 +81,8 @@ class addTravelogu extends React.Component{
  
     render(){
     return(
+      <div>
+      <Header/>
         <Form id="Form" onSubmit={this.handleSubmit}>
            <FormGroup className="mb-2 mr-sm-2 mb-sm-0">
         <Label id="form_label" className="mr-sm-2">موضوع سفرنامه</Label>
@@ -116,6 +116,7 @@ class addTravelogu extends React.Component{
       </FormGroup>
       <Button id="placeform_submit">ثبت</Button>
     </Form>
+    </div>
     );
 }
 }

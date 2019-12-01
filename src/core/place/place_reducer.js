@@ -1,11 +1,13 @@
 
 const initialState = {
     placeLoaded : false,
+    placeTravellougeLoaded:false,
     leadersLeaded:false,
     place_info:"",
     leaders_info:"",
     place_id:"",
-    slide_info:""
+    slide_info:"",
+    placeTravellouges:""
 }
 
 export const place_reducer = (state = initialState , action) => {
@@ -22,6 +24,18 @@ export const place_reducer = (state = initialState , action) => {
             return {
                 ...state,
                 placeLoaded:false
+            }
+        case "PLACE_TRAVELLOUGE_SUCCESS":
+            console.log("travellouges infos in reducer",action.data)
+            return {
+                ...state,
+                placeTravellouges:action.data,
+                placeTravellougeLoaded:true
+            }
+        case "PLACE_TRAVELLOUGE_FAILURE" :
+            return {
+                ...state,
+                placeTravellougeLoaded:false
             }
         case "PLACE_ID":
             return {

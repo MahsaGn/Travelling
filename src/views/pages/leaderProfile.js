@@ -22,7 +22,6 @@ class leaderProfile extends React.Component{
         await this.props.userProfile()
         console.log("leader data is:",this.props.data)
         }
-      }
 
     render(){
         return(
