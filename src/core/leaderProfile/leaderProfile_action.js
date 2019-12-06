@@ -29,12 +29,12 @@ export const leaderProfile_id = id => {
 
 export const leaderProfile = id => {
   // type: "leader"
-  console.log("leaderProfile_info");
+  console.log("leaderProfile info", id);
   return async function(dispatch) {
     dispatch(leaderProfile_id(id));
-    let response = await leaderProfile_api.leaderProfile();
+    let response = await leaderProfile_api.leaderProfile(id);
     if (response == false) {
-      console.log("there was an error with userProfile");
+      console.log("there was an error with leader Profile");
       dispatch(leaderProfile_failure());
       console.log("after reducer leaderProfile");
     } else {

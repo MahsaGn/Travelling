@@ -23,20 +23,15 @@ class leaderProfile extends React.Component {
         <br />
         <h1 id="h1">{this.props.username}</h1>
         <ListGroup id="items">
-          <Profile_item title="نام" val={this.props.data.firstname} />
-          <Profile_item title="نام خانوادگی" val={this.props.data.lastname} />
-          <Profile_item title="سفرنامه" val={this.props.data.itinerary} />
+          <Profile_item title="نام" val={this.props.first_name} />
+          <Profile_item title="نام خانوادگی" val={this.props.last_name} />
+          <Profile_item title="سفرنامه" val={this.props.itinerary} />
           <Profile_item
             title="اتومبیل"
-            val={this.props.data.has_car ? "بله" : "خیر"}
+            val={this.props.has_car ? "بله" : "خیر"}
           />
-          ,
-          <Profile_item
-            title="ظرفیت ماشین"
-            val={this.props.data.car_capacity}
-          />
-          ,
-          <Profile_item title="مدل ماشین" val={this.props.data.car_model} />
+          <Profile_item title="ظرفیت ماشین" val={this.props.car_capacity} />
+          <Profile_item title="مدل ماشین" val={this.props.car_model} />
         </ListGroup>
       </dev>
     );
