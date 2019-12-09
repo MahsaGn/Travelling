@@ -10,13 +10,12 @@ class sortBar_navLik extends React.Component{
         super(props)
         this.sortPlace=this.sortPlace.bind(this)
     }
-    sortPlace =async ()=>{
-        //window.location.replace('/')
-        localStorage.setItem("activeTab",this.props.number)
-        localStorage.setItem("option",this.props.option)
+
+    sortPlace =async () =>{
         await this.props.toggle(this.props.number,this.props.option)
         window.location.replace(window.location.href)
     }
+
     render(){
         console.log( this.props.activeTab,this.props.number )
         return(
@@ -32,20 +31,20 @@ class sortBar_navLik extends React.Component{
         )
     }
 }
+
 const mapStateToProps = (state) => {
-    
     return{
         activeTab : state.searchedPlace_reducer.activeTab,
         sortPlace_option :state.searchedPlace_reducer.sortPlace_option
     }
   }
-  const mapDispatchToProps = (dispatch) => {
+
+const mapDispatchToProps = (dispatch) => {
     return{
         toggle : (activeTab,option) => dispatch(searchedPlaceAction.change_navTab(activeTab,option)),
     }
-  }
-  
-  export default connect(mapStateToProps,mapDispatchToProps)(sortBar_navLik);
-  
-  
-  
+}
+
+export default connect(mapStateToProps,mapDispatchToProps)(sortBar_navLik);
+
+

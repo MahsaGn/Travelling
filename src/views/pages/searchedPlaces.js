@@ -23,7 +23,7 @@ class searchedPlace extends React.Component{
     }
 
     async componentWillMount(){
-        var searchedVal = window.location.pathname.split('/')[2]
+        var searchedVal = this.props.searchedVal
         console.log("in searchplace",searchedVal)
         let activeTab = this.props.activeTab
         let option = this.props.option
@@ -53,10 +53,8 @@ class searchedPlace extends React.Component{
 
     async onSearchClick(){
         await this.props.setSearchVal(this.state.searchedVal)
-        if(this.state.searchedVal!="")
-            window.location.replace(`/places/${this.state.searchedVal}`)
-        else
-            window.location.replace(window.location.href)
+        console.log("searched value is",this.props.searchedVal)
+        window.location.replace(`/places/${this.props.searchedVal}`)
     }
 
     handleChange(e){
@@ -103,7 +101,8 @@ const mapStateToProps = (state) => {
         searchedPlaceLoaded : state.searchedPlace_reducer.searchedPlaceLoaded,
         info: state.searchedPlace_reducer.places_info,
         option: state.searchedPlace_reducer.sortPlace_option,
-        activeTab:state.searchedPlace_reducer.activeTab
+        activeTab:state.searchedPlace_reducer.activeTab,
+        searchedVal: state.searchedPlace_reducer.searchedPlace_val
     }
   }
   

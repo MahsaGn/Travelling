@@ -20,7 +20,7 @@ const App=(
           <Route exact path='/addPlaceForLeaderForm' component={AddPlaceForLeader}/>
           <Route path='/place/:id' component={Place} />
           <Route path='/addTravelogu' component={AddTravelogu} />
-          <Route path='/places/:searchedVal' component={SearchedPlaces} />
+          <Route path='/places' component={SearchedPlaces} />
           <Route path='/createNewPlace' component={CreatePlaceForm} />
           <Route path='/authentication' component={Auth}/>
           <Route path='/becomeLeader' component={becomeLeaderForm}/>
