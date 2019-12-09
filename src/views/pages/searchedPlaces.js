@@ -4,6 +4,7 @@ import {connect} from 'react-redux'
 import Header from '../components/header'
 import { TabContent, TabPane,Button } from 'reactstrap';
 import SortPlaceBar from '../components/sortBar'
+import FilterBar from '../components/filterBar'
 import '../styles/style.css'
 import * as searchedPlaceAction  from '../../core/searchedPlace/searchedPlace_action';
 
@@ -15,11 +16,7 @@ class searchedPlace extends React.Component{
         this.state = 
         {
             info:"",
-            searchedVal:""
         };
-        this.handleChange=this.handleChange.bind(this)
-        this.onSearchClick=this.onSearchClick.bind(this)
-        this.handleEnter = this.handleEnter.bind(this)
     }
 
     async componentWillMount(){
@@ -43,7 +40,6 @@ class searchedPlace extends React.Component{
             )
             this.setState(
                 {
-                    searchedVal:this.state.searchedVal,
                     info: placeCards
                 }
             )
@@ -51,47 +47,26 @@ class searchedPlace extends React.Component{
         console.log("after await",this.props.info)
     }
 
-    async onSearchClick(){
-        await this.props.setSearchVal(this.state.searchedVal)
-        console.log("searched value is",this.props.searchedVal)
-        window.location.replace(`/places/${this.props.searchedVal}`)
-    }
-
-    handleChange(e){
-        this.setState(
-            {
-                searchedVal:e.target.value
-            }
-        )
-    }
-
-    handleEnter(e){
-        console.log("here",e.key)
-        if(e.key ==="Enter")
-            this.onSearchClick(e)
-    }
-
     render(){
         return(
             <div>
                 <Header/>
-                <div className="searching_option">
-                    <SortPlaceBar/>
-                    <div className="searchBar_searchPlace">
-                        <input className="search_input" onChange={this.handleChange} onKeyPress={this.handleEnter} value={this.state.searchedVal} type="text"/>
-                        <Button className="search_button" onClick={this.onSearchClick}>جست و جو</Button>
+                <SortPlaceBar/>
+                <br/>
+                <br/>
+                <div>
+                    <div className="searching_option">
+                        <FilterBar/>
+                    </div>
+                    <div>
+                        <TabContent>
+                            <TabContent/>
+                                <TabPane id="sort_option">
+                                    {this.state.info}
+                                </TabPane>
+                        </TabContent>
                     </div>
                 </div>
-                <br/>
-                <br/>
-                <br/>
-                <br/>
-                <TabContent activeTab={this.state.activeTab}>
-                    <TabContent tabId={this.state.activeTab}/>
-                    <TabPane id="sort_option" tabId={this.state.activeTab}>
-                        {this.state.info}
-                    </TabPane>
-                </TabContent>
             </div>
         )
     }
@@ -109,8 +84,7 @@ const mapStateToProps = (state) => {
   const mapDispatchToProps = (dispatch) => {
     return{
         toggle : (activeTab,option) => dispatch(searchedPlaceAction.change_navTab(activeTab,option)),
-        searchedPlace : (searched_val,activeTab,option) => dispatch(searchedPlaceAction.searchedPlace(searched_val,activeTab,option)),
-        setSearchVal : (searched_val) => dispatch(searchedPlaceAction.setSearchVal(searched_val)),
+        searchedPlace : (searched_val,activeTab,option) => dispatch(searchedPlaceAction.searchedPlace(searched_val,activeTab,option))
     }
   }
   
