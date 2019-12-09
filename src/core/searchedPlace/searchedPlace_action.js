@@ -52,3 +52,10 @@ export const searchedPlace = (val) => {
             
     }
 }
+export const setSearchVal = (val) => {
+    // type: "searchedPlace"
+    console.log("set searched val")
+    return async function (dispatch) {
+        dispatch(searchedPlace_val(val))             
+    }
+}

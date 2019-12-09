@@ -15,6 +15,7 @@ export default class searchPlace extends React.Component{
     handleSubmite(e){
         return window.location.replace(`/places/${this.state.searchedVal}`)
     }
+    
     handleEnter(e){
         console.log("here",e.key)
         if(e.key ==="Enter")

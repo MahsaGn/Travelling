@@ -5,45 +5,54 @@ import Header from '../components/header'
 import { TabContent, TabPane,Button } from 'reactstrap';
 import SortPlaceBar from '../components/sortBar'
 import '../styles/style.css'
-import searchPlace from '../components/searchPlaceBar'
 import * as searchedPlaceAction  from '../../core/searchedPlace/searchedPlace_action';
-import { stat } from 'fs';
+
+
 class searchedPlace extends React.Component{
+
     constructor(props){
         super(props);
-        
-      this.state = {
-       info:"",
-       searchedVal:""
-     };
-     this.handleChange=this.handleChange.bind(this)
-     this.onSearchClick=this.onSearchClick.bind(this)
-   }
+        this.state = 
+        {
+            info:"",
+            searchedVal:""
+        };
+        this.handleChange=this.handleChange.bind(this)
+        this.onSearchClick=this.onSearchClick.bind(this)
+        this.handleEnter = this.handleEnter.bind(this)
+    }
+
     async componentWillMount(){
         var searchedVal = window.location.pathname.split('/')[2]
         console.log("in searchplace",searchedVal)
-        let activeTab = localStorage.getItem('activeTab')
-        let option = localStorage.getItem('option')
+        let activeTab = this.props.activeTab
+        let option = this.props.option
         await this.props.toggle(activeTab,option)
         await this.props.searchedPlace(searchedVal)
         console.log(this.props.activeTab)
         if(this.props.searchedPlaceLoaded)
         {
-            this.setState({
-                searchedVal:this.state.searchedVal,
-                info: this.props.info.map((d)=>{
-            return <PlaceCard 
-              title={d.title} 
-              src= {d.image1}
-              id={d.id}/>
-        })})}
+            let placeCards = this.props.info.map(
+                (d)=>
+                {
+                    return <PlaceCard 
+                    title={d.title} 
+                    src= {d.image1}
+                    id={d.id}/>
+                }
+            )
+            this.setState(
+                {
+                    searchedVal:this.state.searchedVal,
+                    info: placeCards
+                }
+            )
+        }
         console.log("after await",this.props.info)
     }
-    onSearchClick(){
-        localStorage.setItem("activeTab",this.props.activeTab)
-        localStorage.setItem("option",this.props.option)
-        localStorage.setItem("searched",this.state.searchedVal)
-        console.log("foooooooooooooooooooooooooooooooo",window.location.href)
+
+    async onSearchClick(){
+        await this.props.setSearchVal(this.state.searchedVal)
         if(this.state.searchedVal!="")
             window.location.replace(`/places/${this.state.searchedVal}`)
         else
@@ -51,23 +60,34 @@ class searchedPlace extends React.Component{
     }
 
     handleChange(e){
-        this.setState({
-            searchedVal:e.target.value
-        })
+        this.setState(
+            {
+                searchedVal:e.target.value
+            }
+        )
     }
+
+    handleEnter(e){
+        console.log("here",e.key)
+        if(e.key ==="Enter")
+            this.onSearchClick(e)
+    }
+
     render(){
-        
         return(
             <div>
                 <Header/>
                 <div className="searching_option">
-                    <SortPlaceBar activeTab ={this.state.activeTab} toggle={this.toggle}/>
+                    <SortPlaceBar/>
                     <div className="searchBar_searchPlace">
-                        <input className="search_input" onChange={this.handleChange} value={this.state.searchedVal} type="text"/>
-                        <Button className="search_button"onClick={this.onSearchClick}>جست و جو</Button>
+                        <input className="search_input" onChange={this.handleChange} onKeyPress={this.handleEnter} value={this.state.searchedVal} type="text"/>
+                        <Button className="search_button" onClick={this.onSearchClick}>جست و جو</Button>
                     </div>
                 </div>
-                <br/><br/><br/><br/>
+                <br/>
+                <br/>
+                <br/>
+                <br/>
                 <TabContent activeTab={this.state.activeTab}>
                     <TabContent tabId={this.state.activeTab}/>
                     <TabPane id="sort_option" tabId={this.state.activeTab}>
@@ -79,7 +99,6 @@ class searchedPlace extends React.Component{
     }
 }
 const mapStateToProps = (state) => {
-    
     return{
         searchedPlaceLoaded : state.searchedPlace_reducer.searchedPlaceLoaded,
         info: state.searchedPlace_reducer.places_info,
@@ -92,6 +111,7 @@ const mapStateToProps = (state) => {
     return{
         toggle : (activeTab,option) => dispatch(searchedPlaceAction.change_navTab(activeTab,option)),
         searchedPlace : (searched_val,activeTab,option) => dispatch(searchedPlaceAction.searchedPlace(searched_val,activeTab,option)),
+        setSearchVal : (searched_val) => dispatch(searchedPlaceAction.setSearchVal(searched_val)),
     }
   }
   

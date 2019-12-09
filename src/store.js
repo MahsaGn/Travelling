@@ -32,7 +32,8 @@ function saveToLocalStorage(state){
   try{
     console.log("this is current state",state)
     let preState={
-      login_reducer:state.login_reducer
+      login_reducer:state.login_reducer,
+      searchedPlace_reducer: state.searchedPlace_reducer
     }
     const serializedState = JSON.stringify(preState)
     localStorage.setItem('state',serializedState)
