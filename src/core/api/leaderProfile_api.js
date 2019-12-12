@@ -3,25 +3,23 @@ import store from "../../store.js";
 import { connect } from "react-redux";
 class leaderProfile_api {
   static leaderProfile = async leader_info => {
+    console.log("leader info api leader", leader_info);
     console.log("in api leaderProfile");
     var lid = store.getState().leaderProfile_reducer.leader_id;
-    console.log();
+    console.log(lid);
     try {
-      axios
-        .post(
-          "http://localhost:8000/api/SpecificLeader/",
-          { objID: "1" },
-          {
-            headers: {
-              Accept: "application/json",
-              "Content-Type": "application/json"
-            }
+      let x = await axios.post(
+        "http://localhost:8000/api/SpecificLeader/",
+        { objID: lid },
+        {
+          headers: {
+            Accept: "application/json",
+            "Content-Type": "application/json"
           }
-        )
-        .then(() => {
-          console.log("in specific Leader successfully");
-          return true;
-        });
+        }
+      );
+      console.log(x);
+      return x.data;
     } catch {
       console.log("wrong leader profile");
       return false;

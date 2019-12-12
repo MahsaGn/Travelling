@@ -19,7 +19,7 @@ export const leaderProfile_reducer = (state = initialState, action) => {
         ...state,
         has_profileInfo: false
       };
-    case "GETLEADER_ID":
+    case "LEADER_ID":
       return {
         ...state,
         leader_id: action.id

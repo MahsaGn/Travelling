@@ -13,7 +13,9 @@ class leaderProfile extends React.Component {
   async componentWillMount() {
     console.log("in handel submit");
     await this.props.leaderProfile();
-    console.log("leader data is:", this.props.data);
+    var idleader = window.location.pathname.split("/")[2];
+    console.log("id leader aaaaaa", idleader);
+    await this.props.leaderProfile(idleader);
   }
 
   render() {
@@ -21,17 +23,30 @@ class leaderProfile extends React.Component {
       <dev id="profilePage">
         <img id="profileImage" src={this.props.image} />
         <br />
-        <h1 id="h1">{this.props.username}</h1>
+        <h1 id="h1">{this.props.data.username}</h1>
         <ListGroup id="items">
-          <Profile_item title="نام" val={this.props.first_name} />
-          <Profile_item title="نام خانوادگی" val={this.props.last_name} />
-          <Profile_item title="سفرنامه" val={this.props.itinerary} />
+          <Profile_item
+            title="انلاین"
+            val={this.props.data.is_available ? "خیر" : "بله"}
+          />
+          <Profile_item title="نام" val={this.props.data.first_name} />
+          <Profile_item title="نام خانوادگی" val={this.props.data.last_name} />
+          <Profile_item title="سفرنامه" val={this.props.data.itinerary} />
+          <Profile_item title="سن" val={this.props.data.age} />
+          <Profile_item title="ایمیل" val={this.props.data.email} />
           <Profile_item
             title="اتومبیل"
-            val={this.props.has_car ? "بله" : "خیر"}
+            val={this.props.has_car ? "خیر" : "بله"}
           />
-          <Profile_item title="ظرفیت ماشین" val={this.props.car_capacity} />
-          <Profile_item title="مدل ماشین" val={this.props.car_model} />
+          <Profile_item
+            title="جنسیت"
+            val={this.props.gender ? "اقا" : "خانم"}
+          />
+          <Profile_item
+            title="ظرفیت ماشین"
+            val={this.props.data.car_capacity}
+          />
+          <Profile_item title="مدل ماشین" val={this.props.data.car_model} />
         </ListGroup>
       </dev>
     );

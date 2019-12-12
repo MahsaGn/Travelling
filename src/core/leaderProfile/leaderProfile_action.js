@@ -4,7 +4,7 @@ export const leaderProfile_action_types = {
   GETPROFILE_SUCCESS: "GETPROFILE_SUCCESS",
   ISLEADER_SUCCESS: "ISLEADER_SUCCESS",
   GETPROFILE_FAILURE: "GETPROFILE_FAILURE",
-  LEADER_ID: "GETLEADER_ID"
+  LEADER_ID: "LEADER_ID"
 };
 export const leaderProfile_success = data => {
   console.log("loginSuccess");
