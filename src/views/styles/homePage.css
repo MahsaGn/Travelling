@@ -1,3 +1,11 @@
+@font-face {
+  font-family: 'IranSans';
+  src: url('../../font/IRANSansWeb.eot'); /* IE9 Compat Modes */
+  src: url('../../font/IRANSansWeb.woff2') format('woff2'), /* Super Modern Browsers */
+       url('../../font/IRANSansWeb.woff') format('woff'), /* Pretty Modern Browsers */
+       url('../../font/IRANSansWeb.ttf')  format('truetype') /* Safari, Android, iOS */
+}
+
 #maindiv{
   background-color: rgb(228, 228, 228);
   height: 100%;
@@ -22,10 +30,11 @@
 
 #navbrand{
   color: rgb(2, 41, 31);
-  font-family: fantasy;
+  font-family: 'IranSans';
   font-size: 30px;
 }
 #homepic{
+  opacity: 1;
   height: 75vh;
   margin-bottom: 3px;
   width: 100%;
@@ -41,6 +50,7 @@
  }
  
  #header{
+  font-family:'IranSans';
    height: 55px;
    margin-bottom: 5px;
  }

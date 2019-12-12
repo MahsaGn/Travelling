@@ -31,7 +31,7 @@ class homePage extends React.Component {
     return (
       <div id="maindiv">
         <Header/>
-        <img id="homepic" src={'https://agence-de-traduction.org/wp-content/uploads/2016/04/tourisme.png'}/>
+        <img id="homepic" src={'home_damavand.jpg'}/>
         <div class="row">
           {this.state.placeCards}
         </div>

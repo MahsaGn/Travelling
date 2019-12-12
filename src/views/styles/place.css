@@ -1,3 +1,11 @@
+@font-face {
+  font-family: 'IranSans';
+  src: url('../../font/IRANSansWeb.eot'); /* IE9 Compat Modes */
+  src: url('../../font/IRANSansWeb.woff2') format('woff2'), /* Super Modern Browsers */
+       url('../../font/IRANSansWeb.woff') format('woff'), /* Pretty Modern Browsers */
+       url('../../font/IRANSansWeb.ttf')  format('truetype') /* Safari, Android, iOS */
+}
+
 #placeForm{
     float: right;
     margin-right: 5%;
@@ -9,9 +17,12 @@
     top: 50px;
     width: 50%;
     right: 20%;
+    font-family:'IranSans';
+
 }
 
 #placeform_submit{
+  font-family:'IranSans';
   position: relative;
     width: 30%;
     bottom: 50px;
@@ -23,6 +34,7 @@
 }
 
 #place_input{
+  font-family:'IranSans';
     position: relative;
     width: 100%;
   text-align: right;
@@ -32,14 +44,16 @@
 }
 
 .place_input{
-    text-align: right;
+  font-family:'IranSans';
+  text-align: right;
     position: relative;
     width: 80%;
     left: 10%;
 }
 
 #place_label{
-    text-align: right;
+  font-family:'IranSans';
+  text-align: right;
     font-size: 18px ;
     padding-top: 6%;
 }

@@ -1,8 +1,15 @@
+@font-face {
+  font-family: 'IranSans';
+  src: url('../../font/IRANSansWeb.eot'); /* IE9 Compat Modes */
+  src: url('../../font/IRANSansWeb.woff2') format('woff2'), /* Super Modern Browsers */
+       url('../../font/IRANSansWeb.woff') format('woff'), /* Pretty Modern Browsers */
+       url('../../font/IRANSansWeb.ttf')  format('truetype') /* Safari, Android, iOS */
+}
 body{
   background-color: rgb(233, 233, 233);
   text-align: right;
   font-size: 14px;
-  font-family: 'Courier New', Courier, monospace;
+  font-family: 'IranSans';
 }
 
 #tabs{
@@ -78,7 +85,7 @@ body{
   margin: 1%;
   width: 30%;
   left:5%;  
-  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-family: 'IranSans';
 }
 #place_image{
   position: relative;
