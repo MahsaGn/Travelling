@@ -4,6 +4,8 @@ import { connect } from "react-redux";
 import { ListGroup } from "reactstrap";
 import Profile_item from "../components/profile_item";
 import "../styles/profile.css";
+import { onlinePic } from "../../assessts/online.jpg";
+import { offlinePic } from "../../assessts/offline.jpg";
 import * as leaderProfileAction from "../../core/leaderProfile/leaderProfile_action";
 
 class leaderProfile extends React.Component {
@@ -21,7 +23,15 @@ class leaderProfile extends React.Component {
   render() {
     return (
       <dev id="profilePage">
-        <img id="profileImage" src={this.props.image} />
+        <img
+          className={
+            this.props.data.is_available
+              ? "leaderProfileOffline"
+              : "leaderProfileOnline"
+          }
+          src={this.props.data.avatar}
+        />
+
         <br />
         <h1 id="h1">{this.props.data.username}</h1>
         <ListGroup id="items">
