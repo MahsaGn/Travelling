@@ -4,8 +4,6 @@ import { connect } from "react-redux";
 import { ListGroup } from "reactstrap";
 import Profile_item from "../components/profile_item";
 import "../styles/profile.css";
-import { onlinePic } from "../../assessts/online.jpg";
-import { offlinePic } from "../../assessts/offline.jpg";
 import * as leaderProfileAction from "../../core/leaderProfile/leaderProfile_action";
 
 class leaderProfile extends React.Component {
@@ -26,8 +24,8 @@ class leaderProfile extends React.Component {
         <img
           className={
             this.props.data.is_available
-              ? "leaderProfileOffline"
-              : "leaderProfileOnline"
+              ? "leaderProfileOnline"
+              : "leaderProfileOffline"
           }
           src={this.props.data.avatar}
         />
@@ -35,28 +33,29 @@ class leaderProfile extends React.Component {
         <br />
         <h1 id="h1">{this.props.data.username}</h1>
         <ListGroup id="items">
-          <Profile_item
-            title="انلاین"
-            val={this.props.data.is_available ? "خیر" : "بله"}
-          />
           <Profile_item title="نام" val={this.props.data.first_name} />
           <Profile_item title="نام خانوادگی" val={this.props.data.last_name} />
-          <Profile_item title="سفرنامه" val={this.props.data.itinerary} />
+          <Profile_item title="درباره من" val={this.props.data.itinerary} />
           <Profile_item title="سن" val={this.props.data.age} />
           <Profile_item title="ایمیل" val={this.props.data.email} />
           <Profile_item
-            title="اتومبیل"
-            val={this.props.has_car ? "خیر" : "بله"}
+            title="جنسیت"
+            val={this.props.data.gender ? "اقا" : "خانم"}
           />
           <Profile_item
-            title="جنسیت"
-            val={this.props.gender ? "اقا" : "خانم"}
+            title="اتومبیل"
+            val={this.props.data.has_car ? "بله" : "خیر"}
           />
+
           <Profile_item
             title="ظرفیت ماشین"
             val={this.props.data.car_capacity}
           />
           <Profile_item title="مدل ماشین" val={this.props.data.car_model} />
+          <Profile_item
+            title="انلاین"
+            val={this.props.data.is_available ? "بله" : "خیر"}
+          />
         </ListGroup>
       </dev>
     );

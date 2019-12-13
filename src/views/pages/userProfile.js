@@ -25,11 +25,11 @@ class userProfile extends React.Component {
         ifIsLeader: [
           <Profile_item
             title="اتومبیل"
-            val={this.props.data.has_car ? "خیر" : "بله"}
+            val={this.props.data.has_car ? "بله" : "خیر"}
           />,
           <Profile_item
             title="انلاین"
-            val={this.props.data.is_available ? "خیر" : "بله"}
+            val={this.props.data.is_available ? "بله" : "خیر"}
           />,
           <Profile_item
             title="ظرفیت ماشین"
