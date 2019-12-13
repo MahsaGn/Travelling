@@ -277,7 +277,9 @@
     color: white;
   }
   .navbar{
-    background-color: rgb(83, 135, 151);
+    padding-bottom:0px;
+    padding-left:10px;
+    background-color: #00796b;
     color: white;
   }
   .navbarbutton{
@@ -285,15 +287,37 @@
     
   }
   .navlink{
+    margin-right:10px;
+    margin-bottom:0px;
     color: antiquewhite;
   
+  }
+   .navlink:hover{
+    margin-bottom:-4px;
+    color: antiquewhite;
+    border: white;
+    border-width: 3px;
+    border-style: solid;
+    border-left:none;
+    border-right:none;
+    border-top:none;
   }
   
   #navbrand{
     color: rgb(2, 41, 31);
     font-family: 'IranSans';
     font-size: 30px;
+    width:5px;
+    height:5px;
   }
+  .header_home_img{
+    position:relative;
+    bottom:25px;
+    left:10px;
+    width:35px;
+    height:30px;
+    filter:brightness(95%);
+}
   #homepic{
     opacity: 1;
     height: 80vh;
@@ -302,7 +326,6 @@
     object-fit: cover;
     clear: both;
     -webkit-filter:brightness(85%);
-    background-color:#ff0054;
    }
 
    .homepic_div{
@@ -329,5 +352,6 @@
    #header{
     font-family:'IranSans';
      height: 55px;
-     margin-bottom: 5px;
+     margin-bottom: 1px;
+     font-size:15px;
    }
