@@ -1,26 +1,44 @@
-import React from 'react'
-import 'bootstrap/dist/css/bootstrap.css';
-import '../../../styles/style.css';
-import { CardImg,CardBody, Card, Button, CardTitle } from 'reactstrap';
-import {Link} from 'react-router-dom'
-export default class NavItem_leader extends React.Component{
-    constructor(props){
-        super(props)
-        this.showProfile = this.showProfile.bind(this)
-    }
+import React from "react";
+import "bootstrap/dist/css/bootstrap.css";
+import "../../../styles/style.css";
 
-    render(){
-        return(
-            <Card id="leader_card">
-            <CardImg top src={this.props.info.img} alt="Card image cap" />
-            <CardBody>
-              <CardTitle>{this.props.info.username}</CardTitle>
-              <Link to={{pathname: `/leaderProfile/${this.info.username}`,
-            data : {info: this.info.username}}}>
-                  <Button>نمایش جزئیات</Button>
-            </Link>
-            </CardBody>
-          </Card>
-        );
-    }
+import Card from "@material-ui/core/Card";
+import Button from "@material-ui/core/Button";
+import Typography from "@material-ui/core/Typography";
+import { CardImg, CardBody, CardTitle } from "reactstrap";
+import { Link } from "react-router-dom";
+export default class leader_card extends React.Component {
+  constructor() {
+    super();
+    this.handleClick = this.handleClick.bind(this);
+  }
+  handleClick() {
+    window.location.replace(`/leaderProfile/${this.props.id}`);
+  }
+  render() {
+    return (
+      <Card className="card">
+        <img className="place_card_img" src={this.props.src} />
+        <Typography
+          className="place_card_title"
+          gutterBottom
+          variant="h6"
+          component="h1"
+        >
+          {this.props.title}
+        </Typography>
+        <Typography
+          className="place_card_disc"
+          variant="body2"
+          color="textSecondary"
+          component="p"
+        >
+          {this.props.discriptions}{" "}
+        </Typography>
+        <Button onClick={this.handleClick} size="small" color="primary">
+          نمایش اطلاعات
+        </Button>
+      </Card>
+    );
+  }
 }
