@@ -43,20 +43,15 @@ class homePage extends React.Component {
           <SearchPlaceBar className="searchbar"/>
         </div>
         <div className="actions">
-          <br/>
           <ActionCard title="پیوستن به جمع تورلیدر" hoverPic="leader_icon.png" url="becomeLeader" backPic="/leader_back.jpg" description="شما میتوانید به جمع تور لیدرهای ما بپیوندید و به صورت خصوصی یا گروهی به این کار بپردازید"/>
           <ActionCard title="اضافه کردن مکان دیدنی" hoverPic="place_icon.png" url="createNewPlace" backPic="/place_back.jpg" description="شما میتوانید یک مکان دیدنی جالب را در سایت اضافه کنید وآن را با همه به اشتراک بگذارید."/>
           <ActionCard title="به اشتراک گذاری سفرنامه" hoverPic="travelogue_icon.png" url="addTravelogu" backPic="/travelogue_back.jpg" description="شما میتوانید سفرنامه و تجربیات خود را به اشتراک بگذارید"/>
+          <ActionCard title="لیدر شدن برای یک مکان خاص" hoverPic="leaderOfPlace_icon.png" url="addPlaceForLeaderForm" backPic="/leaderOfPlace_back.jpg" description="شما میتوانید سفرنامه و تجربیات خود را به اشتراک بگذارید"/>
         </div>
-        <br/>
-        <div>
+        <div className="offeredPlace">
+          <p className="actions_text"> مکان های دیدنی پیشنهادی</p>
           {this.state.placeCards}
         </div>
-        <Link to="/addPlaceForLeaderForm">برای لیدر شدن </Link>
-        <br/>
-        <Link to="/addTravelogu">برای سقرنامه اضافه کردن </Link>
-        <br/>
-        <Link to="/travellouge/11">برای سقرنامه اضافه کردن </Link>
       </div>
     );
   };

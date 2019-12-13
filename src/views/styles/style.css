@@ -273,7 +273,7 @@
   .navbar{
     padding-bottom:0px;
     padding-left:10px;
-    background-color: #00796b;
+    background-color: #535353;
     color: white;
   }
   .navbarbutton{
@@ -351,27 +351,19 @@
    }
 
    .actions{
-     width:60%;
+     width:70%;
      position:relative;
      bottom:130px;
-     left:20%;
+     left:15%;
      border-radius:0%;
-     height:fit-content;
-}
-.actions_text{
-  display:inherit;
-  width:100%;
-  opacity:1;
-  text-align:center;
-  margin:0px;
-  font-size:26px;
+     height:min-content;
 }
 
    .action_card{
      float:left;
-     width:30%;
+     width:22.5%;
      height:fit-content;
-     margin-left:3%;
+     margin-left:2%;
      height:200px;
      border-radius:0%;
 }
@@ -407,4 +399,154 @@
 
 .action_card_title:hover{
   transform:scale(1.05);
+}
+
+#placeForm{
+    float: right;
+    margin-right: 5%;
+    margin-top: 5%;
+    border:solid 2px rgb(224, 224, 224);
+  position: relative;
+    text-align: right;
+    clear: both;
+    top: 50px;
+    width: 50%;
+    right: 20%;
+    font-family:'IranSans';
+
+}
+
+#placeform_submit{
+  font-family:'IranSans';
+  position: relative;
+    width: 30%;
+    bottom: 50px;
+    margin-top: 10%;
+    right: 3%;
+    background-color: rgb(192, 238, 238);
+    border-color:rgb(180, 221, 221);
+    color: black;
+}
+
+#place_input{
+  font-family:'IranSans';
+    position: relative;
+    width: 100%;
+  text-align: right;
+  height: 40px;
+  padding-top:10px ;
+  padding-right: 15px;
+}
+
+.place_input{
+  font-family:'IranSans';
+  text-align: right;
+    position: relative;
+    width: 80%;
+    left: 10%;
+}
+
+#place_label{
+  font-family:'IranSans';
+  text-align: right;
+    font-size: 18px ;
+    padding-top: 6%;
+}
+
+.searchBar{
+    border-radius: 1px;
+    position:relative;
+    width: 50%;
+    min-width:350px;
+    left:25%;
+    top: 15px;
+    height: 43px;
+    font-size:16px;
+    border-width: 2px;
+    border-color: rgb(192, 191, 191);
+    z-index:0;
+    background-color:white;
+}
+.searchItem{
+    text-align:right;
+    position: relative;
+    width: 90%;
+    top: 6%;
+    height: 70%;
+    float: left;
+    padding-left:10px;
+    margin-right:5px;
+    margin-left:0px;
+    margin-top:2px;
+    border: none;
+}
+
+#imgSearchBar{
+    position: relative;
+    top: 5%;
+    z-index:2;
+    left:1%;
+    float: left;
+    width: 8%;
+    height: 70%;
+}
+
+
+.actions_text{
+  clear:both;
+  width:100%;
+  opacity:1;
+  text-align:center;
+  margin:0px;
+  font-size:26px;
+  margin-bottom:20px;
+}
+
+.offeredPlace{
+  clear:both;
+  position:relative;
+  bottom:70px;
+  width:70%;
+  left:15%;
+
+}
+
+.card{
+  
+    float: left;
+    width: 31.1%;
+    height: 240px;
+    padding: 0px;
+    margin-top: 5px;
+    margin-bottom: 80px;
+    margin-left: 1%;
+    margin-right: 1%;
+    font-family:'IranSans';
+    box-shadow: -0px 1px 20px rgba(130, 130, 130, 0.35);
+    border-radius:0px;
+    transition:transform 2s;
+}
+
+.place_card_img{
+    width: 100%;
+    height:200px;
+    margin: 0px;
+    padding: 0px;
+}
+
+.card:hover{
+   transform:scale(1.1);
+}
+
+.place_card_title{
+    width:100%;
+    text-align:center;
+    padding: 10px;
+    padding-bottom: 0px;
+    font-family:'IranSans';
+}
+.place_card_disc{
+    padding-right: 5px;
+    text-align: right;
+    font-family:'IranSans';
 }
