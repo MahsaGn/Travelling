@@ -2,8 +2,7 @@ import React from 'react';
 import 'bootstrap/dist/css/bootstrap.css';
 import {connect} from 'react-redux'
 import '../styles/style.css';
-import { Button ,Nav, NavLink, Navbar, Form, NavbarBrand } from 'reactstrap';
-import {Link} from 'react-router-dom';
+import {Nav, NavLink, Navbar, Form, NavbarBrand } from 'reactstrap';
 import * as sessionAction from '../../core/login/login_action'
 
 
@@ -24,31 +23,29 @@ class Header extends React.Component {
     }
 
     render(){
-      console.log("in headeeeeeeeeer",this.props.logged_in)
       const logedin=this.props.logged_in==false ? 
-      <NavLink href="/authentication" className="navlink">ورود/ ثبت نام</NavLink>: 
-        <NavLink href="/" className="navlink" onClick={this.Signout}>خروج</NavLink>
+        <NavLink href="/authentication" className="navlink">ورود/ ثبت نام</NavLink>
+        :<NavLink href="/" className="navlink" onClick={this.Signout}>خروج</NavLink>
       const profile=this.props.logged_in==true ? 
-      <NavLink href="/selfProfile" className="navlink">پروفایل</NavLink>:
-      null
-
-    return(
-      <Navbar id = "header">
-      <NavbarBrand href="/" id="navbrand" >
-      <img className='header_home_img' src='home.png'/>
-      </NavbarBrand>
-      <Form inline>
-        <Nav >
-          <NavLink href="#ContactUs" className="navlink">ارتباط با ما</NavLink>
-          <NavLink href="#AboutUs" className="navlink">درباره ما</NavLink>
-          {profile}
-          {logedin}
-        </Nav>
-        
-      </Form>
-      </Navbar>
-    )
-  }
+        <NavLink href="/profile" className="navlink">پروفایل</NavLink>
+        :null
+      return(
+        <Navbar id = "header">
+        <NavbarBrand href="/" id="navbrand" >
+        <img className='header_home_img' src='home.png'/>
+        </NavbarBrand>
+        <Form inline>
+          <Nav >
+            <NavLink href="#ContactUs" className="navlink">ارتباط با ما</NavLink>
+            <NavLink href="#AboutUs" className="navlink">درباره ما</NavLink>
+            {profile}
+            {logedin}
+          </Nav>
+          
+        </Form>
+        </Navbar>
+      )
+    }
 }
 
 const mapsStateToProps = (state) => {

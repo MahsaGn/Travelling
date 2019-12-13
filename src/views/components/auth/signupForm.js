@@ -3,6 +3,8 @@ import {connect} from 'react-redux'
 import {Button, Form, FormGroup, Label, Input,FormFeedback,FormText } from 'reactstrap';
 import * as signupAction from '../../../core/signup/signup_action'
 import * as loginAction from '../../../core/login/login_action'
+
+
 class signupForm extends React.Component{
     constructor(props){
       super(props);
@@ -109,6 +111,7 @@ validityRepass(){
           <Input onChange={this.updateStateImage}  type="file" name="image" id="form_input"/>
         </FormGroup>
       <Button id="form_submit">ثبت</Button>
+      <br/><br/>
     </Form>
   
     );
