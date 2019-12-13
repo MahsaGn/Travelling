@@ -26,10 +26,7 @@
     margin-bottom: 30px;
     color: rgb(27, 236, 44);
   }
-  
-  .green{
-    color: greenyellow;
-  }
+
   
   #tab_content{
     clear: both;
@@ -250,7 +247,8 @@
   
   #travelloufe_card_button{
     float: left;
-    box-shadow: 0 4px 8px 0 rgba(185, 185, 185, 0.808), 0 6px 20px 0 rgba(0, 0, 0, 0.19);  background-color: rgb(243, 243, 243);
+    box-shadow: 0 4px 8px 0 rgba(185, 185, 185, 0.808), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    background-color: rgb(243, 243, 243);
     padding-left: 10px;
     padding-right: 10px;
     color: rgb(223, 55, 55);  
@@ -381,15 +379,32 @@
   width:100%;
   height:100%;
   opacity:0.8;
-  filter: brightness(80%);
+  filter: brightness(50%);
   z-index:0;
 }
 .action_card_logo{
   overflow:hidden;
   z-index:2;
   position:relative;
-  width:50%;
+  width:40%;
   height:auto;
-  right:25%;
-  bottom:150px;
+  right:30%;
+  bottom:170px;
+}
+.action_card_title{
+  color:white;
+  filter:brightness(120%);
+  overflow:hidden;
+  z-index:2;
+  position:relative;
+  padding-right:5px;
+  text-align:center;
+  bottom:160px;
+  font-style:italic;
+  font-size:20px;
+  transition: transform 1s;
+}
+
+.action_card_title:hover{
+  transform:scale(1.05);
 }

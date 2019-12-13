@@ -44,9 +44,9 @@ class homePage extends React.Component {
         </div>
         <div className="actions">
           <br/>
-          <ActionCard title="پیوستن به جمع تورلیدر" hoverPic="leader_icon.png" backPic="/leader_back.jpg" description="شما میتوانید به جمع تور لیدرهای ما بپیوندید و به صورت خصوصی یا گروهی به این کار بپردازید"/>
-          <ActionCard title="اضافه کردن مکان دیدنی" hoverPic="place_icon.png" backPic="/place_back.jpg" description="شما میتوانید یک مکان دیدنی جالب را در سایت اضافه کنید وآن را با همه به اشتراک بگذارید."/>
-          <ActionCard title="به اشتراک گذاری سفرنامه" hoverPic="travelogue_icon.png" backPic="/travelogue_back.jpg" description="شما میتوانید سفرنامه و تجربیات خود را به اشتراک بگذارید"/>
+          <ActionCard title="پیوستن به جمع تورلیدر" hoverPic="leader_icon.png" url="becomeLeader" backPic="/leader_back.jpg" description="شما میتوانید به جمع تور لیدرهای ما بپیوندید و به صورت خصوصی یا گروهی به این کار بپردازید"/>
+          <ActionCard title="اضافه کردن مکان دیدنی" hoverPic="place_icon.png" url="createNewPlace" backPic="/place_back.jpg" description="شما میتوانید یک مکان دیدنی جالب را در سایت اضافه کنید وآن را با همه به اشتراک بگذارید."/>
+          <ActionCard title="به اشتراک گذاری سفرنامه" hoverPic="travelogue_icon.png" url="addTravelogu" backPic="/travelogue_back.jpg" description="شما میتوانید سفرنامه و تجربیات خود را به اشتراک بگذارید"/>
         </div>
         <br/>
         <div>
