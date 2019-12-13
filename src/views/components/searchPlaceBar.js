@@ -36,7 +36,7 @@ export default class searchPlace extends React.Component{
                     
         </span>*/}<MDBIcon className="text-white" icon="search" />
                 <img onClick={this.handleSubmite}  id="imgSearchBar" src="https://cdn2.iconfinder.com/data/icons/picons-basic-1/57/basic1-015_search_zoom_find-512.png"/>
-                <input value={this.state.searchedVal} onKeyPress={this.handleEnter} onChange={this.handleChange} className="searchItem" type="text" placeholder="Search" aria-label="Search" />
+                <input value={this.state.searchedVal} onKeyPress={this.handleEnter} onChange={this.handleChange} className="searchItem" type="text" placeholder="جست و جو مکان" aria-label="Search" />
             </div>
 
             

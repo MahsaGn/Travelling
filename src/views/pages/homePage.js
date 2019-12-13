@@ -4,8 +4,12 @@ import '../styles/homePage.css';
 import PlaceCard from '../components/placeCard';
 import * as homePageAction from '../../core/homePage/homePage_action'
 import Header from '../components/header';
+import SearchPlaceBar from '../components/searchPlaceBar';
 import {Link} from 'react-router-dom'
 import {connect} from 'react-redux'
+import '../styles/style.css';
+
+
 class homePage extends React.Component {
   state={
     placeCards:[]
@@ -32,6 +36,11 @@ class homePage extends React.Component {
       <div id="maindiv">
         <Header/>
         <img id="homepic" src={'home_damavand.jpg'}/>
+        <div className="homepic_div">
+          <h2 className="homepic_div_text">بازدید از مکان های دیدنی  را با ما تجربه کنید</h2>
+          <h3 className="homepic_div_text">کجا می خواهید بروید؟</h3>
+          <SearchPlaceBar className="searchbar"/>
+        </div>
         <div class="row">
           {this.state.placeCards}
         </div>
