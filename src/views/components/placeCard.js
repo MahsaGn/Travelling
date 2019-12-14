@@ -12,17 +12,15 @@ export default class placeCard extends React.Component{
         window.location.replace(`/place/${this.props.id}`)
     }
     render(){
+        console.log("src is",this.props.src)
         return(
-                <Card className="card">
+                <Card onClick={this.handleClick} className="card">
                 <img className="place_card_img" src={this.props.src}/>
                     <Typography className="place_card_title" gutterBottom variant="h6" component="h1">
                         {this.props.title}
                     </Typography>
                     <Typography className="place_card_disc" variant="body2" color="textSecondary" component="p">
-                    {this.props.discriptions}    </Typography>
-                    <Button onClick={this.handleClick} size="small" color="primary">
-                    نمایش اطلاعات
-                    </Button>
+                    {this.props.discriptions}</Typography>
                 </Card>
         )
     }

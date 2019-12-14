@@ -39,9 +39,9 @@ class addPlaceForLeader extends React.Component{
 
     
     async handleSubmit(e) {
-        console.log("in handel submit")
+        console.log("in handel submit add place for leader",this.state.choosedPlace[0])
         e.preventDefault();
-        await this.props.addPlaceForLeader(this.state.choosedPlace)
+        await this.props.addPlaceForLeader(this.state.choosedPlace[0])
         if(this.props.placeAddedForLeader)
           return window.location.replace('/')
         else{

@@ -91,12 +91,10 @@ class userProfile extends React.Component{
                 </ListGroup>
                 <br/>
             {this.props.data.is_leader?<label>مکان هایی که لیدر آن هستید</label>:null}
-
+             <br/>   
             {this.state.places}
-            <br/>
-            
-            {this.props.data.is_leader? <Link to="/addPlaceForLeaderForm"><Button>اضافه کردن مکان</Button></Link>:null}
             {this.props.data.travelouges != undefined? <lable>سفرنامه ها</lable>:null}
+            <br/>
             {this.state.travellouges}
             </dev>
         );
