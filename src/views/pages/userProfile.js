@@ -61,7 +61,7 @@ class userProfile extends React.Component{
 
     setTravelouges(){
         let val
-        if(this.props.data.travellouges[0]!= undefined)
+        if(this.props.data.travellouges!= undefined)
         {
             console.log("--------travellouges",this.props.data.travellouges)
             val = this.props.data.travellouges.map(x=><TravelougeCard info={x}/>  )
