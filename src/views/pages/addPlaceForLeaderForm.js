@@ -26,7 +26,8 @@ class addPlaceForLeader extends React.Component{
         await this.props.allPlace()
         if(this.props.allPlaceLoaded)
         {
-        let options = this.props.allPlaceInfo.map((place)=><option>{place.id},{place.title}</option>)
+        let options = this.props.allPlaceInfo.map((place)=><option>{place.id}.{place.title}</option>)
+        console.log("optiooons are",options)
             this.setState({
                 places:options,
                 choosedPlace:{
@@ -39,16 +40,15 @@ class addPlaceForLeader extends React.Component{
 
     
     async handleSubmit(e) {
-        console.log("in handel submit add place for leader",this.state.choosedPlace[0])
-        e.preventDefault();
-        await this.props.addPlaceForLeader(this.state.choosedPlace[0])
+      console.log("in handel submit add place for leader",this.state.choosedPlace[0])
+      e.preventDefault();
+          await this.props.addPlaceForLeader(this.state.choosedPlace[0])
         if(this.props.placeAddedForLeader)
           return window.location.replace('/')
         else{
           e.preventDefault()
-            alert("امان لیدر شدن شما برای این مکان وجود ندارد")
+            alert("امکان لیدر شدن شما برای این مکان وجود ندارد")
         }
-  
     }
     
       updateState(e){
@@ -62,16 +62,17 @@ class addPlaceForLeader extends React.Component{
 
     render(){
         return(
-            <div>
+            <div className="addplaceforleaderForm">
         <Header/>
-        <Form onSubmit={this.handleSubmit} id="placeForm">
+        <Form onSubmit={this.handleSubmit} id="Form">
         <FormGroup className="mb-2 mr-sm-2 mb-sm-0 place_input">
-        <Label for="exampleSelect" id="place_label">مکان مورد نظر</Label>
-          <Input type="select" onChange={this.updateState} value={this.state.choosedPlace}  name="choosedPlace" id="place_input">
+        <Label for="exampleSelect" id="form_label">مکان مورد نظر</Label>
+          <Input type="select" onChange={this.updateState} value={this.state.choosedPlace}  name="choosedPlace" className="form_input ">
            {this.state.places} 
           </Input>
         </FormGroup>
-          <Button id="placeform_submit">ثبت</Button>
+        <br/>
+          <Button id="form_submit">ثبت</Button>
       </Form> 
             </div>
         )
