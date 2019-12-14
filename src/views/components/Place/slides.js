@@ -64,7 +64,7 @@ class Slides extends Component {
       <Carousel
         activeIndex={activeIndex}
         next={this.next}
-        previous={this.previous}
+        previous={this.previous}red like icon no background
       >
         <CarouselIndicators id="slides" items={slides} activeIndex={activeIndex} onClickHandler={this.goToIndex} />
         {slides}

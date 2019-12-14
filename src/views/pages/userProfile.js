@@ -4,7 +4,7 @@ import { connect } from 'react-redux'
 import { ListGroup } from 'reactstrap';
 import PlaceCard from '../components/placeCard';
 import Profile_item from '../components/profile_item'
-import '../styles/profile.css'
+import '../styles/style.css'
 import TravelougeCard from '../components/travelougeCard'
 import Header from '../components/header';
 import * as userProfileAction from '../../core/userProfile/userProfile_action'
@@ -28,9 +28,13 @@ class userProfile extends React.Component {
         await this.props.userProfile()
         if (this.props.is_leader) {
             let placess = ""
-            if (this.props.data.place[0] != undefined) {
-                placess = this.props.data.place.map((place) =>
-                    <PlaceCard src={place.image1} title={place.title} id={place.id} />)
+            if (this.props.data.place != "") {
+                placess =  this.props.data.place.map(d=><PlaceCard 
+                    title={d.title} 
+                    src= {d.image1}
+                    discriptions={d.categpries}
+                  id={d.id} /> )
+               
             }
             else {
                 placess = <p>هنوز هیچ مکانی ثبت نشده است</p>
@@ -51,7 +55,7 @@ class userProfile extends React.Component {
 
     setTravelouges() {
         let val
-        if (this.props.data.travellouges != undefined) {
+        if (this.props.data.travellouges != "") {
             console.log("--------travellouges", this.props.data.travellouges)
             val = this.props.data.travellouges.map(x => <TravelougeCard info={x} />)
         }
@@ -79,12 +83,18 @@ class userProfile extends React.Component {
                     {this.state.ifIsLeader}
                 </ListGroup>
                 <br />
-                {this.props.data.is_leader ? <label>مکان هایی که لیدر آن هستید</label> : null}
                 <br />
+                <br />
+                {this.props.data.is_leader ? <h3 className="form_title">مکان هایی که لیدر آن هستید</h3> : null}
+                <br />
+                <div className="profile_places">
                 {this.state.places}
-                {this.props.data.travelouges != undefined ? <lable>سفرنامه ها</lable> : null}
+                </div>
+                <div className="profile_travelogue">
                 <br />
+                {this.props.data.travelouges != "" ? <h3 className="form_title">سفرنامه ها</h3> : null}
                 {this.state.travellouges}
+                </div>
             </dev>
         );
     }
