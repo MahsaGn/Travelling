@@ -19,13 +19,13 @@ class Header extends React.Component {
 
     Signout(){
       this.props.logout()
-      window.location.replace('/');
     }
 
     render(){
       const logedin=this.props.logged_in==false ? 
-        <NavLink href="/authentication" className="navlink">ورود/ ثبت نام</NavLink>
-        :<NavLink href="/" className="navlink" onClick={this.Signout}>خروج</NavLink>
+        <NavLink href="/authentication" className="navlink">ورود/ ثبت نام</NavLink>:null;
+      const guest=this.props.logged_in==true ? 
+        <NavLink href="/" className="navlink" onClick={this.Signout}>خروج</NavLink>:null;
       const profile=this.props.logged_in==true ? 
         <NavLink href="/profile" className="navlink">پروفایل</NavLink>
         :null
@@ -38,8 +38,9 @@ class Header extends React.Component {
           <Nav >
             <NavLink href="#ContactUs" className="navlink">ارتباط با ما</NavLink>
             <NavLink href="#AboutUs" className="navlink">درباره ما</NavLink>
-            {profile}
             {logedin}
+            {profile}
+            {guest}
           </Nav>
           
         </Form>
@@ -59,5 +60,4 @@ const mapDispatchToProps = (dispatch) => {
       logout : (login_info) => dispatch(sessionAction.logout(login_info))
   }
 }
-
 export default connect(mapsStateToProps,mapDispatchToProps)(Header);
