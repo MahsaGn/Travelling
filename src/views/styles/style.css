@@ -663,3 +663,8 @@ footer{
   padding-bottom:10px;
   background-color:#f8f9fa;
 }
+  .leaderForm{
+    background:url(/leaderForm_back.jpg) no-repeat fixed;
+    background-size: 100% 100%;
+    height:900px;
+}

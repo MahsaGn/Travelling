@@ -43,7 +43,7 @@ class userProfile extends React.Component{
 
           this.setState({
               ifIsLeader:[
-                    <Profile_item title ="جنیست" val={this.props.data.gender?"آقا":"خانم"}/>,
+                    <Profile_item title ="جنیست" val={this.props.data.gender==false?"آقا":"خانم"}/>,
                     <Profile_item title ="سن" val={this.props.data.age}/>,
                     <Profile_item title ="اتوموبیل" val={this.props.data.has_car?"بله":"خیر"}/>,
                     <Profile_item title ="ظرفیت ماشین" val={this.props.data.car_capacity}/>,

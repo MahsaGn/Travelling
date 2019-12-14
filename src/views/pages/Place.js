@@ -5,6 +5,8 @@ import '../styles/style.css';
 import 'bootstrap/dist/css/bootstrap.css';
 import * as placeAction  from '../../core/place/place_action';
 import {connect} from 'react-redux'
+import Header from '../components/header'
+
 
 class Place extends React.Component {
   constructor(props) {
@@ -25,6 +27,7 @@ class Place extends React.Component {
     console.log(this.props.info)
     return (
       <div id="mystyle">
+        <Header/>
         { this.props.slides ? <Slides/> : null}
         { this.props.info ? <Place_nav/> : null}
       </div>
