@@ -4,11 +4,12 @@ import { Nav, NavItem, NavLink } from 'reactstrap';
 import classnames from 'classnames';
 import 'bootstrap/dist/css/bootstrap.css';
 
-class NavItems extends React.Component{
-render()
-{
-    return(
-        <Nav tabs id="tabs">
+
+class NavItems extends React.Component {
+
+  render() {
+    return (
+      <Nav tabs id="tabs">
         <NavItem>
           <NavLink
             className={classnames({ active: this.props.activeTab === '5' })}
@@ -20,7 +21,7 @@ render()
         <NavItem >
           <NavLink
             className={classnames({ active: this.props.activeTab === '4' })}
-            
+
             onClick={() => { this.props.toggle('4'); }}
           >
             سفرنامه ها
@@ -29,7 +30,7 @@ render()
         <NavItem >
           <NavLink
             className={classnames({ active: this.props.activeTab === '3' })}
-            
+
             onClick={() => { this.props.toggle('3'); }}
           >
             تاریخچه
@@ -53,6 +54,6 @@ render()
         </NavItem>
       </Nav>
     );
-}
+  }
 }
 export default NavItems;

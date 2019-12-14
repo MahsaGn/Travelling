@@ -1,13 +1,18 @@
 import React from 'react'
 import '../styles/searchBar.css'
+
+
 export default class placeCard extends React.Component{
+
     constructor(props){
         super(props)
         this.handleClick = this.handleClick.bind(this)
     }
+
     handleClick(){
         window.location.replace(`/travelouge/${this.props.info.id}`)
     }
+    
     render(){
         return(
             <div id="travelloufe_card">

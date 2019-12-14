@@ -1,53 +1,56 @@
 import React from 'react'
 import Header from '../components/header'
-import {connect} from 'react-redux'
+import { connect } from 'react-redux'
 import * as travellougeAction from '../../core/travellouge/travellouge_action'
-import { from } from 'rxjs';
 import '../styles/style.css'
 
-class Travellouge extends React.Component{
-    constructor(props){
+
+class Travellouge extends React.Component {
+    constructor(props) {
         super(props);
     }
-    async componentWillMount(){
+
+    async componentWillMount() {
         console.log("hiiii")
         let id = window.location.pathname.split('/')[2]
-        console.log("travellouge id is ",id)
+        console.log("travellouge id is ", id)
         await this.props.travellouge(id)
         console.log("after get methon travellouge")
     }
-    render(){
-        return(
+
+    render() {
+        return (
             <div>
-                <Header/>
+                <Header />
                 <div id="travellouge">
                     <div id="travellouge_content">
                         <p id="travellouge_content_title_text">: موضوع</p>
                         <h3 id="travellouge_content_title">{this.props.info.title}</h3>
-                        <br/><br/><br/>
+                        <br /><br /><br />
                         <p id="travellouge_content_text">{this.props.info.description}</p>
                     </div>
                     <div id="travellouge_images_div">
-                        <img id="travellouge_image" src={this.props.info.image1}/>
-                        <img id="travellouge_image" src={this.props.info.image2}/>
-                        <img id="travellouge_image" src={this.props.info.image3}/>
+                        <img id="travellouge_image" src={this.props.info.image1} />
+                        <img id="travellouge_image" src={this.props.info.image2} />
+                        <img id="travellouge_image" src={this.props.info.image3} />
                     </div>
                 </div>
             </div>
         )
     }
-} 
+}
+
 const mapStateToProps = (state) => {
-    return{
-      info : state.travellouge_reducer.travellouge_info,
-      ifTravellouge: state.travellouge_reducer.ifTravellouge
+    return {
+        info: state.travellouge_reducer.travellouge_info,
+        ifTravellouge: state.travellouge_reducer.ifTravellouge
     }
-  }
-  
-  const mapDispatchToProps = (dispatch) => {
-    return{
-        travellouge : (travellouge_id) => dispatch(travellougeAction.travellouge(travellouge_id))
+}
+
+const mapDispatchToProps = (dispatch) => {
+    return {
+        travellouge: (travellouge_id) => dispatch(travellougeAction.travellouge(travellouge_id))
     }
-  }
-  
-  export default connect(mapStateToProps,mapDispatchToProps)(Travellouge);
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Travellouge);

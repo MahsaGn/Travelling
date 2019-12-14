@@ -6,7 +6,7 @@ import {Button, Form, FormGroup, Label, Input } from 'reactstrap';
 import 'bootstrap/dist/css/bootstrap.css';
 import Header from '../components/header';
 import * as createPlaceAction from '../../core/createPlace/createPlace_action'
-import { format } from 'util';
+
 
 class createPlace extends React.Component{
     constructor(){
