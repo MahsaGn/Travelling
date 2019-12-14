@@ -3,24 +3,32 @@ import "bootstrap/dist/css/bootstrap.css";
 import { connect } from "react-redux";
 import { ListGroup } from "reactstrap";
 import Profile_item from "../components/profile_item";
+import Header from "../components/header";
 import "../styles/profile.css";
 import * as leaderProfileAction from "../../core/leaderProfile/leaderProfile_action";
-
+import { place_id } from "../../core/place/place_action";
 class leaderProfile extends React.Component {
   constructor(props) {
     super(props);
+    this.state = {
+      travelouges: "",
+      places: ""
+    };
   }
   async componentWillMount() {
     console.log("in handel submit");
-    await this.props.leaderProfile();
     var idleader = window.location.pathname.split("/")[2];
     console.log("id leader aaaaaa", idleader);
     await this.props.leaderProfile(idleader);
+    this.setState({
+      travelouges: place_id
+    });
   }
 
   render() {
     return (
       <dev id="profilePage">
+        <Header />
         <img
           className={
             this.props.data.is_available
@@ -56,6 +64,9 @@ class leaderProfile extends React.Component {
             title="انلاین"
             val={this.props.data.is_available ? "بله" : "خیر"}
           />
+
+          <Profile_item title="سفرنامه" val={this.state.travelouges} />
+          <Profile_item title="مکان ها" val={this.state.places} />
         </ListGroup>
       </dev>
     );

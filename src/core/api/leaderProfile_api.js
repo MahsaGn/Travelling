@@ -10,7 +10,7 @@ class leaderProfile_api {
     try {
       let x = await axios.post(
         "http://localhost:8000/api/SpecificLeader/",
-        { objID: lid },
+        { objID: "1" },
         {
           headers: {
             Accept: "application/json",
