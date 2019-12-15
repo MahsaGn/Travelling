@@ -7,14 +7,14 @@ static userProfile =async () => {
     let access = store.getState().login_reducer.access
     console.log("acees is",access)
     try{
-      let x = await axios.get('http://localhost:8000/api/me/leader/',{
+      let x = await axios.get('http://localhost:8000/api/me/',{
         headers:
         {
           "Authorization" : `Bearer ${access}`,
           'Accept' : 'application/json',
           'Content-Type': 'application/json'
       }})
-        console.log(x);  
+        console.log("prfile data",x);  
         return x.data
         }catch{
             console.log("wrong userProfile")

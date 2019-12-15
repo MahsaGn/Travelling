@@ -6,14 +6,16 @@ import "../styles/login_signupForm.css";
 import * as becomeLeaderAction from "../../core/becomeLeader/becomeLeader_action";
 
 class becomeLeaderForm extends React.Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
       leader_info: {
         nationalID: "",
         has_car: false,
         car_capacity: "",
-        car_model: ""
+        car_model: "",
+        age: "",
+        gender: 0
       }
     };
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -27,13 +29,25 @@ class becomeLeaderForm extends React.Component {
     console.log(localStorage.access);
     e.preventDefault();
     await this.props.becomeLeader(this.state.leader_info);
+    console.log(this.props.isLeader);
     if (this.props.isLeader) return window.location.replace("/");
     else alert(" راهنمای گردشگری شدن برای شماامکان پذیر نمی باشد");
   }
 
   handleChange(e) {
+    e.preventDefault();
     let curentSt = this.state.leader_info;
     curentSt[e.target.name] = e.target.value;
+    this.setState({
+      leader_info: curentSt
+    });
+  }
+
+  handleChange_hasCar() {
+    let curentSt = this.state.leader_info;
+    console.log("cuurent is", curentSt);
+    if (curentSt["has_car"] == true) curentSt["has_car"] = false;
+    else curentSt["has_car"] = true;
     this.setState({
       leader_info: curentSt
     });
@@ -44,18 +58,7 @@ class becomeLeaderForm extends React.Component {
       this.handleChange(e);
     }
   }
-
-  handleChange_hasCar() {
-    let curentSt = this.state.leader_info;
-    curentSt["has_car"] = !curentSt["has_car"];
-    this.setState({
-      leader_info: curentSt
-    });
-  }
-
   render() {
-    console.log("has car:", this.state.has_car);
-
     const model = this.state.leader_info.has_car ? (
       <Input
         name="car_model"
@@ -97,6 +100,34 @@ class becomeLeaderForm extends React.Component {
           <Input
             name="nationalID"
             value={this.state.leader_info.nationalID}
+            onChange={this.handleChangeNum}
+            pattern="[0-9]{*}"
+            type="number"
+            id="form_input"
+          />
+        </FormGroup>
+        <FormGroup className="mb-2 mr-sm-2 mb-sm-0">
+          <Label id="form_label" className="mr-sm-2">
+            جنسیت
+          </Label>
+          <Input
+            type="select"
+            onChange={this.handleChange}
+            value={this.state.leader_info.gender}
+            name="gender"
+            id="form_input"
+          >
+            <option>خانم</option>
+            <option>آقا</option>
+          </Input>
+        </FormGroup>
+        <FormGroup className="mb-2 mr-sm-2 mb-sm-0">
+          <Label id="form_label" className="mr-sm-2">
+            سن
+          </Label>
+          <Input
+            name="age"
+            value={this.state.leader_info.age}
             onChange={this.handleChangeNum}
             pattern="[0-9]{*}"
             type="number"

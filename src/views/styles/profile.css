@@ -41,9 +41,11 @@
 
 #profileImage {
   position: relative;
-  right: 40%;
+  right: 37%;
   margin: 13px;
-  width: 20%;
+  width: 300px;
+  max-width: 26%;
+  max-height: 300px;
   border-radius: 100%;
   border: solid gray 1px;
 }

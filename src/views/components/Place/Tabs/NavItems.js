@@ -11,10 +11,19 @@ render()
         <Nav tabs id="tabs">
         <NavItem>
           <NavLink
-            className={classnames({ active: this.props.activeTab === '4' })}
-            onClick={() => { this.props.toggle('4'); }}
+            className={classnames({ active: this.props.activeTab === '5' })}
+            onClick={() => { this.props.toggle('5'); }}
           >
             نظرکاربران
+          </NavLink>
+        </NavItem>
+        <NavItem >
+          <NavLink
+            className={classnames({ active: this.props.activeTab === '4' })}
+            
+            onClick={() => { this.props.toggle('4'); }}
+          >
+            سفرنامه ها
           </NavLink>
         </NavItem>
         <NavItem >

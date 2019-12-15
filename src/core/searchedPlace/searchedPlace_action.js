@@ -2,7 +2,8 @@ import searchedPlace_api from "../api/searchedPlace_api";
 export const searchedPlace_action_types = {
     SEARCHEDPLACE_SUCCESS: 'SEARCHEDPLACE_SUCCESS',
     SEARCHEDPLACE_FAILURE: 'SEARCHEDPLACE_FAILURE',
-    SEARCHEDPLACE_VAL: 'SEARCHEDPLACE_VAL'
+    SEARCHEDPLACE_VAL: 'SEARCHEDPLACE_VAL',
+    CHANGE_SORTVAL:'CHANGE_SORTVAL'
 }
 export const searchedPlace_success = (data) => {
     return {
@@ -20,16 +21,24 @@ export const searchedPlace_failure = () => {
 export const searchedPlace_val = (val) => {
     return {
         type: searchedPlace_action_types.SEARCHEDPLACE_VAL,
-        val:val
+        val:val,
     }
 } 
+
+export const change_navTab = (activeTab,option) =>{
+    return{
+        type: searchedPlace_action_types.CHANGE_SORTVAL,
+        activeTab:activeTab,
+        option:option
+    }
+}
 
 export const searchedPlace = (val) => {
     // type: "searchedPlace"
     console.log("searchedPlace")
     return async function (dispatch) {
         dispatch(searchedPlace_val(val))
-        let response = await searchedPlace_api.searchedPlace()
+        let response = await searchedPlace_api.searchedPlace(val)
         if(response==false){
             console.log('there was an error with searchedP')
             dispatch(searchedPlace_failure())

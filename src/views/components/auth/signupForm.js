@@ -13,12 +13,15 @@ class signupForm extends React.Component{
           repassword:"",
           itinerary:"",
           firstname:"",
-          lastname:""
+          lastname:"",
+          image:""
         }
       }
       this.handleChange=this.handleChange.bind(this);
       this.validityRepass=this.validityRepass.bind(this);
       this.handleSubmit = this.handleSubmit.bind(this);
+      this.updateStateImage=this.updateStateImage.bind(this)
+
     }
 
   async handleSubmit(e){
@@ -48,6 +51,15 @@ class signupForm extends React.Component{
       signup:curentSt
     })
   }
+  updateStateImage(e){
+    console.log("هئشلث",e.target.files)
+    let curentSt = this.state.signup_info
+    curentSt["image"] = e.target.files[0]
+    this.setState({
+      signup_info:curentSt
+    })
+  }
+  
 
 validityRepass(){
   if(this.state.password == this.state.repassword && this.state.repassword!="")
@@ -92,6 +104,10 @@ validityRepass(){
         {this.validityRepass()}
         <FormFeedback invalid>پرکردن این فیلدر اجباری ست</FormFeedback>
       </FormGroup>
+      <FormGroup className="place_input">
+          <Label id="form_label">بارگذاری عکس</Label>
+          <Input onChange={this.updateStateImage}  type="file" name="image" id="form_input"/>
+        </FormGroup>
       <Button id="form_submit">ثبت</Button>
     </Form>
   
