@@ -10,7 +10,7 @@ export default class placeCard extends React.Component{
     }
 
     handleClick(){
-        window.location.replace(`/travelouge/${this.props.info.id}`)
+        window.location.replace(`/travellouge/${this.props.info.id}`)
     }
     
     render(){
