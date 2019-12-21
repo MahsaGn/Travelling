@@ -12,6 +12,7 @@ import {Provider} from 'react-redux'
 import store from './store'
 import Travellouge from './views/pages/travellouge'
 import AddTravelogu from './views/pages/addTravelogu'
+import LeaderCalender from './views/pages/leaderCalender'
 
 const App=(
       <Provider store={store}>
@@ -25,6 +26,7 @@ const App=(
           <Route path='/authentication' component={Auth}/>
           <Route path='/becomeLeader' component={becomeLeaderForm}/>
           <Route path='/profile' component={Profile}/>
+          <Route path='/mycalender' component={LeaderCalender}/>
           <Route path='/travellouge/:id' component={Travellouge}/>
         </BrowserRouter>
       </Provider>
