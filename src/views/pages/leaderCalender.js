@@ -16,12 +16,18 @@ class leaderCalender extends React.Component {
 
     constructor(props) {
         super(props)
-        this.state={
-            changedates:[]
+        this.state = {
+            changedates: [],
+            pre: [
+                {start: 5280,end:5340},
+                {start: 7860,end:7920}
+            ]
         }
     }
 
     render() {
+        console.log(this.state.changedates)
+        console.log("pre states are",this.state.pre)
         return (
             <div className="datePicker">
                 <AvailableTimes
@@ -41,21 +47,20 @@ class leaderCalender extends React.Component {
                             backgroundColor: '#f3f3f3',
                         },
                     ]}
+
+                    initialSelections={this.state.pre}
+
                     onChange={(selections) => {
-                        selections.forEach(({ start, end }) => {
-                            console.log('Start:', start, 'End:', end);
-                            let starts = this.state.changedates
-                            starts.push(`${start},${end}`)
-                            this.setState({changedates : starts})
-                            console.log(this.state.changedates)
-                        })
+                        console.log(selections)
+                        this.setState({ changedates: selections })
+                        console.log(this.state.changedates)
                     }}
 
                     height={'90vh'}
                     recurring={true}
-                    availableDays={['شنبه', 'یک‌شنبه', 'دوشنبه', 'سه‌شنبه', 'چهارشنبه','پنج‌شنبه','آدینه']}
+                    availableDays={['شنبه', 'یک‌شنبه', 'دوشنبه', 'سه‌شنبه', 'چهارشنبه', 'پنج‌شنبه', 'آدینه']}
                     availableHourRange={{ start: 0, end: 23 }}
-                />
+                    y />
             </div>
         )
     }
