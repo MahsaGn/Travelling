@@ -1,17 +1,17 @@
-body{
+body {
   background-color: rgb(233, 233, 233);
   text-align: right;
   font-size: 14px;
-  font-family: 'Courier New', Courier, monospace;
+  font-family: "Courier New", Courier, monospace;
 }
 
-#tabs{
+#tabs {
   float: right;
   margin-right: 3%;
 }
 .custom-tag {
   margin-top: 1%;
-  border-radius: 5px;;
+  border-radius: 5px;
   width: 94%;
   height: 500px;
   background: gray;
@@ -20,23 +20,22 @@ body{
   color: rgb(27, 236, 44);
 }
 
-.green{
+.green {
   color: greenyellow;
 }
 
-#tab_content{
+#tab_content {
   clear: both;
   margin-right: 3%;
 }
 
-#tab_content_info{
+#tab_content_info {
   float: right;
   border-radius: 15%;
   width: 97%;
-  
 }
 
-#tab_content_info_item_nam{
+#tab_content_info_item_nam {
   clear: both;
   float: right;
   padding: 7px;
@@ -49,27 +48,27 @@ body{
   border-color: rgb(171, 199, 199);
   transition: transform 500ms;
 }
-#tab_content_info_item_val{
+#tab_content_info_item_val {
   float: right;
   padding: 7px;
   margin-top: 5px;
   height: fit-content;
   width: 73%;
-  margin-right:5px ;
+  margin-right: 5px;
   padding: 10px;
   margin-top: 5px;
   border-radius: 5px;
   border: solid 0.25mm;
   border-color: rgb(171, 199, 199);
   transition: transform 500ms;
-  padding-right:3% ;
+  padding-right: 3%;
 }
-#tab_content_info_item:hover{
+#tab_content_info_item:hover {
   transform: scale(1.005);
   background-color: rgb(249, 255, 255);
 }
 
-#leader_card{
+#leader_card {
   background-color: white;
   padding: 10px;
   border-radius: 5px;
@@ -77,132 +76,128 @@ body{
   float: left;
   margin: 1%;
   width: 30%;
-  left:5%;  
+  left: 5%;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
-#place_image{
+#place_image {
   position: relative;
   width: 100%;
   height: 100%;
   border-radius: 5px;
 }
- #slides{
-   position: relative;
-   top:100px;
- }
-.custom-tag{
-  margin-top:2%;
+#slides {
+  position: relative;
+  top: 100px;
+}
+.custom-tag {
+  margin-top: 2%;
   width: 80%;
   left: 10%;
   height: 60vh;
   box-shadow: 2px 2px 15px 1px #000000;
 }
 
-#nav_item_history{
+#nav_item_history {
   background-color: white;
   padding: 10px;
   border-radius: 5px;
   border: solid rgb(171, 199, 199) 1px;
   width: 97%;
   position: relative;
-  left:2% ;
+  left: 2%;
 }
 
-#sort_button{
+#sort_button {
   float: right;
-  color:  black;
+  color: black;
   border: 0px;
-  margin-top:10px;
+  margin-top: 10px;
   margin-left: 1px;
   margin-right: 1px;
   padding: 5px;
   width: fit-content;
   background-color: rgba(210, 105, 30, 0);
-  border-left:1px solid rgb(209, 209, 209) ;
+  border-left: 1px solid rgb(209, 209, 209);
 }
 
-#sort_label{
+#sort_label {
   margin-top: 10px;
   float: right;
   margin-left: 20px;
 }
-.searching_option{
+.searching_option {
   background-color: rgb(228, 228, 228);
-
 }
-#sort_option{
-
+#sort_option {
   float: right;
 }
 
-.searchBar_searchPlace{
+.searchBar_searchPlace {
   float: right;
   width: 30%;
 }
-  
-#sorting_option{
+
+#sorting_option {
   width: 70%;
   float: left;
 }
 
-.search_button{
+.search_button {
   margin-left: 2%;
   margin-right: 2%;
   width: 30%;
-  height:30px;
+  height: 30px;
   float: left;
-  margin-top:5px;
+  margin-top: 5px;
   max-width: 120px;
 }
-.search_input{
+.search_input {
   border-radius: 5%;
-  width:65%;
+  width: 65%;
   float: left;
-  height:30px;
-  margin-top:5px ;
+  height: 30px;
+  margin-top: 5px;
 }
 
-#searchBar_searchPlace{
+#searchBar_searchPlace {
   float: right;
   width: 80%;
 }
 
-#travellouge_content{
+#travellouge_content {
   float: right;
-  width:70%;
+  width: 70%;
   margin-right: 2%;
-  padding:5px;
+  padding: 5px;
   padding-right: 5px;
-
 }
 
-#travellouge_content_title{
+#travellouge_content_title {
   margin-right: 5px;
   float: right;
 }
 
-#travellouge_content_title_text{
+#travellouge_content_title_text {
   color: gray;
   float: right;
+  font-size: medium;
 }
 
-#travellouge_content_text{
+#travellouge_content_text {
   clear: both;
   margin-right: 5px;
   font-size: 16px;
 }
 
-#travellouge_images_div{
-  float: right;
-  width:28%;
+#travellouge_images_div {
+  width: 28%;
   padding: 3px;
-
 }
 
-#travellouge_image{
-  display:inline-block;
+#travellouge_image {
+  display: inline-block;
   clear: both;
-  width:98%;
+  width: 98%;
   height: 28vh;
   margin-bottom: 10px;
 }
