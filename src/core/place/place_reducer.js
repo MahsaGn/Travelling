@@ -46,6 +46,7 @@ export const place_reducer = (state = initialState, action) => {
         ...state,
         slide_info: action.slides
       };
+
     default:
       return state;
   }

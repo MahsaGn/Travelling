@@ -5,7 +5,8 @@ export const place_action_types = {
   PLACEINFO_FAILURE: "PLACEINFO_FAILURE",
   PLACE_TRAVELLOUGE_SUCCESS: "PLACE_TRAVELLOUGE_SUCCESS",
   PLACE_TRAVELLOUGE_FAILURE: "PLACE_TRAVELLOUGE_FAILURE",
-  PLACE_ID: "PLACE_ID"
+  PLACE_ID: "PLACE_ID",
+  LEADER_INFO: "LEADER_INFO"
 };
 export const place_success = data => {
   let slides = [data.image1, data.image2, data.image3];
@@ -28,7 +29,12 @@ export const place_id = id => {
     id: id
   };
 };
-
+export const leader_info = id => {
+  return {
+    type: place_action_types.leader_info,
+    id: id
+  };
+};
 export const place_travellouges_success = data => {
   return {
     type: place_action_types.PLACE_TRAVELLOUGE_SUCCESS,

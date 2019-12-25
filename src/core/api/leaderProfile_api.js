@@ -10,7 +10,7 @@ class leaderProfile_api {
     try {
       let x = await axios.post(
         "http://localhost:8000/api/SpecificLeader/",
-        { objID: "1" },
+        { objID: lid },
         {
           headers: {
             Accept: "application/json",
@@ -18,7 +18,7 @@ class leaderProfile_api {
           }
         }
       );
-      console.log(x);
+      console.log("leader prodile data", x);
       return x.data;
     } catch {
       console.log("wrong leader profile");

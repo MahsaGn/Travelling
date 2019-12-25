@@ -7,7 +7,7 @@ export const leaderProfile_action_types = {
   LEADER_ID: "LEADER_ID"
 };
 export const leaderProfile_success = data => {
-  console.log("loginSuccess");
+  console.log("in leader action login success");
   return {
     type: leaderProfile_action_types.GETPROFILE_SUCCESS,
     data: data
@@ -15,6 +15,7 @@ export const leaderProfile_success = data => {
 };
 
 export const leaderProfile_failure = () => {
+  console.log("in leader action login failure");
   return {
     type: leaderProfile_action_types.GETPROFILE_FAILURE
   };
