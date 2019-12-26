@@ -1,76 +1,58 @@
 
 import '../styles/input-moment.less';
 import '../styles/app.less';
+import moment from 'moment';
 import React, { Component } from 'react';
 import 'bootstrap/dist/css/bootstrap.css';
 import { ReactAgenda, ReactAgendaCtrl, guid, Modal } from 'react-agenda';
-import '@lls/react-light-calendar/dist/index.css' // Default Style
 import '../styles/style.css'
 
 require('moment/locale/fa.js'); // this is important for traduction purpose
-
-var colors = {
-    'color-1': "rgba(102, 195, 131 , 1)",
-    "color-2": "rgba(242, 177, 52, 1)",
-    "color-3": "rgba(235, 85, 59, 1)"
-}
-var moment = require('moment-jalaali')
-moment().format('jYYYY/jM/jD')
 var now = new Date();
 
 require('moment/locale/fr.js');
 var colors = {
-    'color-1': "rgba(102, 195, 131 , 1)",
-    "color-2": "rgba(242, 177, 52, 1)",
-    "color-3": "rgba(235, 85, 59, 1)",
-    "color-4": "rgba(70, 159, 213, 1)",
-    "color-5": "rgba(170, 59, 123, 1)"
+    'color-1': "rgba(102, 195, 131 , 1)"
 }
 
 
 var items = [
     {
         _id: guid(),
-        name: 'Meeting , dev staff!',
         startDateTime: new Date(now.getFullYear(), now.getMonth(), now.getDate(), 10, 0),
         endDateTime: new Date(now.getFullYear(), now.getMonth(), now.getDate(), 12, 0),
-        classes: 'color-1 color-4'
+        classes: 'color-1 color-1'
     },
     {
         _id: guid(),
-        name: 'Working lunch , Holly',
         startDateTime: new Date(now.getFullYear(), now.getMonth(), now.getDate() + 1, 11, 0),
         endDateTime: new Date(now.getFullYear(), now.getMonth(), now.getDate() + 1, 13, 0),
-        classes: 'color-2'
+        classes: 'color-1'
     },
     {
         _id: guid(),
-        name: 'Conference , plaza',
         startDateTime: new Date(now.getFullYear(), now.getMonth(), now.getDate() + 1, 11, 0),
         endDateTime: new Date(now.getFullYear(), now.getMonth(), now.getDate() + 1, 14, 30),
-        classes: 'color-4'
+        classes: 'color-1'
     },
     {
         _id: 'event-4',
-        name: 'Customers issues review',
         startDateTime: new Date(now.getFullYear(), now.getMonth(), now.getDate() + 2, 10, 0),
         endDateTime: new Date(now.getFullYear(), now.getMonth(), now.getDate() + 2, 15, 0),
-        classes: 'color-3'
+        classes: 'color-1'
 
     },
     {
         _id: 'event-5',
-        name: 'Group activity',
         startDateTime: new Date(now.getFullYear(), now.getMonth(), now.getDate() + 3, 10, 0),
         endDateTime: new Date(now.getFullYear(), now.getMonth(), now.getDate() + 3, 16, 30),
-        classes: 'color-4'
+        classes: 'color-1'
     },
     {
         _id: 'event-6',
-        name: 'Fun Day !',
         startDateTime: new Date(now.getFullYear(), now.getMonth(), now.getDate() + 7, 9, 14),
         endDateTime: new Date(now.getFullYear(), now.getMonth(), now.getDate() + 7, 17),
-        classes: 'color-3'
+        classes: 'color-1'
     }
 ];
 
@@ -85,7 +67,7 @@ class leaderCalender extends React.Component {
             showModal: false,
             locale: "fa",
             rowsPerHour: 4,
-            numberOfDays: 4,
+            numberOfDays: 7,
             startDate: new Date()
         }
         this.handleRangeSelection = this.handleRangeSelection.bind(this)
@@ -202,17 +184,10 @@ class leaderCalender extends React.Component {
 
 
     render() {
-        let m = moment('1360/5/26', 'jYYYY/jM/jD') // Parse a Jalaali date
-        m.add(1, 'jYear')
-        m.format('jYYYY/jM/jD [is] YYYY/M/D') // 1360/5/26 is 1981/8/17
-
-        m.jMonth(11)
-        m.startOf('jMonth')
         var AgendaItem = function (props) {
             console.log(' item component props', props)
             return <div style={{ display: 'block', position: 'absolute', background: '#FFF' }}>{props.item.name} <button onClick={() => props.edit(props.item)}>Edit </button></div>
         }
-        console.log(m.format('jYYYY/jM/jD [is] YYYY/M/D'))
         return (
 
             <div className="content-expanded ">
@@ -231,7 +206,7 @@ class leaderCalender extends React.Component {
                     minDate={new Date(now.getFullYear(), now.getMonth() - 3)}
                     maxDate={new Date(now.getFullYear(), now.getMonth() + 3)}
                     startDate={this.state.startDate}
-                    startAtTime={0}
+                    startAtTime={6}
                     endAtTime={23}
                     cellHeight={this.state.cellHeight}
                     locale="fa"
