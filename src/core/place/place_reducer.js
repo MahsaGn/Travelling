@@ -4,14 +4,14 @@ const initialState = {
     placeTravellougeLoaded: false,
     leadersLeaded: false,
     place_info: "",
-    leaders_info: "",
+    leaders_info: [],
     place_id: "",
     wrongPlaceid: true,
-    slide_info: "",
-    placeTravellouges: ""
+    slide_info: [],
+    placeTravellouges: []
 }
 
-export const place_reducer = (state = initialState, action) => {
+export function place_reducer(state = initialState, action) {
     console.log("in place reducer", action)
     switch (action.type) {
         case "PLACEINFO_SUCCESS":
@@ -24,12 +24,26 @@ export const place_reducer = (state = initialState, action) => {
         case "PLACEINFO_FAILURE":
             return {
                 ...state,
-                placeLoaded: false
+                placeLoaded: false,
+                placeTravellougeLoaded: false,
+                leadersLeaded: false,
+                place_info: "",
+                leaders_info: [],
+                slide_info: [],
+                placeTravellouges: []
+
             }
         case "PLACE_ID_WRONG":
             return {
                 ...state,
-                wrongPlaceid: true
+                placeLoaded: false,
+                placeTravellougeLoaded: false,
+                leadersLeaded: false,
+                place_info: "",
+                leaders_info: [],
+                wrongPlaceid: true,
+                slide_info: [],
+                placeTravellouges: []
             }
 
         case "PLACE_TRAVELLOUGE_SUCCESS":
@@ -42,12 +56,20 @@ export const place_reducer = (state = initialState, action) => {
         case "PLACE_TRAVELLOUGE_FAILURE":
             return {
                 ...state,
-                placeTravellougeLoaded: false
+                placeTravellougeLoaded: false,
+                placeTravellouges: []
             }
         case "PLACE_ID":
             return {
                 ...state,
-                wrongPlaceid:false,
+                placeLoaded: false,
+                placeTravellougeLoaded: false,
+                leadersLeaded: false,
+                place_info: "",
+                leaders_info: [],
+                wrongPlaceid: false,
+                slide_info: [],
+                placeTravellouges: [],
                 place_id: action.id
             }
         case "PLACE_SLIDES":

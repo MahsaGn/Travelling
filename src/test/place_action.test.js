@@ -137,3 +137,10 @@ test('place_id', () => {
         }
     )
 })
+test('place',()=>{
+    let id = 10
+    let result = place(id)
+    expect(result).toEqual(
+        expect.any(Function)
+    )
+})
