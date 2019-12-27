@@ -18,11 +18,15 @@ export default class CommentCard extends React.Component {
             <div onClick={this.handleClick} id="comment_card">
                 <div id="commentCard_user_div">
                     <img id="commentCard_user_img" src={this.props.data.user_image} alt={this.props.data.username} />
-                    <p id="commentCard_user_username">{this.props.data.username} </p>
+                    <div id="commentCard_user_name">
+                        <p id="commentCard_user_username_text">نام کاربری</p>
+                        <p id="commentCard_user_username">{this.props.data.username} </p>
+                    </div>
                 </div>
                 <div id="commentCard_commnet_div">
                     <p id="commentCard_p">{this.props.data.comment}</p>
                 </div>
+
             </div>
         )
     }

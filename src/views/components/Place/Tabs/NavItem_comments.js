@@ -7,31 +7,31 @@ import { connect } from 'react-redux'
 const fakeComments = [
     {
         userid :4,
-        user_image : './leader_back.jpg',
+        user_image : '/leader_back.jpg',
         username : 'mahsa',
         comment : 'مکان بسیار جالب و دیدنی ست حتما پیشنهاد میکنم'
     },
     {
         userid :4,
-        user_image : './leader_back.jpg',
+        user_image : '/leader_back.jpg',
         username : 'mahsa',
         comment : 'مکان بسیار جالب و دیدنی ست حتما پیشنهاد میکنم'
     },
     {
         userid :4,
-        user_image : './leader_back.jpg',
+        user_image : '/leader_back.jpg',
         username : 'mahsa',
         comment : 'مکان بسیار جالب و دیدنی ست حتما پیشنهاد میکنم'
     },
     {
         userid :4,
-        user_image : './leader_back.jpg',
+        user_image : '/leader_back.jpg',
         username : 'mahsa',
-        comment : 'مکان بسیار جالب و دیدنی ست حتما پیشنهاد میکنم'
+        comment : 'مکان بسیار جالب و دیدنی ست حتما پیشنهاد میک gjorjg oirwjgoiw grhg urhguse hgushe guiseh guthe iuseth ises hte h میک gjorjg oirwjgoiw grhg urhguse hgushe میک gjorjg oirwjgoiw grhg urhguse hgushe guiseh guthe iuseth ises hte h میک gjorjg oirwjgoiw grhg urhguse hgushe میک gjorjg oirwjgoiw grhg urhguse hgushe guiseh guthe iuseth ises hte h میک gjorjg oirwjgoiw grhg urhguse hgushe میک gjorjg oirwjgoiw grhg urhguse hgushe guiseh guthe iuseth ises hte h میک gjorjg oirwjgoiw grhg urhguse hgushe میک gjorjg oirwjgoiw grhg urhguse hgushe guiseh guthe iuseth ises hte h میک gjorjg oirwjgoiw grhg urhguse hgushe میک gjorjg oirwjgoiw grhg urhguse hgushe guiseh guthe iuseth ises hte h میک gjorjg oirwjgoiw grhg urhguse hgushe میک gjorjg oirwjgoiw grhg urhguse hgushe guiseh guthe iuseth ises hte h میک gjorjg oirwjgoiw grhg urhguse hgushe guiseh guthe iuseth ises hte h میک gjorjg oirwjgoiw grhg urhguse hgushe guiseh guthe iuseth ises hte h میک gjorjg oirwjgoiw grhg urhguse hgushe guiseh guthe iuseth ises hte h میک gjorjg oirwjgoiw grhg urhguse hgushe guiseh guthe iuseth ises hte h میک gjorjg oirwjgoiw grhg urhguse hgushe guiseh guthe iuseth ises hte h میک gjorjg oirwjgoiw grhg urhguse hgushe guiseh guthe iuseth ises hte h میک gjorjg oirwjgoiw grhg urhguse hgushe guiseh guthe iuseth ises hte hنم'
     },
     {
         userid :4,
-        user_image : './leader_back.jpg',
+        user_image : '/leader_back.jpg',
         username : 'mahsa',
         comment : 'مکان بسیار جالب و دیدنی ست حتما پیشنهاد میکنم'
     }
