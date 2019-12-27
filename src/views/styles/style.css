@@ -753,3 +753,26 @@ footer{
   left:20%;
   clear:both;
 }
+
+
+.rate_leader{
+  padding-top:80px;
+  width:60%;
+  position:relative;
+  left:20%;
+  clear:both;
+  margin-bottom: 40px;
+}
+.rate_leader_title{
+  float: right;
+  font-size: 20px;
+}
+
+.rate_leader_stars{
+  margin-right: 20px;
+  float: right;
+}
+
+.rate_leader_button{
+    margin-right: 15px;
+}
