@@ -4,6 +4,8 @@ export const leaderProfile_action_types = {
   GETPROFILE_SUCCESS: "GETPROFILE_SUCCESS",
   ISLEADER_SUCCESS: "ISLEADER_SUCCESS",
   GETPROFILE_FAILURE: "GETPROFILE_FAILURE",
+  RATELEADER_SUCCESS: "RATELEADER_SUCCESS",
+  RATELEADER_FAILURE: "RATELEADER_FAILURE",
   LEADER_ID: "LEADER_ID"
 };
 export const leaderProfile_success = data => {
@@ -28,6 +30,20 @@ export const leaderProfile_id = id => {
   };
 };
 
+export const leaderPro_rateSuccess = () => {
+  console.log("in leader rate action  success");
+  return {
+    type: leaderProfile_action_types.RATELEADER_SUCCESS,
+  };
+};
+
+export const leaderPro_rateFailure = () => {
+  console.log("in leader rate action login failure");
+  return {
+    type: leaderProfile_action_types.RATELEADER_FAILURE
+  }
+}
+
 export const leaderProfile = id => {
   // type: "leader"
   console.log("leaderProfile info", id);
@@ -44,3 +60,19 @@ export const leaderProfile = id => {
     }
   };
 };
+
+export const saveRateLeader = rateVal =>{
+  console.log("leaderProfile rate value", rateVal);
+  return async function(dispatch) {
+    let response = await leaderProfile_api.leaderProfile_rateValue(rateVal);
+    console.log("response rate is ",response)
+    if (response == false) {
+      console.log("there was an error with leader Profile")
+      dispatch(leaderPro_rateFailure())
+      //console.log("after reducer leaderProfile rateValue");
+    } else {
+      //console.log("in leader profile rateValue action");
+      dispatch(leaderPro_rateSuccess())
+    }
+  };
+}

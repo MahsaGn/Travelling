@@ -1,7 +1,8 @@
 const initialState = {
   has_profileInfo: false,
   profile_info: "",
-  leader_id: ""
+  leader_id: "",
+  isRateSaved:false
 };
 
 export const leaderProfile_reducer = (state = initialState, action) => {
@@ -19,6 +20,16 @@ export const leaderProfile_reducer = (state = initialState, action) => {
         ...state,
         has_profileInfo: false
       };
+      case "RATELEADER_SUCCESS":
+        return {
+          ...state,
+          isRateSaved: true,
+        };
+      case "RATELEADER_FAILURE":
+        return {
+          ...state,
+          isRateSaved: false
+        };
     case "LEADER_ID":
       return {
         ...state,
