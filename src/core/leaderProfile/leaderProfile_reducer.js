@@ -1,7 +1,7 @@
 const initialState = {
   has_profileInfo: false,
   profile_info: "",
-  leader_id: "",
+  id: "",
   isRateSaved:false
 };
 
@@ -30,10 +30,10 @@ export const leaderProfile_reducer = (state = initialState, action) => {
           ...state,
           isRateSaved: false
         };
-    case "LEADER_ID":
+    case "ID":
       return {
         ...state,
-        leader_id: action.id
+        id: action.id
       };
     default:
       return state;

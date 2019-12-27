@@ -6,7 +6,7 @@ class leaderProfile_api {
     let access = store.getState().login_reducer.access
     console.log("leader info api leader", leader_info, access);
     console.log("in api leaderProfile");
-    var lid = store.getState().leaderProfile_reducer.leader_id;
+    var lid = store.getState().leaderProfile_reducer.id;
     console.log(lid);
     try {
       let x = await axios.post(
@@ -29,6 +29,35 @@ class leaderProfile_api {
       return false;
     }
   };
+
+  static userProfile = async userid => {
+    let access = store.getState().login_reducer.access
+    console.log("user profile api user", userid, access);
+    console.log("in api userProfile");
+    var userId = store.getState().leaderProfile_reducer.id;
+    console.log(userId);
+    try {
+      let x = await axios.post(
+        "http://localhost:8000/api/User/me/",
+        {
+          userID : userId
+        },
+        {
+          headers: {
+            "Authorization": `Bearer ${access}`,
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+          }
+        }
+      );
+      console.log("user prodile data", x);
+      return x.data;
+    } catch {
+      console.log("wrong user profile");
+      return false;
+    }
+  };
+
   static leaderProfile_rateValue = async rateValue => {
     console.log("leader rate value api leader", rateValue);
     console.log("in api leaderProfile");

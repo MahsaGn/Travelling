@@ -61,6 +61,14 @@ class leaderProfile extends React.Component {
       });
 
     }
+    if (this.props.data.is_leader == true)
+      {
+        this.setState(
+          {
+            isUserProfile : false
+          }
+        )
+      }
     this.setTravelouges();
   }
 
@@ -215,7 +223,7 @@ const mapStateToProps = state => {
   return {
     has_profileInfo: state.leaderProfile_reducer.has_profileInfo,
     data: state.leaderProfile_reducer.profile_info,
-    id: state.leaderProfile_reducer.leader_id,
+    id: state.leaderProfile_reducer.id,
     logged_in: state.login_reducer.logged_in,
     rateSaved: state.leaderProfile_reducer.isRateSaved
   };
