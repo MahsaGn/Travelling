@@ -131,7 +131,7 @@ test('place_id', () => {
     }
     let action = {
         type: 'PLACE_ID',
-        id : 10
+        id: 10
     }
     let expected = {
         placeLoaded: false,
@@ -182,7 +182,7 @@ test('place_id', () => {
     expect(result).toEqual(expected)
 })
 
-test('travelogue failure',()=>{
+test('travelogue failure', () => {
     let prestate = {
         placeLoaded: true,
         placeTravellougeLoaded: true,
@@ -220,4 +220,74 @@ test('travelogue failure',()=>{
     }
     let result = place_reducer(prestate, action)
     expect(result).toEqual(expected)
+})
+
+
+test('travelogue success', () => {
+    let prestate = {
+        placeLoaded: true,
+        placeTravellougeLoaded: false,
+        leadersLeaded: true,
+        place_info: {
+            title: "hi"
+        },
+        leaders_info: "",
+        place_id: "",
+        wrongPlaceid: false,
+        slide_info: [
+            'a',
+            'b'
+        ],
+        placeTravellouges: ['bb', 'a']
+    }
+    let action = {
+        type: 'PLACE_TRAVELLOUGE_SUCCESS',
+        data: ['a', 'b']
+    }
+    let expected = {
+        placeLoaded: true,
+        placeTravellougeLoaded: true,
+        leadersLeaded: true,
+        place_info: {
+            title: "hi"
+        },
+        leaders_info: "",
+        place_id: "",
+        wrongPlaceid: false,
+        slide_info: [
+            'a',
+            'b'
+        ],
+        placeTravellouges: [
+            'a',
+            'b'
+        ]
+    }
+    let result = place_reducer(prestate, action)
+    expect(result).toEqual(expected)
+})
+
+test('another on', () => {
+    let prestate = {
+        placeLoaded: true,
+        placeTravellougeLoaded: false,
+        leadersLeaded: true,
+        place_info: {
+            title: "hi"
+        },
+        leaders_info: "",
+        place_id: "",
+        wrongPlaceid: false,
+        slide_info: [
+            'a',
+            'b'
+        ],
+        placeTravellouges: ['bb', 'a']
+    }
+    let action = {
+        type: 'jlkjio',
+        data: ['a', 'b']
+    }
+    let result = place_reducer(prestate, action)
+    expect(result).toEqual(prestate)
 })
