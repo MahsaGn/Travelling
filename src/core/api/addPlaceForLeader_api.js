@@ -11,7 +11,7 @@ static addPlaceForLeader =async () => {
   try{
     let x = await axios.post(`http://localhost:8000/api/LeadPlace/`,
     {
-      placeID:choosedPlace.id
+      placeID:choosedPlace
     }
     ,{
       headers:

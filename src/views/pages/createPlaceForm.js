@@ -6,7 +6,7 @@ import {Button, Form, FormGroup, Label, Input } from 'reactstrap';
 import 'bootstrap/dist/css/bootstrap.css';
 import Header from '../components/header';
 import * as createPlaceAction from '../../core/createPlace/createPlace_action'
-import { format } from 'util';
+
 
 class createPlace extends React.Component{
     constructor(){
@@ -43,7 +43,7 @@ class createPlace extends React.Component{
           return window.location.replace('/')
         else{
           e.preventDefault()
-          alert("برای اضافه کردن مکان ابتدا باید بیدر باشید")
+          alert("برای اضافه کردن مکان ابتدا باید لیدر باشید")
         }
   
     }
@@ -74,29 +74,31 @@ class createPlace extends React.Component{
       }
       
     render(){
+    let validityTitle = this.state.place_info.title == ""? "invalid" : null
     return(
-      <div>
+      <div className="placeForm">
         <Header/>
-        <Form onSubmit={this.handleSubmit} id="placeForm">
+        <Form onSubmit={this.handleSubmit} id="Form">
+        <h3 className="form_title">اضافه کردن مکان جدید</h3>
         <FormGroup className="mb-2 mr-sm-2 mb-sm-0 place_input">
           <Label className="mr-sm-2" id="place_label">نام</Label>
-          <Input name="title" value={this.state.place_info.title} onChange={this.updateState} type="text" id="place_input"/>
+          <Input name="title" value={this.state.place_info.title} onChange={this.updateState} type="text" className={"form_input "+validityTitle}/>
         </FormGroup>
         <FormGroup className="mb-2 mr-sm-2 mb-sm-0 place_input">
           <Label className="mr-sm-2" id="place_label">تاریخچه</Label>
-          <Input name="descriptions" value={this.state.place_info.descriptions} onChange={this.updateState} type="text" id="place_input"/>
+          <Input name="descriptions" value={this.state.place_info.descriptions} onChange={this.updateState} type="text" className="form_input"/>
         </FormGroup>
         <FormGroup className="mb-2 mr-sm-2 mb-sm-0 place_input">
           <Label className="mr-sm-2" id="place_label">نشانی</Label>
-          <Input name="address" value={this.state.place_info.address} onChange={this.updateState} type="text" id="place_input"/>
+          <Input name="address" value={this.state.place_info.address} onChange={this.updateState} type="text" className="form_input"/>
         </FormGroup>
         <FormGroup className="mb-2 mr-sm-2 mb-sm-0 place_input">
           <Label className="mr-sm-2" id="place_label">شهر</Label>
-          <Input name="city" value={this.state.place_info.city} onChange={this.updateState} type="text" id="place_input"/>
+          <Input name="city" value={this.state.place_info.city} onChange={this.updateState} type="text" className="form_input"/>
         </FormGroup>
         <FormGroup className="mb-2 mr-sm-2 mb-sm-0 place_input">
         <Label for="exampleSelect" id="place_label">نوع مکان</Label>
-          <Input type="select" onChange={this.updateState} value={this.state.place_info.category}  name="category" id="place_input">
+          <Input type="select" onChange={this.updateState} value={this.state.place_info.category}  name="category" className="form_input">
             <option>تاریخی</option>
             <option>موزه</option>
             <option>جنگل</option>
@@ -114,29 +116,30 @@ class createPlace extends React.Component{
         <FormGroup className="mb-2 mr-sm-2 mb-sm-0 place_input">
           <Label className="mr-sm-2" id="place_label">زمان پایان
           </Label>
-          <Input name="endTime" value={this.state.place_info.endTime} onChange={this.updateState} type="text" id="place_input"/>
+          <Input name="endTime" value={this.state.place_info.endTime} onChange={this.updateState} type="text" className="form_input"/>
         </FormGroup>
         <FormGroup className="mb-2 mr-sm-2 mb-sm-0 place_input">
           <Label className="mr-sm-2" id="place_label">زمان شروع</Label>
-          <Input name="startTime" value={this.state.place_info.startTime} onChange={this.updateState} type="text" id="place_input"/>
+          <Input name="startTime" value={this.state.place_info.startTime} onChange={this.updateState} type="text" className="form_input"/>
         </FormGroup>
         <FormGroup className="mb-2 mr-sm-2 mb-sm-0 place_input">
           <Label className="mr-sm-2" id="place_label"> محبوبیت از 5</Label>
-          <Input name="likes" value={this.state.place_info.likes} pattern="[0-9]" onChange={this.updateStateNum} type="number" id="place_input"/>
+          <Input name="likes" value={this.state.place_info.likes} pattern="[0-9]" onChange={this.updateStateNum} type="number" className="form_input"/>
         </FormGroup>
         <FormGroup className="place_input">
           <Label id="place_label">1بارگذاری عکس</Label>
-          <input onChange={this.updateStateImage} type="file" name="image1" id="place_input"/>
+          <input onChange={this.updateStateImage} type="file" name="image1" className="form_input"/>
         </FormGroup>
         <FormGroup className="place_input">
           <Label id="place_label">2بارگذاری عکس</Label>
-          <input onChange={this.updateStateImage} type="file" name="image2" id="place_input"/>
+          <input onChange={this.updateStateImage} type="file" name="image2" className="form_input"/>
         </FormGroup>
         <FormGroup className="place_input">
           <Label id="place_label">3بارگذاری عکس</Label>
-          <input onChange={this.updateStateImage}  type="file" name="image3" id="place_input"/>
+          <input onChange={this.updateStateImage}  type="file" name="image3" className="form_input"/>
         </FormGroup>
-          <Button onClick={this.handleSubmit} id="placeform_submit">ثبت</Button>
+        <br/>
+          <Button onClick={this.handleSubmit} id="form_submit">ثبت</Button>
       </Form>
       </div>
         );

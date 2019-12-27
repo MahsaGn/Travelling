@@ -1,56 +1,7 @@
-.searchBar{
-    border-radius: 15px;
-    width: 35%;
-    height: 30px;
-    border-width: 2px;
-    border-color: rgb(192, 191, 191);
-}
-.searchItem{
-    position: relative;
-    width: 90%;
-    top: 6%;
-    height: 70%;
-    float: left;
-    border: none;
-}
-#imgSearchBar{
-    position: relative;
-    top: 10%;
-    float: left;
-    width: 8%;
-    height: 70%;
-}
-.input-group.md-form.form-sm.form-1 input {
-  border: 1px solid #bdbdbd;
-  border-top-right-radius: 0.25rem;
-  border-bottom-right-radius: 0.25rem;
-}
-
-.card{
-    float: left;
-    max-width: 31.1%;
-    min-width: 31.1%;
-    height: auto;
-    padding: 0px;
-    margin-top: 5px;
-    margin-bottom: 80px;
-    margin-left: 1%;
-    margin-right: 1%;
-
-}
-
-.place_card_img{
-    width: 100%;
-    margin: 0px;
-    padding: 0px;
-
-}
-.place_card_title{
-    text-align: right;
-    padding: 10px;
-    padding-bottom: 0px;
-}
-.place_card_disc{
-    padding-right: 5px;
-    text-align: right;
-}
+@font-face {
+    font-family: 'IranSans';
+    src: url('../../font/IRANSansWeb.eot'); /* IE9 Compat Modes */
+    src: url('../../font/IRANSansWeb.woff2') format('woff2'), /* Super Modern Browsers */
+         url('../../font/IRANSansWeb.woff') format('woff'), /* Pretty Modern Browsers */
+         url('../../font/IRANSansWeb.ttf')  format('truetype') /* Safari, Android, iOS */
+  }
