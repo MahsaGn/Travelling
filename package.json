@@ -15,6 +15,7 @@
     "classnames": "^2.2.6",
     "contentful": "^7.10.0",
     "form-data": "^2.5.1",
+    "jest": "^24.9.0",
     "mdbreact": "^4.21.1",
     "qs": "^6.9.0",
     "react": "^16.10.1",
