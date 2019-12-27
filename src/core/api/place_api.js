@@ -29,7 +29,7 @@ class place_api {
     try {
 
       let x = await axios.post(`http://127.0.0.1:8000/api/Travellouge/place-travellouges/`, {
-        placeID: id,
+        objID: id,
       }
       )
       console.log("travellouge inf id", x);

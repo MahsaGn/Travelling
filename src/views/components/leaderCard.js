@@ -5,7 +5,6 @@ import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 import Rating from '@material-ui/lab/Rating';
 import '../styles/style.css'
-import 'rc-tooltip/assets/bootstrap_white.css';
 export default class leaderCard extends React.Component {
 
     constructor() {
