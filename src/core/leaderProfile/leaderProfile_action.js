@@ -76,3 +76,7 @@ export const saveRateLeader = rateVal =>{
     }
   };
 }
+
+export const userProfile = userid =>{
+  
+}

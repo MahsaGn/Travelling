@@ -31,6 +31,7 @@ const App = (
       <Route path="/becomeLeader" component={becomeLeaderForm} />
       <Route path="/profile" component={Profile} />
       <Route path="/leaderProfile" component={LeaderProfile} />
+      <Route path="/userProfile" component={LeaderProfile} />
       <Route path="/travellouge/:id" component={Travellouge} />
     </BrowserRouter>
   </Provider>
