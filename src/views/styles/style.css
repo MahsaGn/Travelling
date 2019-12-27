@@ -558,6 +558,37 @@
     text-align: right;
     font-family:'IranSans';
 }
+
+.leader_card_img{
+  width: 100%;
+  height:200px;
+  margin: 0px;
+  padding: 0px;
+}
+
+.leader_card_name{
+  width:100%;
+  text-align:center;
+  padding: 10px;
+  padding-bottom: 0px;
+  font-family:'IranSans';
+}
+
+.leader_card_availbility{
+  float: left;
+  max-width: 10%;
+  width: 15px;
+  height: 15px;
+  margin-left: 10px;
+  margin-bottom: 10px;
+}
+
+.leader_card_rating{
+  float: right;
+  width: 50%;
+  margin-right: 5px;
+  margin-bottom: 10px;
+}
 #login_signup{
 background:url(/auth_back.jpg) no-repeat fixed;
 background-size: 100% 100%;
