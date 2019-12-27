@@ -109,7 +109,7 @@ class leaderProfile extends React.Component {
           <Profile_item
             title="امتیاز"
             val={
-              <Rating name="size-small" className="leader_card_rating" disabled='true' value={2} size="small" />
+              <Rating name="size-small" className="leader_card_rating" disabled='true' value={this.props.data.avgRate} size="small" />
             }
           />
           <Profile_item title="درباره من" val={this.props.data.itinerary} />
