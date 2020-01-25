@@ -95,14 +95,19 @@
     font-family: 'IranSans';
   }
   #place_image{
+    display: inline-block;
     position: relative;
-    min-width: 100%;
-    min-height: 100%;
+    width: 100%;
+    height: 60vh;
     border-radius: 5px;
   }
    #slides{
      position: relative;
      top:100px;
+     width:70%;
+     left: 15%;
+     height: 40vh;
+     right: 15%;
    }
   .custom-tag{
     margin-top:2%;
@@ -559,6 +564,37 @@
     padding-right: 5px;
     text-align: right;
     font-family:'IranSans';
+}
+
+.leader_card_img{
+  width: 100%;
+  height:200px;
+  margin: 0px;
+  padding: 0px;
+}
+
+.leader_card_name{
+  width:100%;
+  text-align:center;
+  padding: 10px;
+  padding-bottom: 0px;
+  font-family:'IranSans';
+}
+
+.leader_card_availbility{
+  float: left;
+  max-width: 10%;
+  width: 15px;
+  height: 15px;
+  margin-left: 10px;
+  margin-bottom: 10px;
+}
+
+.leader_card_rating{
+  float: right;
+  width: 50%;
+  margin-right: 5px;
+  margin-bottom: 10px;
 }
 #login_signup{
 background:url(/auth_back.jpg) no-repeat fixed;
@@ -1240,3 +1276,89 @@ padding: 8px;
   }
 
 }
+#comment_card{
+  margin-top: 40px;
+    width: 100%;
+    min-height:50px;
+    margin-bottom: 100px;
+    padding: 0px;
+}
+
+#commentCard_user_div{
+  float: right;
+  width: 15%;
+  height: 50px;
+}
+
+#commentCard_commnet_div{
+  float: right;
+  position: relative;
+  width:75%;
+  text-align: right;
+  margin-bottom: 20px;
+
+}
+
+#commentCard_p{
+  border-color:  rgb(197, 197, 197);
+  border-width: 1px;
+  border-style: solid;
+  border-radius: 15px;
+  text-align: right;
+  padding-right: 10px;
+  padding-top:10px;
+  min-height: 70px;
+  height: fit-content;
+  width: 100%;
+  padding:10px ;
+  box-shadow: 2px 2px 15px 1px #cccccc;
+
+}
+
+#commentCard_user_username_text{
+  float: left;
+}
+
+#commentCard_user_img{
+  border-radius: 50%;
+  float: right;
+  width: 50px;
+  height: 50px;
+}
+
+#commentCard_user_name{
+  position: relative;
+  top: 60px;
+  right: -60px;
+}
+
+#commentCard_user_username{
+  float: left;
+}
+
+#commentCard_p{
+  float: right;
+}
+
+.rate_leader{
+  padding-top:80px;
+  width:60%;
+  position:relative;
+  left:20%;
+  clear:both;
+  margin-bottom: 40px;
+}
+.rate_leader_title{
+  float: right;
+  font-size: 20px;
+}
+
+.rate_leader_stars{
+  margin-right: 20px;
+  float: right;
+}
+
+.rate_leader_button{
+    margin-right: 15px;
+}
+

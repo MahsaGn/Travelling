@@ -2,7 +2,10 @@ import axios from 'axios'
 import FormData from 'form-data'
 import store from '../../store.js'
 import {connect} from 'react-redux'
+
+
 class addTravelogu_api{
+  
 static addTravelogu =async () => {
   let travelouge_info= store.getState().addTravelogu_reducer.travelog_info
   let access = store.getState().login_reducer.access

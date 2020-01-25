@@ -1,7 +1,7 @@
   
 import React from 'react'
 import {connect} from 'react-redux'
-import '../styles/place.css'
+import '../styles/style.css'
 import {Button, Form, FormGroup, Label, Input } from 'reactstrap';
 import 'bootstrap/dist/css/bootstrap.css';
 import Header from '../components/header';

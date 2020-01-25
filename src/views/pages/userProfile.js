@@ -72,69 +72,53 @@ class userProfile extends React.Component {
       });
       console.log("onoff in userrrrrrrrrrr", this.state.onoff);
     }
-    console.log("onofffff", this.state.onoff);
-    this.setTravelouges();
   }
-  // handleChange(e) {
-  //   e.preventDefault();
-  //   let currentState = this.state.onoff;
-  //   console.log("current stateeeeeeeee is", currentState);
-  //   if (currentState == true) currentState = false;
-  //   else currentState = true;
-  //   this.setState({
-  //     onoff: currentState
-  //   });
-  // }
-  setTravelouges() {
-    let val;
-    if (this.props.data.travellouges != undefined) {
-      console.log("--------travellouges", this.props.data.travellouges);
-      val = this.props.data.travellouges.map(x => <TravelougeCard info={x} />);
-    } else {
-      val = <p>هیچ سفرنامه ای تا کنون ثبن نشده ست</p>;
+
+    setTravelouges() {
+        let val
+        if (this.props.data.travellouges != undefined && this.props.data.travellouges.length != 0 ) {
+            console.log("--------travellouges", this.props.data.travellouges)
+            val = this.props.data.travellouges.map(x => <TravelougeCard info={x} />)
+        }
+        else {
+          console.log("no travelogue!!")
+            val = <p>هیچ سفرنامه ای تا کنون ثبن نشده ست</p>
+        }
+        console.log("intravellouges", val)
+
+        this.setState({ travellouges: val })
+
     }
-    console.log("intravellouges", val);
 
-    this.setState({ travellouges: val });
-  }
-
-  render() {
-    return (
-      <dev id="profilePage">
-        <Header />
-        <img
-          id="profileImage"
-          src={
-            this.props.data.avatar ? this.props.data.avatar : this.state.image
-          }
-        />
-        <br />
-        <h1 id="h1">{this.props.data.username}</h1>
-        <ListGroup id="items">
-          <Profile_item title="نام" val={this.props.data.first_name} />
-          <Profile_item title="نام خانوادگی" val={this.props.data.last_name} />
-          <Profile_item title="سفرنامه" val={this.props.data.itinerary} />
-          <Profile_item title="شماره تلفن" val={this.props.data.phone_number} />
-          {this.state.ifIsLeader}
-        </ListGroup>
-        <br />
-        <br />
-        <br />
-        {this.state.mycalender}
-        {this.props.data.is_leader ? (
-          <h3 className="form_title">مکان هایی که لیدر آن هستید</h3>
-        ) : null}
-        <br />
-        <div className="profile_places">{this.state.places}</div>
-        <div className="profile_travelogue">
-          <br />
-          {this.props.data.travelouges != "" ? (
-            <h3 className="form_title">سفرنامه ها</h3>
-          ) : null}
-          {this.state.travellouges}
-        </div>
-      </dev>
-    );
+    render() {
+        return (
+            <dev id="profilePage">
+                <Header />
+                <img id="profileImage" src={this.props.data.avatar ? this.props.data.avatar : this.state.image} />
+                <br />
+                <h1 id="h1">{this.props.data.username}</h1>
+                <ListGroup id="items">
+                    <Profile_item title="نام" val={this.props.data.first_name} />
+                    <Profile_item title="نام خانوادگی" val={this.props.data.last_name} />
+                    <Profile_item title="سفرنامه" val={this.props.data.itinerary} />
+                    <Profile_item title="شماره تلفن" val={this.props.data.phone_number} />
+                    {this.state.ifIsLeader}
+                </ListGroup>
+                <br />
+                <br />
+                <br />
+                {this.props.data.is_leader ? <h3 className="form_title">مکان هایی که لیدر آن هستید</h3> : null}
+                <br />
+                <div className="profile_places">
+                {this.state.places}
+                </div>
+                <div className="profile_travelogue">
+                <br />
+                {this.props.data.travelouges != "" ? <h3 className="form_title">سفرنامه ها</h3> : null}
+                {this.state.travellouges}
+                </div>
+            </dev>
+        );
   }
 }
 
