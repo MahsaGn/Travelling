@@ -1,33 +1,43 @@
-import React from 'react'
-import '../../styles/style.css'
+import React, { useState } from "react";
+import "../../styles/style.css";
+import { Container, Button, Alert } from "react-bootstrap";
+import { CSSTransition } from "react-transition-group";
+import ReactDOM from "react-dom";
 
+export var Comment = function() {
+  const [showButton, setShowButton] = useState(true);
+  const [showMessage, setShowMessage] = useState(false);
+  return (
+    <Container style={{ paddingTop: "2rem" }}>
+      {showButton && (
+        <Button onClick={() => setShowMessage(true)} size="lg">
+          افزودن نظر
+        </Button>
+      )}
+      <CSSTransition
+        in={showMessage}
+        timeout={300}
+        classNames="alert"
+        unmountOnExit
+        onEnter={() => setShowButton(false)}
+        onExited={() => setShowButton(true)}
+      >
+        <Alert
+          variant="primary"
+          dismissible
+          onClose={() => setShowMessage(false)}
+        >
+          <Alert.Heading>نظرات</Alert.Heading>
+          <label>
+            <input type="text" name="name" />
+          </label>
+          <br />
 
-export default class CommentCard extends React.Component {
+          <Button onClick={() => setShowMessage(false)}>بستن</Button>
+        </Alert>
+      </CSSTransition>
+    </Container>
+  );
+};
 
-    constructor(props) {
-        super(props)
-        this.handleClick = this.handleClick.bind(this)
-    }
-
-    handleClick() {
-        window.location.replace(`/userProfile/${this.props.data.userid}`)
-    }
-
-    render() {
-        return (
-            <div onClick={this.handleClick} id="comment_card">
-                <div id="commentCard_user_div">
-                    <img id="commentCard_user_img" src={this.props.data.user_image} alt={this.props.data.username} />
-                    <div id="commentCard_user_name">
-                        <p id="commentCard_user_username_text">نام کاربری</p>
-                        <p id="commentCard_user_username">{this.props.data.username} </p>
-                    </div>
-                </div>
-                <div id="commentCard_commnet_div">
-                    <p id="commentCard_p">{this.props.data.comment}</p>
-                </div>
-
-            </div>
-        )
-    }
-}
+ReactDOM.render(<Comment />, document.getElementById("root"));
