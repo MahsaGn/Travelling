@@ -10,6 +10,7 @@ import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import "../styles/style.css";
 import Schedualer from "./schedualer";
+import LeaderSchedualer from "./leaderSchedualer";
 
 class homePage extends React.Component {
   state = {
@@ -79,7 +80,9 @@ class homePage extends React.Component {
         <div className="offeredPlace">
           <p className="actions_text"> مکان های دیدنی پیشنهادی</p>
           {this.state.placeCards}
-          <Schedualer />
+          <br />
+          <br />
+          <LeaderSchedualer />
         </div>
       </div>
     );
