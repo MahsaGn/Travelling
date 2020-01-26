@@ -59,11 +59,12 @@ class userProfile extends React.Component {
 
     setTravelouges() {
         let val
-        if (this.props.data.travellouges != "") {
+        if (this.props.data.travellouges != undefined && this.props.data.travellouges.length != 0 ) {
             console.log("--------travellouges", this.props.data.travellouges)
             val = this.props.data.travellouges.map(x => <TravelougeCard info={x} />)
         }
         else {
+          console.log("no travelogue!!")
             val = <p>هیچ سفرنامه ای تا کنون ثبن نشده ست</p>
         }
         console.log("intravellouges", val)
@@ -120,5 +121,3 @@ const mapDispatchToProps = (dispatch) => {
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(userProfile);
-
-

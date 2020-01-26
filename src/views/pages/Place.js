@@ -16,10 +16,11 @@ class Place extends React.Component {
   async componentWillMount() {
     console.log("in handel submit place")
     var idplace = window.location.pathname.split('/')[2]
-    console.log(idplace)
+    console.log("pllace id is",idplace)
     await this.props.place(idplace)
     console.log("slides are:", this.props.slidesinfo)
     console.log("infos are:", this.props.info)
+    console.log("travelogues are:", this.props.travelogue)
   }
 
   render() {
@@ -39,7 +40,8 @@ const mapStateToProps = (state) => {
   return {
     placeLeaded: state.place_reducer.place_info,
     slides: state.place_reducer.slide_info,
-    info: state.place_reducer.place_info
+    info: state.place_reducer.place_info,
+    travelogue : state.place_reducer.placeTravellouges
   }
 }
 

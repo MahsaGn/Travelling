@@ -7,6 +7,7 @@ import { TabContent, TabPane } from 'reactstrap';
 import NavItem_leader from './NavItem_leader'
 import NavItem_history from './NavItem_history'
 import NavItem_travellouges from './navItem_travellouges'
+import NavItem_comments from './NavItem_comments';
 
 
 class Place_nav extends React.Component {
@@ -43,6 +44,9 @@ class Place_nav extends React.Component {
           </TabPane>
           <TabPane tabId="4">
             <NavItem_travellouges />
+          </TabPane>
+          <TabPane tabId="5">
+            <NavItem_comments />
           </TabPane>
         </TabContent>
       </div>
