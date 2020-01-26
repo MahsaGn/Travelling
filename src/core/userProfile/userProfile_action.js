@@ -1,5 +1,4 @@
 import userProfile_api from "../api/userProfile_api";
-import changeAvailability_api from "../api/changeAvailability_api";
 
 export const userProfile_action_types = {
   GETPROFILE_SUCCESS: "GETPROFILE_SUCCESS",
@@ -42,9 +41,8 @@ export const change_leader_availability_failure = () => {
 export const userProfile = () => {
   // type: "login"
   console.log("userProfile_info");
-  return async function(dispatch) {
+  return async function (dispatch) {
     let response = await userProfile_api.userProfile();
-    let availability_response = await changeAvailability_api.changeAvailability();
 
     if (response == false) {
       console.log("there was an error with userProfile");
@@ -55,12 +53,17 @@ export const userProfile = () => {
       dispatch(userProfile_success(response));
 
       if (response.is_leader) dispatch(isLeader_success());
-
-      if (availability_response == false) {
-        dispatch(change_leader_availability_failure());
-      } else {
-        dispatch(change_leader_availability_success());
-      }
     }
   };
 };
+
+export const changeAvailability = () => {
+  return async function (dispatch) {
+    let availability_response = await userProfile_api.changeAvailability();
+    if (availability_response == false) {
+      dispatch(change_leader_availability_failure());
+    } else {
+      dispatch(change_leader_availability_success());
+    }
+  }
+}
