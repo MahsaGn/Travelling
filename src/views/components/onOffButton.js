@@ -16,13 +16,10 @@ class onOffButton extends Component {
   }
 
   async handleChange() {
-    console.log("ischange status",this.props.isChanged)
     let value = this.state.checked;
     await this.props.change_stateLeader()
-    console.log(this.props.isChanged)
     if (this.props.isChanged == true)
       this.setState({ checked: !value });
-    console.log("checkeddddd", this.state.checked,this.props.isChanged);
   }
 
   render() {

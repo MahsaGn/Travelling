@@ -70,7 +70,6 @@ class userProfile extends React.Component {
         mycalender: calander,
         onoff: this.props.data.is_available
       });
-      console.log("onoff in userrrrrrrrrrr", this.state.onoff);
     }
   }
 
