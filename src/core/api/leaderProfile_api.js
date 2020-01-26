@@ -63,8 +63,8 @@ class leaderProfile_api {
     console.log("in api leaderProfile");
     let access = store.getState().login_reducer.access
     console.log("access",access)
-    var lid = store.getState().leaderProfile_reducer.leader_id;
-    console.log("leaderis ",lid)
+    var lid = store.getState().leaderProfile_reducer.id;
+    console.log("__________leaderis ",lid)
     try {
       let x = await axios.post(
         "http://localhost:8000/api/User/RateLeader/",

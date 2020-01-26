@@ -61,14 +61,13 @@ class leaderProfile extends React.Component {
       });
 
     }
-    if (this.props.data.is_leader == true)
-      {
-        this.setState(
-          {
-            isUserProfile : false
-          }
-        )
-      }
+    if (this.props.data.is_leader == true) {
+      this.setState(
+        {
+          isUserProfile: false
+        }
+      )
+    }
     this.setTravelouges();
   }
 
@@ -101,8 +100,10 @@ class leaderProfile extends React.Component {
       window.location.replace('/authentication')
     }
     else {
-      if (this.props.rateSaved)
+      if (this.props.rateSaved) {
         alert("رای شما با موفقیت ثبت شد")
+        window.location.reload()
+      }
       else {
         alert("لطفا بعدا امتحان کنید")
       }
@@ -110,6 +111,8 @@ class leaderProfile extends React.Component {
   }
 
   render() {
+    console.log("rate is", this.props.data.avgRate)
+    let rate = '' + this.props.data.avgRate
     return (
       <dev id="profilePage">
         <Header />
@@ -134,7 +137,7 @@ class leaderProfile extends React.Component {
             : <Profile_item
               title="امتیاز"
               val={
-                <Rating name="size-small" className="leader_card_rating" disabled='true' value={this.props.data.avgRate} size="small" />
+                <Rating name="size-small" className="leader_card_rating" disabled='true' value={rate} size="small" />
               }
             />
           }
@@ -235,7 +238,7 @@ const mapDispatchToProps = dispatch => {
       dispatch(leaderProfileAction.leaderProfile(profile_info)),
     saveRateLeader: rateVal =>
       dispatch(leaderProfileAction.saveRateLeader(rateVal)),
-      userProfile: userid => 
+    userProfile: userid =>
       dispatch(leaderProfileAction.userProfile(userid))
   };
 };
