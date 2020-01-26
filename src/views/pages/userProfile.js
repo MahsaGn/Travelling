@@ -9,7 +9,8 @@ import TravelougeCard from "../components/travelougeCard";
 import Header from "../components/header";
 import * as userProfileAction from "../../core/userProfile/userProfile_action";
 import OnOffButton from "../components/onOffButton";
-import LeaderCalender from "../components/leaderCalender";
+import LeaderSchedualer from "./leaderSchedualer";
+
 
 class userProfile extends React.Component {
   constructor(props) {
@@ -118,6 +119,7 @@ class userProfile extends React.Component {
           {this.props.data.travelouges != "" ? <h3 className="form_title">سفرنامه ها</h3> : null}
           {this.state.travellouges}
         </div>
+        <LeaderSchedualer />
       </dev>
     );
   }
