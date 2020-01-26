@@ -9,6 +9,7 @@ import TravelougeCard from "../components/travelougeCard";
 import Header from "../components/header";
 import * as userProfileAction from "../../core/userProfile/userProfile_action";
 import OnOffButton from "../components/onOffButton";
+import LeaderCalender from "../components/leaderCalender";
 
 class userProfile extends React.Component {
   constructor(props) {

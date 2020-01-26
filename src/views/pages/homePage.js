@@ -9,6 +9,7 @@ import SearchPlaceBar from '../components/searchPlaceBar';
 import {Link} from 'react-router-dom'
 import {connect} from 'react-redux'
 import '../styles/style.css';
+import LeaderCalender from '../components/leaderCalender';
 
 
 class homePage extends React.Component {
@@ -54,6 +55,7 @@ class homePage extends React.Component {
           <p className="actions_text"> مکان های دیدنی پیشنهادی</p>
           {this.state.placeCards}
         </div>
+        <LeaderCalender/>
       </div>
     );
   }
