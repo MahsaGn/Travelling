@@ -4,7 +4,7 @@ class AuthApi{
 static login =async (login_info) => {
     console.log("in api login",login_info.username,login_info.password)
     try{
-      let x = await axios.post('http://localhost:8000/api/token/', {
+      let x = await axios.post('http://localhost:8000/api/User/token/', {
         username: login_info.username,
         password: login_info.password
       },{
@@ -30,11 +30,11 @@ static  signup = async (signup_info) => {
     formData.append('first_name', signup_info.firstname)
     formData.append('last_name',signup_info.lastname)
     formData.append('itinerary', signup_info.itinerary)
-    formData.append('phone_number', "87436983798")
+    formData.append('phone_number', signup_info.phonenumber)
     formData.append('avatar',signup_info.image)
     console.log(formData.values())
     try{
-      let x =await axios.post('http://localhost:8000/api/sign-up/',formData)
+      let x =await axios.post('http://localhost:8000/api/User/sign-up/',formData)
       console.log("after then signup")
        return true
         }catch{

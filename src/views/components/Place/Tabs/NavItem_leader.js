@@ -13,8 +13,8 @@ class NavItem_leader extends React.Component {
 
   render() {
     let loadedLeaders = <p>هیچ راهنمایی ای تا کنون ثبت نشده سات.</p>
-    if (this.props.has_travelogue) {
-      loadedLeaders = this.props.travellouge_info.map(x => <LeaderCard info={x} />)
+    if (this.props.has_leader) {
+      loadedLeaders = this.props.leader_info.map(x => <LeaderCard info={x} />)
     }
     return (
       <div>
@@ -25,8 +25,8 @@ class NavItem_leader extends React.Component {
 }
 const mapStateToProps = (state) => {
   return {
-    travellouge_info: state.place_reducer.placeTravellouges.travellouges,
-    has_travelogue: state.place_reducer.placeTravellougeLoaded
+    leader_info: state.place_reducer.placeTravellouges.travellouges,
+    has_leader: state.place_reducer.placeTravellougeLoaded
   }
 }
 export default connect(mapStateToProps)(NavItem_leader);
