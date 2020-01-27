@@ -25,19 +25,68 @@ const useStyles = makeStyles(theme => ({
 }));
 
 function getSteps() {
-  return ["مرحله اول", "مرحله دوم", "مرحله سوم", "مرحله چهارم"];
+  return [
+    <h2>مرحله اول</h2>,
+    <h2>مرحله دوم</h2>,
+    <h2>مرحله سوم</h2>,
+    <h2>مرحله چهارم</h2>
+  ];
 }
 
 function getStepContent(step) {
   switch (step) {
     case 0:
-      return "یک لیدر را انتخاب کنید";
+      return (
+        <div>
+          <h3>یک لیدر را انتخاب کنید</h3>
+          <br />
+          <select name="لیدرها">
+            <option value="لیدر">لیدر شماره یک</option>
+            <option value="لیدر">لیدر شماره دو</option>
+            <option value="لیدر">لیدر شماره سه </option>
+            <option value="لیدر">لیدر شماره چهار</option>
+          </select>
+          <br />
+          <br />
+        </div>
+      );
     case 1:
-      return "تاریخ موردنظر را وارد کنید";
+      return (
+        <div>
+          <h3>تاریخ موردنظر را وارد کنید</h3>
+          <form>
+            <input type="date" name="date" />
+          </form>
+        </div>
+      );
     case 2:
-      return "زمان شروع را وارد کنید";
+      return (
+        <div>
+          <h3>زمان شروع را وارد کنید</h3>
+          <input
+            type="time"
+            id="appt"
+            name="appt"
+            min="09:00"
+            max="18:00"
+            required
+          />
+        </div>
+      );
     case 3:
-      return "زمان پایان را انتخاب کنید";
+      return (
+        <div>
+          <h3>زمان پایان را وارد کنید</h3>
+          <input
+            type="time"
+            id="appt"
+            name="appt"
+            min="09:00"
+            max="18:00"
+            required
+          />
+        </div>
+      );
     default:
       return "Unknown step";
   }
@@ -69,12 +118,6 @@ export default function Steps() {
             <StepContent>
               <Typography>{getStepContent(index)}</Typography>
               <div className={classes.actionsContainer}>
-                <select name="لیدرها">
-                  <option value="لیدر">لیدر شماره یک</option>
-                  <option value="لیدر">لیدر شماره دو</option>
-                  <option value="لیدر">لیدر شماره سه </option>
-                  <option value="لیدر">لیدر شماره چهار</option>
-                </select>
                 <div>
                   <Button
                     disabled={activeStep === 0}
