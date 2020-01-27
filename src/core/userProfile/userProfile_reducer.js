@@ -3,8 +3,9 @@ const initialState = {
   has_profileInfo: false,
   profile_info: "",
   isChanged: false,
-  freetime_changed:false,
-  freetime_scheduler:[]
+  freetime_changed: false,
+  freetime_scheduler: "",
+  fetrched_freeTime:false,
 };
 
 export const userProfile_reducer = (state = initialState, action) => {
@@ -37,10 +38,9 @@ export const userProfile_reducer = (state = initialState, action) => {
         ...state,
         isChanged: false
       };
-      case "CHANGETIME_SUCCESS":
+    case "CHANGETIME_SUCCESS":
       return {
         ...state,
-        freetime_scheduler : action.data,
         freetime_changed: true
       };
     case "CHANGETIME_FAILURE":
@@ -48,6 +48,17 @@ export const userProfile_reducer = (state = initialState, action) => {
         ...state,
         freetime_changed: false
       };
+      case "FETCHCALENDAR_DATA_SUCCESS":
+        return {
+          ...state,
+          freetime_scheduler: action.data,
+          fetrched_freeTime: true
+        };
+      case "FETCHCALENDAR_DATA_FAILURE":
+        return {
+          ...state,
+          fetrched_freeTime: false
+        };
     default:
       return state;
   }

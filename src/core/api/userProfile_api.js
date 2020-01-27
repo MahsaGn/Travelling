@@ -49,6 +49,29 @@ class userProfile_api {
     }
   };
 
+  static getCalenderData = async () => {
+    console.log("in api changeAvailability");
+    let access = store.getState().login_reducer.access;
+    let leaderId = store.getState().userProfile_reducer.profile_info.id;
+    console.log("acees is", access);
+    try {
+      let x = await axios.post("http://localhost:8000/api/User/ChangeAvailability/", {
+        leaderID : leaderId
+      }, {
+        headers: {
+          Authorization: `Bearer ${access}`,
+          Accept: "application/json",
+          "Content-Type": "application/json"
+        }
+      });
+      console.log("fetch calender data", x);
+      return x.data;
+    } catch {
+      console.log("wrong fetch calender data");
+      return false;
+    }
+  };
+
   static setFreeTime = async (data) => {
     console.log("in api set free time");
     let access = store.getState().login_reducer.access;
@@ -61,7 +84,7 @@ class userProfile_api {
     console.log("json is", formdata)
     try {
 
-      let x = await axios.post("http://localhost:8000/api/User/ChangeAvailability/",
+      let x = await axios.post("http://localhost:8000/api/User/SetFreeTime/",
         { 
           StartTime : data.StartTime,
           EndTime : data.EndTime

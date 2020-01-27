@@ -51,27 +51,32 @@ const scheduleData = [
     Priority: "High"
   }
 ];
+
 class schedualer extends React.Component {
   constructor() {
     super(...arguments);
     this.data = extend([], scheduleData, null, true);
   }
   async onEventClick(args) {
-    console.log("++++++++++++++++++++in new event")
+    console.log("in new event",this.data)
     console.log(args)
     if (args.type == "DeleteAlert") {
       console.log("deleted")
-      ;//remove data
+        ;//remove data
     }
     else if (args.type == "QuickInfo") {
-      if (!this.data.includes(args.data)) {
-        console.log("saved",this.data)
-        this.data.push(args.data)
+      console.log("data is" ,this.data,"end")
+      if (this.props.scheduler_data=="" || !this.data.includes(args.data)) {
+        console.log("saved", this.data)
         await this.props.changeSchedluer(args.data)
       };//send data to back
     }
-    // this.props.changeSchedluer(this.data)
+  }
 
+  async componentWillMount() {
+    await this.props.getCalenderData()
+    console.log("data is component will mount",this.data)
+    this.data = this.props.scheduler_data
   }
 
   render() {
@@ -83,11 +88,11 @@ class schedualer extends React.Component {
           readonly={false}
           firstDayOfWeek={6}
           height="95vh"
-          selectedDate={new Date(2018, 1, 15)}
+          selectedDate={new Date(2020, 1, 15)}
           currentView="Day"
           eventSettings={{ dataSource: this.data }} popupClose={this.onEventClick.bind(this)}>
           <ViewsDirective>
-            <ViewDirective option="Week" startHour="07:00" endHour="15:00" />
+            <ViewDirective option="Week" startHour="07:00" endHour="16:00" />
           </ViewsDirective>
           <Inject services={[Week]} />
         </ScheduleComponent>
@@ -106,7 +111,9 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
   return {
     changeSchedluer: scheduler_data =>
-      dispatch(userProfileAction.changeFreeTime(scheduler_data))
+      dispatch(userProfileAction.changeFreeTime(scheduler_data)),
+      getCalenderData: () =>
+      dispatch(userProfileAction.getCalenderData())
   };
 };
 

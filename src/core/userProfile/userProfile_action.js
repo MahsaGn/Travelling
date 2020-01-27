@@ -7,7 +7,9 @@ export const userProfile_action_types = {
   CHANGELEADERAVAILABILITY_SUCCESS: "CHANGELEADERAVAILABILITY_SUCCESS",
   CHANGELEADERAVAILABILITY_FAILURE: "CHANGELEADERAVAILABILITY_FAILURE",
   CHANGETIME_SUCCESS:"CHANGETIME_SUCCESS",
-  CHANGETIME_FAILURE:"CHANGETIME_FAILURE"
+  CHANGETIME_FAILURE:"CHANGETIME_FAILURE",
+  FETCHCALENDAR_DATA_SUCCESS:"FETCHCALENDAR_DATA_SUCCESS",
+  FETCHCALENDAR_DATA_FAILURE:"FETCHCALENDAR_DATA_FAILURE"
 };
 export const userProfile_success = data => {
   console.log("loginSuccess");
@@ -47,7 +49,6 @@ export const change_leader_freetime_success = data => {
   console.log("user reducer change free time success");
   return {
     type: userProfile_action_types.CHANGETIME_SUCCESS,
-    data:data
   };
 };
 
@@ -55,6 +56,21 @@ export const change_leader_freetime_failure = () => {
   console.log("user reducer change free time fail");
   return {
     type: userProfile_action_types.CHANGETIME_FAILURE
+  };
+};
+
+export const get_calander_data_success = (data) => {
+  console.log("user reducer change free time success");
+  return {
+    type: userProfile_action_types.FETCHCALENDAR_DATA_SUCCESS,
+    data : data
+  };
+};
+
+export const get_calander_data_failure = () => {
+  console.log("user reducer change free time fail");
+  return {
+    type: userProfile_action_types.FETCHCALENDAR_DATA_FAILURE
   };
 };
 
@@ -94,6 +110,17 @@ export const changeFreeTime = (data) => {
       dispatch(change_leader_availability_failure());
     } else {
       dispatch(change_leader_availability_success(data));
+    }
+  }
+}
+
+export const getCalenderData = () =>{
+  return async function (dispatch) {
+    let data_response = await userProfile_api.getCalenderData();
+    if (data_response == false) {
+      dispatch(get_calander_data_failure());
+    } else {
+      dispatch(get_calander_data_success(data_response));
     }
   }
 }
