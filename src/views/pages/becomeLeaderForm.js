@@ -29,7 +29,7 @@ class becomeLeaderForm extends React.Component{
       console.log(localStorage.access)
       e.preventDefault();
       await this.props.becomeLeader(this.state.leader_info)
-      console.log(this.props.isLeader)
+      console.log("_________+",this.props.isLeader)
       if(this.props.isLeader)
          return window.location.replace('/')
       else

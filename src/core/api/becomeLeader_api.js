@@ -13,7 +13,7 @@ static becomeLeader =async (leader_info) => {
             has_car:leader_info.has_car!=undefined? leader_info.has_car : false,
             car_capacity:leader_info.car_capacity,
             car_model:leader_info.car_model,
-            age:12,
+            age:leader_info.age,
             gender: false
           },{
              headers:
