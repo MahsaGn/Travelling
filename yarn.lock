@@ -10277,6 +10277,9 @@ react-app-polyfill@^1.0.5:
     regenerator-runtime "^0.13.3"
     whatwg-fetch "^3.0.0"
 
+<<<<<<< HEAD
+react-bootstrap@^1.0.0-beta.16:
+=======
 react-big-scheduler@^0.2.7:
   version "0.2.7"
   resolved "https://registry.yarnpkg.com/react-big-scheduler/-/react-big-scheduler-0.2.7.tgz#22a378fd3c5d2e411df0b6117f164e519d8dbe54"
@@ -10292,6 +10295,7 @@ react-big-scheduler@^0.2.7:
     rrule "^2.6.0"
 
 react-bootstrap@^1.0.0-beta.14:
+>>>>>>> aabe6c9f9f97ec3933607cb0e51a3bcc03cbc1d9
   version "1.0.0-beta.16"
   resolved "https://registry.yarnpkg.com/react-bootstrap/-/react-bootstrap-1.0.0-beta.16.tgz#42da0314aee6754494e478687b8e6953de1aaf62"
   integrity sha512-wjb+3CwviDWAaz4O3gQpd2XMDNqbOiqOOzpLm5aLPcp1wTsQsVRhyM+rTPmO3hYU8auA2eNpTYLz08/fAcMqDA==

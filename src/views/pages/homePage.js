@@ -9,6 +9,7 @@ import SearchPlaceBar from "../components/searchPlaceBar";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import "../styles/style.css";
+import Steps from "./steps";
 
 class homePage extends React.Component {
   state = {
@@ -79,6 +80,7 @@ class homePage extends React.Component {
           <p className="actions_text"> مکان های دیدنی پیشنهادی</p>
           {this.state.placeCards}
           <br />
+          <Steps />
           <br />
         </div>
       </div>
