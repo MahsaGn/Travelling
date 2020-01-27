@@ -14,7 +14,7 @@ static becomeLeader =async (leader_info) => {
             car_capacity:leader_info.car_capacity,
             car_model:leader_info.car_model,
             age:leader_info.age,
-            gender: leader_info.gender
+            gender: leader_info.gender =="خانم" ? true : false
           },{
              headers:
               {
