@@ -1,4 +1,3 @@
-
 const initialState = {
     placeLoaded: false,
     placeTravellougeLoaded: false,

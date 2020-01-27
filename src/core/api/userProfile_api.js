@@ -7,7 +7,10 @@ static userProfile =async () => {
     let access = store.getState().login_reducer.access
     console.log("acees is",access)
     try{
-      let x = await axios.get('http://localhost:8000/api/me/',{
+      let x = await axios.post('http://localhost:8000/api/User/me/',
+      {
+      },
+      {
         headers:
         {
           "Authorization" : `Bearer ${access}`,

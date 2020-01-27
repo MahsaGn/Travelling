@@ -12,27 +12,29 @@ import '../styles/style.css';
 
 
 class homePage extends React.Component {
-  state={
-    placeCards:[]
-  }
-  
-  componentWillMount= async()=>{
-    console.log("in component");
-    await this.props.homePagePlace()
-    if(this.props.homePlaceLoaded)
-    {
-      let palces =  this.props.places_info.map(d=><PlaceCard 
-        title={d.title} 
-        src= {d.image1}
-        discriptions={d.categpries}
-      id={d.id} /> )
-      this.setState({
-        placeCards:palces
-      })
-    }
-  }
+  state = {
+    placeCards: []
+  };
 
-  render(){
+  componentWillMount = async () => {
+    console.log("in component");
+    await this.props.homePagePlace();
+    if (this.props.homePlaceLoaded) {
+      let palces = this.props.places_info.map(d => (
+        <PlaceCard
+          title={d.title}
+          src={d.image1}
+          discriptions={d.categpries}
+          id={d.id}
+        />
+      ));
+      this.setState({
+        placeCards: palces
+      });
+    }
+  };
+
+  render() {
     return (
       <div id="maindiv">
         <Header/>
@@ -54,22 +56,19 @@ class homePage extends React.Component {
         </div>
       </div>
     );
+  }
+}
+const mapStateToProps = state => {
+  return {
+    places_info: state.homePage_reducer.homePlace_info,
+    homePlaceLoaded: state.homePage_reducer.homePlaceLoaded
   };
 };
-const mapStateToProps = (state) => {
-    
-  return{
-    places_info : state.homePage_reducer.homePlace_info,
-    homePlaceLoaded : state.homePage_reducer.homePlaceLoaded,
-  }
-}
 
-const mapDispatchToProps = (dispatch) => {
-  return{
-      homePagePlace : () => dispatch(homePageAction.homePage())
-  }
-}
+const mapDispatchToProps = dispatch => {
+  return {
+    homePagePlace: () => dispatch(homePageAction.homePage())
+  };
+};
 
-export default connect(mapStateToProps,mapDispatchToProps)(homePage);
-
-
+export default connect(mapStateToProps, mapDispatchToProps)(homePage);

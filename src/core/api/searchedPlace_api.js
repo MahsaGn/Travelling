@@ -1,7 +1,9 @@
 import axios from 'axios'
 import store from '../../store.js'
 import {connect} from 'react-redux'
+
 class searchedPlace_api{
+  
 static searchedPlace =async (val) => {
     let sprtOption = store.getState().searchedPlace_reducer.sortPlace_option
     let searchVal = store.getState().searchedPlace_reducer.searched_val
