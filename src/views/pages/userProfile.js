@@ -9,6 +9,8 @@ import TravelougeCard from "../components/travelougeCard";
 import Header from "../components/header";
 import * as userProfileAction from "../../core/userProfile/userProfile_action";
 import OnOffButton from "../components/onOffButton";
+import LeaderSchedualer from "./leaderSchedualer";
+
 
 class userProfile extends React.Component {
   constructor(props) {
@@ -50,7 +52,6 @@ class userProfile extends React.Component {
       }
       this.setState({
         ifIsLeader: [
-          <OnOffButton />,
           <Profile_item
             title="جنسیت"
             val={this.props.data.gender == false ? "آقا" : "خانم"}
@@ -70,55 +71,57 @@ class userProfile extends React.Component {
         mycalender: calander,
         onoff: this.props.data.is_available
       });
-      console.log("onoff in userrrrrrrrrrr", this.state.onoff);
     }
   }
 
-    setTravelouges() {
-        let val
-        if (this.props.data.travellouges != undefined && this.props.data.travellouges.length != 0 ) {
-            console.log("--------travellouges", this.props.data.travellouges)
-            val = this.props.data.travellouges.map(x => <TravelougeCard info={x} />)
-        }
-        else {
-          console.log("no travelogue!!")
-            val = <p>هیچ سفرنامه ای تا کنون ثبن نشده ست</p>
-        }
-        console.log("intravellouges", val)
-
-        this.setState({ travellouges: val })
-
+  setTravelouges() {
+    let val
+    if (this.props.data.travellouges != undefined && this.props.data.travellouges.length != 0) {
+      console.log("--------travellouges", this.props.data.travellouges)
+      val = this.props.data.travellouges.map(x => <TravelougeCard info={x} />)
     }
+    else {
+      console.log("no travelogue!!")
+      val = <p>هیچ سفرنامه ای تا کنون ثبن نشده ست</p>
+    }
+    console.log("intravellouges", val)
 
-    render() {
-        return (
-            <dev id="profilePage">
-                <Header />
-                <img id="profileImage" src={this.props.data.avatar ? this.props.data.avatar : this.state.image} />
-                <br />
-                <h1 id="h1">{this.props.data.username}</h1>
-                <ListGroup id="items">
-                    <Profile_item title="نام" val={this.props.data.first_name} />
-                    <Profile_item title="نام خانوادگی" val={this.props.data.last_name} />
-                    <Profile_item title="سفرنامه" val={this.props.data.itinerary} />
-                    <Profile_item title="شماره تلفن" val={this.props.data.phone_number} />
-                    {this.state.ifIsLeader}
-                </ListGroup>
-                <br />
-                <br />
-                <br />
-                {this.props.data.is_leader ? <h3 className="form_title">مکان هایی که لیدر آن هستید</h3> : null}
-                <br />
-                <div className="profile_places">
-                {this.state.places}
-                </div>
-                <div className="profile_travelogue">
-                <br />
-                {this.props.data.travelouges != "" ? <h3 className="form_title">سفرنامه ها</h3> : null}
-                {this.state.travellouges}
-                </div>
-            </dev>
-        );
+    this.setState({ travellouges: val })
+
+  }
+
+  render() {
+    return (
+      <dev id="profilePage">
+        <Header />
+        <img id="profileImage" src={this.props.data.avatar ? this.props.data.avatar : this.state.image} />
+        <br />
+        <h1 id="h1">{this.props.data.username}</h1>
+        <ListGroup id="items">
+          <p>:تغییر وضعیت</p>
+          <OnOffButton />
+          <Profile_item title="نام" val={this.props.data.first_name} />
+          <Profile_item title="نام خانوادگی" val={this.props.data.last_name} />
+          <Profile_item title="سفرنامه" val={this.props.data.itinerary} />
+          <Profile_item title="شماره تلفن" val={this.props.data.phone_number} />
+          {this.state.ifIsLeader}
+        </ListGroup>
+        <br />
+        <br />
+        <br />
+        {this.props.data.is_leader ? <h3 className="form_title">مکان هایی که لیدر آن هستید</h3> : null}
+        <br />
+        <div className="profile_places">
+          {this.state.places}
+        </div>
+        <div className="profile_travelogue">
+          <br />
+          {this.props.data.travelouges != "" ? <h3 className="form_title">سفرنامه ها</h3> : null}
+          {this.state.travellouges}
+        </div>
+        <LeaderSchedualer />
+      </dev>
+    );
   }
 }
 

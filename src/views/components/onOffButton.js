@@ -1,37 +1,35 @@
 import React, { Component } from "react";
 import "bootstrap/dist/css/bootstrap.css";
 import "../styles/profile.css";
-import Switch from "react-switch";
-export default class onOffButton extends Component {
+import Switch from '@material-ui/core/Switch';
+import { connect } from "react-redux";
+import * as userProfileAction from "../../core/userProfile/userProfile_action";
+
+
+
+
+class onOffButton extends Component {
   constructor() {
     super();
     this.state = { checked: false };
     this.handleChange = this.handleChange.bind(this);
   }
 
-  handleChange(checked) {
-    let value = this.props.mapStateToProps;
-    if (value == true) {
-      let notPrechecked = !this.state.checked;
-      this.setState({ checked: notPrechecked });
-      console.log("checkeddddd", checked);
-    }
+  async handleChange() {
+    let value = this.state.checked;
+    await this.props.change_stateLeader()
+    if (this.props.isChanged == true)
+      this.setState({ checked: !value });
   }
 
   render() {
+    console.log(this.state.checked)
     return (
       <div>
         <label>
           <br />
-          <Switch
-            onChange={this.handleChange}
-            checked={this.state.checked}
-            className="onoffswitch"
-          />
+          <Switch color="primary" checked={this.state.checked} onChange={this.handleChange} value="gilad" />
         </label>
-        <p>
-          you are now <span>{this.state.checked ? "on" : "off"}line</span>.
-        </p>
       </div>
     );
   }
@@ -41,3 +39,11 @@ const mapStateToProps = state => {
     isChanged: state.userProfile_reducer.isChanged
   };
 };
+
+const mapDispatchToProps = dispatch => {
+  return {
+    change_stateLeader: () =>
+      dispatch(userProfileAction.changeAvailability())
+  };
+};
+export default connect(mapStateToProps, mapDispatchToProps)(onOffButton);

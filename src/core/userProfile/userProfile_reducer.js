@@ -2,7 +2,9 @@ const initialState = {
   is_leader: false,
   has_profileInfo: false,
   profile_info: "",
-  isChanged: false
+  isChanged: false,
+  freetime_changed:false,
+  freetime_scheduler:[]
 };
 
 export const userProfile_reducer = (state = initialState, action) => {
@@ -34,6 +36,17 @@ export const userProfile_reducer = (state = initialState, action) => {
       return {
         ...state,
         isChanged: false
+      };
+      case "CHANGETIME_SUCCESS":
+      return {
+        ...state,
+        freetime_scheduler : action.data,
+        freetime_changed: true
+      };
+    case "CHANGETIME_FAILURE":
+      return {
+        ...state,
+        freetime_changed: false
       };
     default:
       return state;

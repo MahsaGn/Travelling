@@ -9,8 +9,6 @@ import SearchPlaceBar from "../components/searchPlaceBar";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import "../styles/style.css";
-import Schedualer from "./schedualer";
-import LeaderSchedualer from "./leaderSchedualer";
 import Steps from "./steps";
 
 class homePage extends React.Component {
@@ -84,7 +82,6 @@ class homePage extends React.Component {
           <br />
           <Steps />
           <br />
-          <LeaderSchedualer />
         </div>
       </div>
     );
