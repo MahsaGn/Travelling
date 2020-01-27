@@ -9,8 +9,26 @@ export const userProfile_action_types = {
   CHANGETIME_SUCCESS:"CHANGETIME_SUCCESS",
   CHANGETIME_FAILURE:"CHANGETIME_FAILURE",
   FETCHCALENDAR_DATA_SUCCESS:"FETCHCALENDAR_DATA_SUCCESS",
-  FETCHCALENDAR_DATA_FAILURE:"FETCHCALENDAR_DATA_FAILURE"
+  FETCHCALENDAR_DATA_FAILURE:"FETCHCALENDAR_DATA_FAILURE",
+  FETCHCALENDAR_DATA_SUCCESS:"DELCALENDAR_DATA_SUCCESS",
+  FETCHCALENDAR_DATA_FAILURE:"DELCALENDAR_DATA_FAILURE",
+
 };
+
+export const del_calander_data_success = (data) => {
+  console.log("user reducer del free time success");
+  return {
+    type: userProfile_action_types.DELCALENDAR_DATA_SUCCESS,
+  };
+};
+
+export const del_calander_data_failure = () => {
+  console.log("user reducer del free time fail");
+  return {
+    type: userProfile_action_types.DELCALENDAR_DATA_FAILURE
+  };
+};
+
 export const userProfile_success = data => {
   console.log("loginSuccess");
   return {
@@ -121,6 +139,18 @@ export const getCalenderData = () =>{
       dispatch(get_calander_data_failure());
     } else {
       dispatch(get_calander_data_success(data_response));
+    }
+  }
+}
+
+export const delCalenderData = (data) =>{
+  return async function (dispatch) {
+    console.log(data)
+    let data_response = await userProfile_api.delFreeTime(data);
+    if (data_response == false) {
+      dispatch(del_calander_data_failure());
+    } else {
+      dispatch(del_calander_data_success());
     }
   }
 }

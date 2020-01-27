@@ -56,7 +56,7 @@ class userProfile_api {
     console.log("acees is", access);
     try {
       let x = await axios.post("http://localhost:8000/api/User/ChangeAvailability/", {
-        leaderID : leaderId
+        leaderID: leaderId
       }, {
         headers: {
           Authorization: `Bearer ${access}`,
@@ -68,6 +68,41 @@ class userProfile_api {
       return x.data;
     } catch {
       console.log("wrong fetch calender data");
+      return false;
+    }
+  };
+
+  static delFreeTime = async (data) => {
+    console.log(data)
+    console.log("in api set free time");
+    let access = store.getState().login_reducer.access;
+    console.log("acees is", access);
+    var formdata = new FormData()
+    var datestr = data.StartTime
+    formdata.append("start", datestr);
+    datestr = data.EndTime
+    formdata.append("end", datestr);
+    console.log("json is", formdata)
+    try {
+
+      let x = await axios.delete("http://localhost:8000/api/User/SetFreeTime/",
+      {
+        headers: {
+          Authorization: `Bearer ${access}`,
+          Accept: "application/json",
+          "Content-Type": "application/json"
+        }
+      }, {
+      data: {
+        StartTime: data.StartTime,
+        EndTime: data.EndTime
+
+      }
+    });
+      console.log("availability data", x);
+      return true;
+    } catch {
+      console.log("wrong userProfile");
       return false;
     }
   };
@@ -85,9 +120,9 @@ class userProfile_api {
     try {
 
       let x = await axios.post("http://localhost:8000/api/User/SetFreeTime/",
-        { 
-          StartTime : data.StartTime,
-          EndTime : data.EndTime
+        {
+          StartTime: data.StartTime,
+          EndTime: data.EndTime
 
         }
         , {

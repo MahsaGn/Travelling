@@ -6,6 +6,7 @@ const initialState = {
   freetime_changed: false,
   freetime_scheduler: "",
   fetrched_freeTime:false,
+  del_freeTime:false
 };
 
 export const userProfile_reducer = (state = initialState, action) => {
@@ -58,6 +59,16 @@ export const userProfile_reducer = (state = initialState, action) => {
         return {
           ...state,
           fetrched_freeTime: false
+        };
+        case "DELCALENDAR_DATA_SUCCESS":
+        return {
+          ...state,
+          del_freeTime: true
+        };
+      case "DELCALENDAR_DATA_FAILURE":
+        return {
+          ...state,
+          del_freeTime: false
         };
     default:
       return state;

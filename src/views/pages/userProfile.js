@@ -91,6 +91,8 @@ class userProfile extends React.Component {
   }
 
   render() {
+    let onlineStatus = this.state.ifIsLeader == true ? <OnOffButton /> : null
+
     return (
       <dev id="profilePage">
         <Header />
@@ -99,7 +101,7 @@ class userProfile extends React.Component {
         <h1 id="h1">{this.props.data.username}</h1>
         <ListGroup id="items">
           <p>:تغییر وضعیت</p>
-          <OnOffButton />
+          {onlineStatus}
           <Profile_item title="نام" val={this.props.data.first_name} />
           <Profile_item title="نام خانوادگی" val={this.props.data.last_name} />
           <Profile_item title="سفرنامه" val={this.props.data.itinerary} />

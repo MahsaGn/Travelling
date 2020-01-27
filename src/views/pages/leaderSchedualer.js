@@ -34,8 +34,8 @@ class schedualer extends React.Component {
     console.log("in new event", args)
     console.log(args)
     if (args.type == "DeleteAlert") {
-      console.log("deleted")
-        ;//remove data
+      console.log("deleted",args.data)
+      await this.props.delCalenderData(args.data)
     }
     else if (args.type == "QuickInfo") {
       console.log("data is", this.data, "end")
@@ -102,7 +102,9 @@ const mapDispatchToProps = dispatch => {
     changeSchedluer: scheduler_data =>
       dispatch(userProfileAction.changeFreeTime(scheduler_data)),
     getCalenderData: () =>
-      dispatch(userProfileAction.getCalenderData())
+      dispatch(userProfileAction.getCalenderData()),
+    delCalenderData: data =>
+      dispatch(userProfileAction.delCalenderData(data))
   };
 };
 
