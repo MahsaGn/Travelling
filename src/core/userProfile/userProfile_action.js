@@ -5,7 +5,9 @@ export const userProfile_action_types = {
   ISLEADER_SUCCESS: "ISLEADER_SUCCESS",
   GETPROFILE_FAILURE: "GETPROFILE_FAILURE",
   CHANGELEADERAVAILABILITY_SUCCESS: "CHANGELEADERAVAILABILITY_SUCCESS",
-  CHANGELEADERAVAILABILITY_FAILURE: "CHANGELEADERAVAILABILITY_FAILURE"
+  CHANGELEADERAVAILABILITY_FAILURE: "CHANGELEADERAVAILABILITY_FAILURE",
+  CHANGETIME_SUCCESS:"CHANGETIME_SUCCESS",
+  CHANGETIME_FAILURE:"CHANGETIME_FAILURE"
 };
 export const userProfile_success = data => {
   console.log("loginSuccess");
@@ -41,6 +43,22 @@ export const change_leader_availability_failure = () => {
   };
 };
 
+export const change_leader_freetime_success = data => {
+  console.log("user reducer change free time success");
+  return {
+    type: userProfile_action_types.CHANGETIME_SUCCESS,
+    data:data
+  };
+};
+
+export const change_leader_freetime_failure = () => {
+  console.log("user reducer change free time fail");
+  return {
+    type: userProfile_action_types.CHANGETIME_FAILURE
+  };
+};
+
+
 export const userProfile = () => {
   // type: "login"
   console.log("userProfile_info");
@@ -65,6 +83,17 @@ export const changeAvailability = () => {
       dispatch(change_leader_availability_failure());
     } else {
       dispatch(change_leader_availability_success());
+    }
+  }
+}
+
+export const changeFreeTime = (data) => {
+  return async function (dispatch) {
+    let availability_response = await userProfile_api.setFreeTime(data);
+    if (availability_response == false) {
+      dispatch(change_leader_availability_failure());
+    } else {
+      dispatch(change_leader_availability_success(data));
     }
   }
 }
