@@ -34,7 +34,7 @@ class becomeLeaderForm extends React.Component {
     console.log("is leader is ", this.props.isLeader)
     if (this.state.leader_info.nationalID != "" && this.state.leader_info.gender != "") {
       if (this.props.isLeader)
-        return window.location.replace('/')
+        ;//return window.location.replace('/')
       else
         alert(" راهنمای گردشگری شدن برای شماامکان پذیر نمی باشد")
     }
