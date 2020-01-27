@@ -13,7 +13,7 @@ import { Provider } from "react-redux";
 import store from "./store";
 import Travellouge from "./views/pages/travellouge";
 import AddTravelogu from "./views/pages/addTravelogu";
-
+import Steps from "./views/components/steps";
 const App = (
   <Provider store={store}>
     <BrowserRouter>
@@ -33,6 +33,8 @@ const App = (
       <Route path="/leaderProfile" component={LeaderProfile} />
       <Route path="/userProfile" component={LeaderProfile} />
       <Route path="/travellouge/:id" component={Travellouge} />
+
+      <Route path="/steps" component={Steps} />
     </BrowserRouter>
   </Provider>
 );

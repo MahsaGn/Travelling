@@ -1,42 +1,49 @@
-import axios from 'axios'
-import store from '../../store.js'
-import { connect } from 'react-redux'
-import FormData from 'form-data'
+import axios from "axios";
+import store from "../../store.js";
+import { connect } from "react-redux";
+import FormData from "form-data";
 
 class place_api {
   static place = async () => {
-    console.log("in api_______________ place", store.getState().place_reducer.place_id)
-    let wrongId = store.getState().place_reducer.wrongPlaceid
-    if (wrongId ==true)
-      return false
+    console.log(
+      "in api_______________ place",
+      store.getState().place_reducer.place_id
+    );
+    let wrongId = store.getState().place_reducer.wrongPlaceid;
+    if (wrongId == true) return false;
     try {
-      let x = await axios.get(`http://127.0.0.1:8000/api/Places/UniquePlace/?search=${store.getState().place_reducer.place_id}`)
+      let x = await axios.get(
+        `http://127.0.0.1:8000/api/Places/UniquePlace/?search=${
+          store.getState().place_reducer.place_id
+        }`
+      );
       console.log(x);
-      return x.data
-    } catch{
-      console.log("wrong place")
-      return false
+      return x.data;
+    } catch {
+      console.log("wrong place");
+      return false;
     }
   };
 
   static palce_travellouges = async () => {
-    let id = store.getState().place_reducer.place_id
-    let wrongId = store.getState().place_reducer.wrongPlaceid
+    let id = store.getState().place_reducer.place_id;
+    let wrongId = store.getState().place_reducer.wrongPlaceid;
 
-    console.log("travellouge place id", id)
-    if (wrongId ==true)
-      return false
+    console.log("travellouge place id", id);
+    if (wrongId == true) return false;
     try {
-
-      let x = await axios.post(`http://127.0.0.1:8000/api/Travellouge/place-travellouges/`, {
-        objID: id,
-      }
-      )
+      let x = await axios.post(
+        `http://127.0.0.1:8000/api/Travellouge/place-travellouges/`,
+        {
+          objID: id
+        }
+      );
       console.log("travellouge inf id", x);
-      return x.data
-    } catch{
-      console.log("wrong travelouges place")
-      return false
+      return x.data;
+    } catch {
+      console.log("wrong travelouges place");
+      return false;
     }
-  }
-} export default connect()(place_api)
+  };
+}
+export default connect()(place_api);
