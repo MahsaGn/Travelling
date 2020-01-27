@@ -14,7 +14,8 @@ class signupForm extends React.Component{
           itinerary:"",
           firstname:"",
           lastname:"",
-          image:""
+          image:"",
+          phonenumber:"",
         }
       }
       this.handleChange=this.handleChange.bind(this);
@@ -87,6 +88,11 @@ validityRepass(){
       <FormGroup className="mb-2 mr-sm-2 mb-sm-0">
         <Label id="form_label" className="mr-sm-2">نام خانوادگی</Label>
         <Input name="lastname" value={this.state.lastname} onChange={this.handleChange} type="text" id="form_input"/>
+        <FormText>پر کردن این قسمت اختیاری ست</FormText>
+      </FormGroup>
+      <FormGroup className="mb-2 mr-sm-2 mb-sm-0">
+        <Label id="form_label" className="mr-sm-2">شماره تلفن</Label>
+        <Input name="phonenumber" value={this.state.phonenumber} onChange={this.handleChange} type="number" id="form_input"/>
         <FormText>پر کردن این قسمت اختیاری ست</FormText>
       </FormGroup>
       <FormGroup className="mb-2 mr-sm-2 mb-sm-0">
